@@ -1,0 +1,70 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static "source/styles/bootstrap.min.css" %}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "source/styles/silantStyle.css" %}">
+    <link rel="icon" type="image/jpg" sizes="32x32" href="{% static "source/favicon/favicon.jpg" %}">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <div class="col-md-3 mb-2 mb-md-0">
+            <img  src="{% static "source/icons/logo.svg" %}" alt="logo" width="240" height="100">
+          </div>
+    
+          <div><p>+7-8352-20-12-09, telegram</p></div>
+    
+          <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Авторизация
+           </button>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style='width: 100%'><h2 style='text-align: center'>Электронная сервисная книжка "Мой Силант"</h2></div>
+        </header>
+      </div>
+    </header>
+
+    <section class='container'>
+    {% block section %}{% endblock %}
+    </section>
+
+    <footer class="container py-3 my-4 myFooter">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+      </ul>
+      <div class='footerText'>
+        <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
+        <p class="text-center text-body-secondary">&copy; 2024 Мой Силант</p>
+      </div>
+      
+    </footer>
+    
+    <script src="{% static "source/js/bootstrap.bundle.min.js" %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

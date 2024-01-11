@@ -1,11 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <p>{{ content }}</p>
-</body>
-</html>
+{% extends "cars/base.html" %}
+{% load static %}
+
+{% block section %}
+  <div class='myHead'>
+    <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
+  </div>
+
+  <nav class="navbar bg-body-tertiary colorGray">
+    <div class="container-fluid">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Заводской номер" aria-label="Search">
+        <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class='mySearch'>
+    <h3>Результат поиска:</h3>
+  </div>
+
+  <div class='myHead'>
+    <h4>{{ content }}</h4>
+  </div>
+
+  <table class="table table-striped">
+    <thead class='myTHead'>
+      <tr>
+        <th scope="col">Зав. № машины</th>
+        <th scope="col">Модель техники</th>
+        <th scope="col">Модель двигателя</th>
+        <th scope="col">Зав. № двигателя</th>
+        <th scope="col">Модель трансмиссии</th>
+        <th scope="col">Зав. № трансмиссии</th>
+        <th scope="col">Модель ведущего моста</th>
+        <th scope="col">Зав. № ведущего моста</th>
+        <th scope="col">Модель управляемого моста</th>
+        <th scope="col">Зав. № управляемого моста</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+{% endblock section %}
+
+        
+    

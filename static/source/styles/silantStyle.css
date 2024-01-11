@@ -1,0 +1,50 @@
+body {
+    background: #EBE6D6;
+}
+.colorGray {
+    background: #EBE6D6 !important;
+}
+
+.colorBlue {
+    background: #163E6C;
+    /* background-color: #D20A11; */
+    /* background-color: #EBE6D6; */
+}
+
+.border-bottom {
+    border-bottom: 2px solid #163E6C !important;
+}
+
+/* .myFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} */
+
+.footerText {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: stretch; */
+}
+
+.form-control {
+    width: 50vw;
+}
+
+.me-2 {
+    margin-right: 3rem!important;
+}
+
+.myHead {
+    /* padding-top: 1%; */
+    padding-bottom: 3%;
+}
+
+.mySearch {
+    padding-top: 3%;
+    padding-bottom: 1%;
+}
+
+.myTHead {
+    font-size: 12px;
+}
