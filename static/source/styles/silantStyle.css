@@ -15,17 +15,18 @@ body {
     border-bottom: 2px solid #163E6C !important;
 }
 
-/* .myFooter {
-    position: fixed;
+.myFooter {
+    position: absolute;
     bottom: 0;
     width: 100%;
-} */
+    /* margin-left: 1.5rem; */
+}
 
 .footerText {
     display: flex;
     justify-content: space-around;
     /* align-items: stretch; */
-}
+ }
 
 .form-control {
     width: 50vw;

@@ -51,19 +51,25 @@
     </header>
 
     <section class='container'>
-    {% block section %}{% endblock %}
+
+      <div class='myHead'>
+        <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
+      </div>
+    
+      <nav class="navbar bg-body-tertiary colorGray">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Заводской номер" aria-label="Search">
+            <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
+          </form>
+        </div>
+      </nav>
+
+    {% block cars %}{% endblock %}
+
     </section>
 
-    <footer class="container py-3 my-4 myFooter">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-
-      </ul>
-      <div class='footerText'>
-        <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
-        <p class="text-center text-body-secondary">&copy; 2024 Мой Силант</p>
-      </div>
-      
-    </footer>
+    {% block main_footer %}{% endblock %}
     
     <script src="{% static "source/js/bootstrap.bundle.min.js" %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
