@@ -27,25 +27,27 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.serial_number_vehicle }}</td>
+                <td>{{ car.vehicle_model }}</td>
+                <td>{{ car.engine_model }}</td>
+                <td>{{ car.serial_number_of_the_engine }}</td>
+                <td>{{ car.transmission_model }}</td>
+                <td>{{ car.serial_number_of_the_transmission }}</td>
+                <td>{{ car.drive_axle_model }}</td>
+                <td>{{ car.drive_axle_serial_number }}</td>
+                <td>{{ car.steering_axle_model }}</td>
+                <td>{{ car.serial_number_of_the_steered_axle }}</td>
+            </tr>
+        {% endfor %}
 
         </tbody>
     </table>
 {% endblock %}
 
 {% block main_footer %}
-    <footer class="container py-3 my-4 myFooter">
+    <footer class="container py-3 my-4 ">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
         <div class='footerText'>
             <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>

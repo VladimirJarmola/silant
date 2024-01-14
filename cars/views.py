@@ -4,10 +4,10 @@ from cars.models import Cars
 
 def cars(request):
 
-    cars  = Cars.objects.all()
+    cars_all  = Cars.objects.all().filter(serial_number_vehicle='0017')
 
     context = {
-        'cars': cars,
+        'cars': cars_all,
     }
 
     return render(request, 'cars/cars.html', context)

@@ -46,6 +46,15 @@ body {
     padding-bottom: 1%;
 }
 
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .myTHead {
     font-size: 12px;
 }
+
+
+

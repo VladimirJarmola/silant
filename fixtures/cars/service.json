@@ -1,0 +1,26 @@
+[
+    {
+        "model": "cars.servicecompany",
+        "pk": 1,
+        "fields": {
+            "name": "ООО Промышленная техника",
+            "description": ""
+        }
+    },
+    {
+        "model": "cars.servicecompany",
+        "pk": 2,
+        "fields": {
+            "name": "ООО Силант",
+            "description": ""
+        }
+    },
+    {
+        "model": "cars.servicecompany",
+        "pk": 3,
+        "fields": {
+            "name": "ООО ФНС",
+            "description": ""
+        }
+    }
+]

@@ -1,6 +1,19 @@
 from django.db import models
 
 
+class ServiceCompany(models.Model):
+    name = models.CharField(verbose_name='Название', max_length=256, unique=True, null=False, blank=False)
+    description = models.TextField(verbose_name='Описание', unique=False, null=True, blank=True)
+
+    class Meta:
+        db_table = 'service'
+        verbose_name = 'Сервисная компания'
+        verbose_name_plural = 'Сревисные компании'
+   
+    def __str__(self):
+        return f'{self.name}'
+
+
 class Cars(models.Model):
     serial_number_vehicle = models.CharField(verbose_name='Зав. № машины', max_length=32, unique=True, null=False, blank=False)
     vehicle_model = models.CharField(verbose_name='Модель техники', max_length=128, unique=False, null=False, blank=False)
@@ -29,14 +42,13 @@ class Cars(models.Model):
 
     client =  models.CharField(verbose_name='Клиент', max_length=128, unique=False, null=True, blank=True)
 
-    service_company = models.CharField(verbose_name='Сервисная компания', max_length=128, unique=False, null=False, blank=False)
+    service_company = models.ForeignKey(to=ServiceCompany, on_delete=models.SET_DEFAULT, default='Не назначено', verbose_name='Сервисная компания')
 
     class Meta:
         db_table = 'car'
         verbose_name = 'Машину'
         verbose_name_plural = 'Машины'
 
-        
     def __str__(self):
         return f'{self.vehicle_model} - {self.serial_number_vehicle}'
     
