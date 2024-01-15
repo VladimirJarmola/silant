@@ -1,33 +1,33 @@
 [
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.driveaxle",
         "pk": 1,
         "fields": {
-            "name": "ООО Промышленная техника",
+            "name": "20VA-00101",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.driveaxle",
         "pk": 2,
         "fields": {
-            "name": "ООО Силант",
+            "name": "20VB-00102",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.driveaxle",
         "pk": 3,
         "fields": {
-            "name": "ООО ФНС",
+            "name": "HA30-02020",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.driveaxle",
         "pk": 4,
         "fields": {
-            "name": "самостоятельно",
+            "name": "HA50-VP010",
             "description": ""
         }
     }

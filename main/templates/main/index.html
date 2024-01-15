@@ -1,6 +1,21 @@
 {% extends "main/base.html" %}
 {% load static %}
 
+{% block main_search %}
+    <div class='myHead'>
+        <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
+    </div>      
+
+     <nav class="navbar bg-body-tertiary colorGray">
+        <div class="container-fluid">
+            <form class="d-flex" role="search" action="{% url "cars:car_search" %}" method="get">
+                <input class="form-control me-2" type="search" name="q" placeholder="Заводской номер" aria-label="Search">
+                <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
+            </form>
+        </div>
+     </nav>
+{% endblock %}
+
 {% block main_footer %}
 
     <footer class="myFooter">

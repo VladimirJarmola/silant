@@ -15,7 +15,7 @@
       <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
           <div class="col-md-3 mb-2 mb-md-0">
-            <img  src="{% static "source/icons/logo.svg" %}" alt="logo" width="240" height="100">
+            <a href="{% url "main:index" %}"><img  src="{% static "source/icons/logo.svg" %}" alt="logo" width="240" height="100"></a>
           </div>
     
           <div><p>+7-8352-20-12-09, telegram</p></div>
@@ -52,42 +52,10 @@
 
     <section class='container'>
 
-      {% if is_auth %}
-        
-        <div class='myHead'>
-          <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
-        </div>
-      
-        <nav class="navbar bg-body-tertiary colorGray">
-          <div class="container-fluid">
-            <form class="d-flex" role="search" action="{% url "cars:search" %}" method="get">
-              <input class="form-control me-2" type="search" name="q" placeholder="Заводской номер" aria-label="Search">
-              <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
-            </form>
-          </div>
-        </nav>
+      {% block main_search %}{% endblock %}
 
-        {% block cars %}{% endblock %}
-
-      {% else %}
-  
-        <div class='myHead'>
-          <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
-        </div>
-
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-primary me-2" for="btnradio1">Radio 1</label>
-
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-primary me-2" for="btnradio2">Radio 2</label>
-
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn btn-outline-primary me-2" for="btnradio3">Radio 3</label>
-        </div>
-
-      {% endif %}
-    
+      {% block car_search %}{% endblock %}
+      {% block cars %}{% endblock %}
     </section>
 
     {% block main_footer %}{% endblock %}
@@ -95,3 +63,5 @@
     <script src="{% static "source/js/bootstrap.bundle.min.js" %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
+
+

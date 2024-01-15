@@ -1,0 +1,26 @@
+[
+    {
+        "model": "deskbook.steeringaxle",
+        "pk": 1,
+        "fields": {
+            "name": "B350655A",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.steeringaxle",
+        "pk": 2,
+        "fields": {
+            "name": "VS20-00001",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.steeringaxle",
+        "pk": 3,
+        "fields": {
+            "name": "VS30-00001",
+            "description": ""
+        }
+    }
+]

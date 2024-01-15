@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'main',
     'cars',
+    'deskbook',
 ]
 
 MIDDLEWARE = [

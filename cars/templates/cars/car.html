@@ -2,16 +2,13 @@
 
 {% load static %}
 
-{% block cars %}
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-primary me-2" for="btnradio1">Общая информация</label>
+{% block car_search %}
+    <div class='mySearch'>
+        <h3>Результат поиска:</h3>
+    </div>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="btnradio2">Техническое обслуживание</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="btnradio3">Рекламации</label>
+    <div class='myHead'>
+        <h4>{{ content }}</h4>
     </div>
 
     <table class="table table-striped">
@@ -27,17 +24,10 @@
             <th scope="col">Зав. № ведущего моста</th>
             <th scope="col">Модель управляемого моста</th>
             <th scope="col">Зав. № управляемого моста</th>
-            <th scope="col">Договор поставки №, дата</th>
-            <th scope="col">Дата отгрузки с завода</th>
-            <th scope="col">Грузополучатель (конечный потребитель)</th>
-            <th scope="col">Адрес поставки (эксплуатации)</th>
-            <th scope="col">Комплектация (доп. опции)</th>
-            <th scope="col">Клиент</th>
-            <th scope="col">Сервисная компания</th>
         </tr>
         </thead>
         <tbody>
-        {% for car in cars %}
+        {% for car in car_search %}
             <tr>
                 <td>{{ car.serial_number_vehicle }}</td>
                 <td>{{ car.vehicle_model }}</td>
@@ -49,13 +39,6 @@
                 <td>{{ car.drive_axle_serial_number }}</td>
                 <td>{{ car.steering_axle_model }}</td>
                 <td>{{ car.serial_number_of_the_steered_axle }}</td>
-                <td>{{ car.supply_contract }}</td>
-                <td>{{ car.date_shipped_from_factory }}</td>
-                <td>{{ car.consignee }}</td>
-                <td>{{ car.delivery_address }}</td>
-                <td>{{ car.equipment }}</td>
-                <td>{{ car.client }}</td>
-                <td>{{ car.service_company }}</td>
             </tr>
         {% endfor %}
 

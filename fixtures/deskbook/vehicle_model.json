@@ -1,0 +1,50 @@
+[
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 1,
+        "fields": {
+            "name": "ПГ1,5",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 2,
+        "fields": {
+            "name": "ПД1,5",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 3,
+        "fields": {
+            "name": "ПД2,0",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 4,
+        "fields": {
+            "name": "ПД2,5",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 5,
+        "fields": {
+            "name": "ПД3,0",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.vehiclemodel",
+        "pk": 6,
+        "fields": {
+            "name": "ПД5,0",
+            "description": ""
+        }
+    }
+]

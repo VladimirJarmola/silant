@@ -53,8 +53,11 @@ body {
 }
 
 .myTHead {
-    font-size: 12px;
+    font-size: 10px;
 }
 
+td {
+    font-size: 8px;
+}
 
 

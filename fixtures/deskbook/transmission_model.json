@@ -1,33 +1,33 @@
 [
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.transmissionmodel",
         "pk": 1,
         "fields": {
-            "name": "ООО Промышленная техника",
+            "name": "10VA-00105",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.transmissionmodel",
         "pk": 2,
         "fields": {
-            "name": "ООО Силант",
+            "name": "10VB-00106",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.transmissionmodel",
         "pk": 3,
         "fields": {
-            "name": "ООО ФНС",
+            "name": "HF30-VP010",
             "description": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "deskbook.transmissionmodel",
         "pk": 4,
         "fields": {
-            "name": "самостоятельно",
+            "name": "HF50-VP020",
             "description": ""
         }
     }
