@@ -2,4 +2,7 @@
 
 {% load static %}
 
-<div>from desktop</div>
+{% block vehicle %}
+    <div>from desktop</div>
+    <div>{{ vehicle.name }}</div>
+{% endblock vehicle %}

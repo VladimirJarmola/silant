@@ -6,6 +6,6 @@ from deskbook import views
 app_name = 'deskbook'
 
 urlpatterns = [
-    path('', views.failure_node, name='failure_node'),
+    path('vehicle/<int:vehicle_id>/', views.get_vehicle, name='vehicle'),
 
 ]

@@ -40,7 +40,9 @@
         {% for car in cars %}
             <tr>
                 <td>{{ car.serial_number_vehicle }}</td>
-                <td>{{ car.vehicle_model }}</td>
+                <td>
+                    <a href="{% url "deskbook:vehicle" car.vehicle_model_id %}">{{ car.vehicle_model }}</a>
+                </td>
                 <td>{{ car.engine_model }}</td>
                 <td>{{ car.serial_number_of_the_engine }}</td>
                 <td>{{ car.transmission_model }}</td>
