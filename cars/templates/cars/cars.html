@@ -1,9 +1,10 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load cars_tags %}
 
 {% block cars %}
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
         <label class="btn btn-outline-primary me-2" for="btnradio1">Общая информация</label>
 
@@ -14,6 +15,110 @@
         <label class="btn btn-outline-primary me-2" for="btnradio3">Рекламации</label>
     </div>
 
+    <div class="d-flex justify-content-center mb-2">
+        <!-- Форма сортировки -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Сортировка
+            </button>
+
+            <form action="{% url "cars:cars" %}" method="get" class="dropdown-menu" data-bs-theme="white">
+                
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default" checked>
+                    <label class="form-check-label fontSizeBtn" for="flexRadioDefault1">
+                        По возрастанию даты отгрузки с завода
+                    </label>
+                </div>
+
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="price">
+                    <label class="form-check-label fontSizeBtn" for="flexRadioDefault2">
+                    По убыванию даты отгрузки с завода
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm mx-3 mt-3">Применить</button>
+            </form>
+        </div>
+
+    <!-- Фильтрация по модели техники -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Модель техники
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_vehicle_models as vehicle_models %}
+                {% for model in vehicle_models %}
+                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:vehicle" model.id %}">{{ model.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по модели двигателя -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Модель двигателя
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_engine_models as engine_models %}
+                {% for model in engine_models %}
+                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:engine" model.id %}">{{ model.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по модели трансмиссии -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Модель трансмиссии
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_transmission_models as transmission_models %}
+                {% for model in transmission_models %}
+                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:transmission" model.id %}">{{ model.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по модели ведущего моста -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Модель ведущего моста
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_drive_axle_models as drive_axle_models %}
+                {% for model in drive_axle_models %}
+                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:drive_axle" model.id %}">{{ model.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по модели управляемого моста -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Модель управляемого моста
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_steering_axle_models as steering_axle_models %}
+                {% for model in steering_axle_models %}
+                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:steering_axle" model.id %}">{{ model.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
