@@ -2,52 +2,13 @@
 
 {% load static %}
 
-{% block car_search %}
-    <div class='mySearch'>
-        <h3>Результат поиска:</h3>
-    </div>
+{% block car %}
+    <div>This page about this car {{ car.vehicle_model_id }} {{ car_vehicle_deskbook.name}}</div>
 
-    <div class='myHead'>
-        <h4>{{ content }}</h4>
-    </div>
-
-    <table class="table table-striped">
-        <thead class='myTHead'>
-        <tr>
-            <th scope="col">Зав. № машины</th>
-            <th scope="col">Модель техники</th>
-            <th scope="col">Модель двигателя</th>
-            <th scope="col">Зав. № двигателя</th>
-            <th scope="col">Модель трансмиссии</th>
-            <th scope="col">Зав. № трансмиссии</th>
-            <th scope="col">Модель ведущего моста</th>
-            <th scope="col">Зав. № ведущего моста</th>
-            <th scope="col">Модель управляемого моста</th>
-            <th scope="col">Зав. № управляемого моста</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for car in car_search %}
-            <tr>
-                <td>{{ car.serial_number_vehicle }}</td>
-                <td>{{ car.vehicle_model }}</td>
-                <td>{{ car.engine_model }}</td>
-                <td>{{ car.serial_number_of_the_engine }}</td>
-                <td>{{ car.transmission_model }}</td>
-                <td>{{ car.serial_number_of_the_transmission }}</td>
-                <td>{{ car.drive_axle_model }}</td>
-                <td>{{ car.drive_axle_serial_number }}</td>
-                <td>{{ car.steering_axle_model }}</td>
-                <td>{{ car.serial_number_of_the_steered_axle }}</td>
-            </tr>
-        {% endfor %}
-
-        </tbody>
-    </table>
 {% endblock %}
 
 {% block main_footer %}
-    <footer class="container py-3 my-4 ">
+    <footer class="container py-3 my-4 myFooter">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
         <div class='footerText'>
             <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>

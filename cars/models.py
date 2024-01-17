@@ -136,6 +136,7 @@ class Cars(models.Model):
         db_table = "car"
         verbose_name = "Машину"
         verbose_name_plural = "Машины"
+        ordering = ('date_shipped_from_factory',)
 
     def __str__(self):
         return f"{self.serial_number_vehicle} - {self.vehicle_model}"
@@ -173,6 +174,7 @@ class Maintenance(models.Model):
         db_table = "maintenance"
         verbose_name = "ТО"
         verbose_name_plural = "ТО"
+        ordering = ("Date_maintenance",)
 
     def __str__(self):
         return f"{self.car} - {self.view_maintenance}"
@@ -213,6 +215,7 @@ class Reclamation(models.Model):
         db_table = "reclamation"
         verbose_name = "Рекламация"
         verbose_name_plural = "Рекламации"
+        ordering = ("date_of_refusal",)
 
     def __str__(self):
         return f"{self.car} - {self.failure_node} - {self.service_company}"

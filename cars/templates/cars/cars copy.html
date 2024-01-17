@@ -38,61 +38,49 @@
         </thead>
         <tbody>
         {% for car in cars %}
-        
-            <tr onclick="window.location.href='{% url "cars:car" car.id %}'; return false">
-                
-                    <td>{{ car.serial_number_vehicle }}</td>
-                    <td>{{ car.vehicle_model }}</td>
-                    <td>{{ car.engine_model }}</td>
-                    <td>{{ car.serial_number_of_the_engine }}</td>
-                    <td>{{ car.transmission_model }}</td>
-                    <td>{{ car.serial_number_of_the_transmission }}</td>
-                    <td>{{ car.drive_axle_model }}</td>
-                    <td>{{ car.drive_axle_serial_number }}</td>
-                    <td>{{ car.steering_axle_model }}</td>
-                    <td>{{ car.serial_number_of_the_steered_axle }}</td>
-                    <td>{{ car.supply_contract }}</td>
-                    <td>{{ car.date_shipped_from_factory }}</td>
-                    <td>{{ car.consignee }}</td>
-                    <td>{{ car.delivery_address }}</td>
-                    <td>{{ car.equipment|truncatechars:40 }}</td>
-                    <td>{{ car.client }}</td>
-                    <td>{{ car.service_company }}</td>
-                
+            <tr>
+                <td>{{ car.serial_number_vehicle }}</td>
+                <td>
+                    <a href="{% url "deskbook:vehicle" car.vehicle_model_id %}">
+                        {{ car.vehicle_model }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url "deskbook:engine" car.engine_model_id %}">
+                        {{ car.engine_model }}
+                    </a>
+                </td>
+                <td>{{ car.serial_number_of_the_engine }}</td>
+                <td>
+                    <a href="{% url "deskbook:transmission" car.transmission_model_id %}">
+                        {{ car.transmission_model }}
+                    </a>
+                </td>
+                <td>{{ car.serial_number_of_the_transmission }}</td>
+                <td>
+                    <a href="{% url "deskbook:drive_axle" car.drive_axle_model_id %}">
+                        {{ car.drive_axle_model }}
+                    </a>
+                </td>
+                <td>{{ car.drive_axle_serial_number }}</td>
+                <td>
+                    <a href="{% url "deskbook:steering_axle" car.steering_axle_model_id %}">
+                        {{ car.steering_axle_model }}
+                    </a>
+                </td>
+                <td>{{ car.serial_number_of_the_steered_axle }}</td>
+                <td>{{ car.supply_contract }}</td>
+                <td>{{ car.date_shipped_from_factory }}</td>
+                <td>{{ car.consignee }}</td>
+                <td>{{ car.delivery_address }}</td>
+                <td>{{ car.equipment }}</td>
+                <td>{{ car.client }}</td>
+                <td>{{ car.service_company }}</td>
             </tr>
-        
         {% endfor %}
 
         </tbody>
     </table>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item {% if not cars.has_previous %}disabled{% endif %}">
-                <a class="page-link" href="{% if cars.has_previous %}?page={{cars.previous_page_number}}
-                {% else %}
-                    #
-                {% endif %}">Назад</a>
-            </li>
-
-        {% for page in cars.paginator.page_range %}
-            {% if page >= cars.number|add:-2 and page <= cars.number|add:2 %}
-                <li class="page-item {% if cars.number == page %} active {% endif %}">
-                    <a class="page-link" href="?page={{page}}">{{ page }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
-          
-
-          <li class="page-item {% if not cars.has_next %}disabled{% endif %}">
-            <a class="page-link" href="{% if cars.has_next %}
-                ?page={{cars.next_page_number}}
-            {% else %}
-                #
-            {% endif %}">Вперед</a>
-          </li>
-        </ul>
-      </nav>
 {% endblock %}
 
 {% block main_footer %}
