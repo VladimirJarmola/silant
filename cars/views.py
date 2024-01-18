@@ -25,20 +25,30 @@ def cars(
     steering_axle_model_id=False,
 ):
     
+    page = request.GET.get("page", 1)
+    ordering = request.GET.get("order_by", None)
+
     if vehicle_model_id:
         cars_all = get_list_or_404(Cars.objects.filter(vehicle_model=vehicle_model_id))
+        
     elif engine_model_id:
         cars_all = get_list_or_404(Cars.objects.filter(engine_model=engine_model_id))
+        
     elif transmission_model_id:
         cars_all = get_list_or_404(Cars.objects.filter(transmission_model=transmission_model_id))
+        
     elif drive_axle_model_id:
         cars_all = get_list_or_404(Cars.objects.filter(drive_axle_model=drive_axle_model_id))
+        
     elif steering_axle_model_id:
         cars_all = get_list_or_404(Cars.objects.filter(steering_axle_model=steering_axle_model_id))
+        
     else:
-        cars_all = get_list_or_404(Cars.objects.all())
+        cars_all = Cars.objects.all()
 
-    page = request.GET.get("page", 1)
+    if ordering and ordering != 'default':
+        cars_all = cars_all.order_by(ordering)
+    
     paginator = Paginator(cars_all, 5)
     current_page = paginator.page(int(page))
 

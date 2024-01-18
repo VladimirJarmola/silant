@@ -136,7 +136,7 @@ class Cars(models.Model):
         db_table = "car"
         verbose_name = "Машину"
         verbose_name_plural = "Машины"
-        ordering = ('date_shipped_from_factory',)
+        # ordering = ('date_shipped_from_factory',)
 
     def __str__(self):
         return f"{self.serial_number_vehicle} - {self.vehicle_model}"
