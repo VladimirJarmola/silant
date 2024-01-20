@@ -1,12 +1,15 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 
 {% load static %}
 
     {% block car_search %}
 
-        <div class='mySearch'>
-            <h3>Результат поиска:</h3>
-        </div>
+        {% if request.GET.q %}
+            <div class='mySearch'>
+                <h3>Результат поиска по запросу заводского номера: {{request.GET.q}} </h3>
+            </div>
+            {% if not car_search %}<h4>{{ content }}</h4>{% endif %}
+        {% endif %}
 
         {% if car_search %}
             <table class="table table-striped">
@@ -42,10 +45,7 @@
 
                 </tbody>
             </table>
-        {% else  %}
-            <div class='myHead' style='height: 35vh'>
-                <h4>{{ content }}</h4>
-            </div>
+        
         {% endif %}
 
     {% endblock %}

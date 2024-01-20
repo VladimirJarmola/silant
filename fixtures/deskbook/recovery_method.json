@@ -1,0 +1,18 @@
+[
+    {
+        "model": "deskbook.recoverymethod",
+        "pk": 1,
+        "fields": {
+            "name": "Замена узла",
+            "description": ""
+        }
+    },
+    {
+        "model": "deskbook.recoverymethod",
+        "pk": 2,
+        "fields": {
+            "name": "Ремонт узла",
+            "description": ""
+        }
+    }
+]
