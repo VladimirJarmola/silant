@@ -1,16 +1,30 @@
 from django.core.paginator import Paginator
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import render
 
 from cars.models import Cars
 
 from deskbook.models import VehicleModel
 
+from cars.utils import q_search
+
 
 def car_search(request):
-    car_search_item = Cars.objects.all().filter(serial_number_vehicle="0017")
 
+    query = request.GET.get('q', None)
+    # car_search_list = []
+    # print(query)
+    if query:
+        car_search_list = q_search(query)
+    #     empty = True
+    else:
+        car_search_list = query
+    #     empty = False
+    # car_search_item = Cars.objects.all().filter(serial_number_vehicle="0017")
+    print(car_search_list)
     context = {
-        "car_search": car_search_item,
+        "car_search": car_search_list,
+        "content": 'По вашему запросу ничего не найдено'
+        # 'empty': empty,
     }
 
     return render(request, "cars/car_search.html", context)
@@ -29,20 +43,15 @@ def cars(
     ordering = request.GET.get("order_by", None)
 
     if vehicle_model_id:
-        cars_all = get_list_or_404(Cars.objects.filter(vehicle_model=vehicle_model_id))
-        
+        cars_all = Cars.objects.filter(vehicle_model=vehicle_model_id)
     elif engine_model_id:
-        cars_all = get_list_or_404(Cars.objects.filter(engine_model=engine_model_id))
-        
+        cars_all = Cars.objects.filter(engine_model=engine_model_id)
     elif transmission_model_id:
-        cars_all = get_list_or_404(Cars.objects.filter(transmission_model=transmission_model_id))
-        
+        cars_all = Cars.objects.filter(transmission_model=transmission_model_id)
     elif drive_axle_model_id:
-        cars_all = get_list_or_404(Cars.objects.filter(drive_axle_model=drive_axle_model_id))
-        
+        cars_all = Cars.objects.filter(drive_axle_model=drive_axle_model_id)
     elif steering_axle_model_id:
-        cars_all = get_list_or_404(Cars.objects.filter(steering_axle_model=steering_axle_model_id))
-        
+        cars_all = Cars.objects.filter(steering_axle_model=steering_axle_model_id)
     else:
         cars_all = Cars.objects.all()
 

@@ -1,6 +1,14 @@
 body {
     background: #EBE6D6;
+    height: 100%;
 }
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+}
+
 .colorGray {
     background: #EBE6D6 !important;
 }
@@ -16,10 +24,7 @@ body {
 }
 
 .myFooter {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* margin-left: 1.5rem; */
+    flex: 0 0 auto;
 }
 
 .footerText {

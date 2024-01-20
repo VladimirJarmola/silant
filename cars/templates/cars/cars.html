@@ -17,7 +17,7 @@
 
     <div class="d-flex justify-content-center mb-2">
         <!-- Форма сортировки -->
-        <div class="dropdown mb-2 me-2">
+        {% comment %} <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Сортировка
@@ -26,21 +26,24 @@
             <form action="{% url "cars:cars" %}" method="get" class="dropdown-menu" data-bs-theme="white">
 
                 <div class="form-check mx-3">
-                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default" checked>
+                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default" 
+                        {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %} >
                     <label class="form-check-label fontSizeBtn" for="flexRadioDefault1">
                         По умолчанию
                     </label>
                 </div>
                 
                 <div class="form-check mx-3">
-                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="date_shipped_from_factory">
+                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="date_shipped_from_factory"
+                        {% if request.GET.order_by == 'date_shipped_from_factory' %}checked{% endif %} >
                     <label class="form-check-label fontSizeBtn" for="flexRadioDefault1">
                         По возрастанию даты отгрузки с завода
                     </label>
                 </div>
 
                 <div class="form-check mx-3">
-                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="-date_shipped_from_factory">
+                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="-date_shipped_from_factory"
+                        {% if request.GET.order_by == '-date_shipped_from_factory' %}checked{% endif %}>
                     <label class="form-check-label fontSizeBtn" for="flexRadioDefault2">
                         По убыванию даты отгрузки с завода
                     </label>
@@ -48,8 +51,9 @@
 
                 <button type="submit" class="btn btn-primary btn-sm mx-3 mt-3">Применить</button>
             </form>
-        </div>
-
+        </div> {% endcomment %}
+<button><a href="?order_by=date_shipped_from_factory">сортировка</a></button>
+<button><a href="?order_by=-date_shipped_from_factory">сортировка</a></button>
     <!-- Фильтрация по модели техники -->
         <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,7 +64,11 @@
                 <li><hr class="dropdown-divider"></li>
                 {% tag_vehicle_models as vehicle_models %}
                 {% for model in vehicle_models %}
-                    <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:vehicle" model.id %}">{{ model.name }}</a></li>
+                    <li>
+                        <a class="dropdown-item fontSizeBtn" href="{% url "cars:vehicle" model.id %}">
+                            {{ model.name }}
+                        </a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
@@ -181,7 +189,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item {% if not cars.has_previous %}disabled{% endif %}">
-                <a class="page-link" href="{% if cars.has_previous %}?page={{cars.previous_page_number}}
+                <a class="page-link" href="{% if cars.has_previous %}?{% change_params page=cars.previous_page_number %}
                 {% else %}
                     #
                 {% endif %}">Назад</a>
@@ -190,29 +198,18 @@
         {% for page in cars.paginator.page_range %}
             {% if page >= cars.number|add:-2 and page <= cars.number|add:2 %}
                 <li class="page-item {% if cars.number == page %} active {% endif %}">
-                    <a class="page-link" href="?page={{page}}">{{ page }}</a>
+                    <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
                 </li>
             {% endif %}
         {% endfor %}
           
 
           <li class="page-item {% if not cars.has_next %}disabled{% endif %}">
-            <a class="page-link" href="{% if cars.has_next %}
-                ?page={{cars.next_page_number}}
+            <a class="page-link" href="{% if cars.has_next %}?{% change_params page=cars.next_page_number %}
             {% else %}
                 #
             {% endif %}">Вперед</a>
           </li>
         </ul>
       </nav>
-{% endblock %}
-
-{% block main_footer %}
-    <footer class="container py-3 my-4 ">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
-        <div class='footerText'>
-            <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
-            <p class="text-center text-body-secondary">&copy; 2024 Мой Силант</p>
-        </div>
-    </footer>
 {% endblock %}

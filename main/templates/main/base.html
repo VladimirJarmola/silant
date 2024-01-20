@@ -12,6 +12,7 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    <div class='page'>
     <header>
       <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -51,18 +52,32 @@
       </div>
     </header>
 
-    <section class='container'>
+    <section class='container' style='flex: 1 1 auto;'>
 
       {% block main_search %}{% endblock %}
 
-      {% block car_search %}{% endblock %}
+      {% block car_search %}{% endblock %} 
+
       {% block cars %}{% endblock %}
+      
       {% block car %}{% endblock %}
+
       {% block deskbook %}{% endblock %}
+      
     </section>
 
-    {% block main_footer %}{% endblock %}
+    <footer class="myFooter">
+      <div class="container">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+        <div class='footerText'>
+            <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
+            <p class="text-center text-body-secondary">&copy; 2024 Мой Силант</p>
+        </div>
+      </div>
+      
+    </footer>
     
+    </div>
     <script src="{% static "source/js/bootstrap.bundle.min.js" %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
