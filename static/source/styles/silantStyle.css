@@ -37,6 +37,10 @@ body {
     width: 50vw;
 }
 
+.auth-width {
+    width: 100%;
+}
+
 .me-2 {
     margin-right: 3rem!important;
 }
