@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('cars/', include('cars.urls', namespace='cars')),
     path('deskbook/', include('deskbook.urls', namespace='deskbook')),
+    path('user/', include('users.urls', namespace='user')),
 ]
 
 if DEBUG:

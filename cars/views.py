@@ -11,20 +11,16 @@ from cars.utils import q_search
 def car_search(request):
 
     query = request.GET.get('q', None)
-    # car_search_list = []
-    # print(query)
+
     if query:
         car_search_list = q_search(query)
-    #     empty = True
     else:
         car_search_list = query
-    #     empty = False
-    # car_search_item = Cars.objects.all().filter(serial_number_vehicle="0017")
+
     print(car_search_list)
     context = {
         "car_search": car_search_list,
         "content": 'По вашему запросу ничего не найдено'
-        # 'empty': empty,
     }
 
     return render(request, "cars/car_search.html", context)
