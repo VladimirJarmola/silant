@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
@@ -17,7 +18,7 @@ def car_search(request):
     else:
         car_search_list = query
 
-    print(car_search_list)
+    # print(car_search_list)
     context = {
         "car_search": car_search_list,
         "content": 'По вашему запросу ничего не найдено'
@@ -25,7 +26,7 @@ def car_search(request):
 
     return render(request, "cars/car_search.html", context)
 
-
+@login_required
 def cars(
     request,
     vehicle_model_id=False,
@@ -64,6 +65,7 @@ def cars(
     return render(request, "cars/cars.html", context)
 
 
+@login_required
 def get_car(request, car_id):
     car_item = Cars.objects.get(id=car_id)
     car_vehicle_deskbook = VehicleModel.objects.get(id=car_item.vehicle_model_id)

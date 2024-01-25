@@ -136,48 +136,11 @@ class Cars(models.Model):
         db_table = "car"
         verbose_name = "Машину"
         verbose_name_plural = "Машины"
-        # ordering = ('date_shipped_from_factory',)
+        # сортировка по дате отгрузки
+        ordering = ('engine_model',)
 
     def __str__(self):
         return f"{self.serial_number_vehicle} - {self.vehicle_model}"
-
-
-class Maintenance(models.Model):
-    view_maintenance = models.ForeignKey(
-        to=ViewMaintenance, on_delete=models.CASCADE, verbose_name="Вид ТО"
-    )
-    Date_maintenance = models.DateField(verbose_name="Дата проведения ТО")
-    operating_hours = models.IntegerField(verbose_name="Наработка, м/час")
-    work_order_number = models.CharField(
-        verbose_name="№ заказ-наряда",
-        max_length=128,
-        unique=True,
-        null=False,
-        blank=False,
-    )
-    work_order_date = models.DateField(verbose_name="Дата заказ-наряда")
-    # organization = models.CharField(verbose_name='Организация, проводившая ТО', max_length=128, unique=False, null=False, blank=False)
-    car = models.ForeignKey(
-        to=Cars,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
-        verbose_name="Машина",
-    )
-    service_company = models.ForeignKey(
-        to=ServiceCompany,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
-        verbose_name="Сервисная компания",
-    )
-
-    class Meta:
-        db_table = "maintenance"
-        verbose_name = "ТО"
-        verbose_name_plural = "ТО"
-        ordering = ("Date_maintenance",)
-
-    def __str__(self):
-        return f"{self.car} - {self.view_maintenance}"
 
 
 class Reclamation(models.Model):

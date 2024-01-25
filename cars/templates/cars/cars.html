@@ -4,18 +4,27 @@
 {% load cars_tags %}
 
 {% block cars %}
-    <div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+    <div class="d-flex justify-content-center p-4">
+        <h4>Информация о комплектации и технических характеристиках Вашей техники </h4>
+    </div>
+
+    <div class="d-flex btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio1">Общая информация</label>
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio1">
+            <a href="{% url "cars:cars" %}">Общая информация</a></label>
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2">Техническое обслуживание</label>
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2">
+            <a href="{% url "maintenance:maintenance" %}">Техническое обслуживание</a></label>
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
         <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3">Рекламации</label>
     </div>
 
-    <div class="d-flex justify-content-center mb-2">
+    <div class="d-flex pt-5">
         <!-- Форма сортировки -->
         {% comment %} <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -52,9 +61,20 @@
                 <button type="submit" class="btn btn-primary btn-sm mx-3 mt-3">Применить</button>
             </form>
         </div> {% endcomment %}
-<button><a href="?order_by=date_shipped_from_factory">сортировка</a></button>
-<button><a href="?order_by=-date_shipped_from_factory">сортировка</a></button>
-    <!-- Фильтрация по модели техники -->
+        
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Сортировка таблицы
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=date_shipped_from_factory">По возрастанию даты отгрузки с завода</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=-date_shipped_from_factory">По убыванию даты отгрузки с завода</a></li>    
+            </ul>
+        </div>
+
+        <!-- Фильтрация по модели техники -->
         <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Модель техники
