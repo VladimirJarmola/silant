@@ -1,6 +1,9 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from cars.models import Cars
 
@@ -13,10 +16,13 @@ def car_search(request):
 
     query = request.GET.get('q', None)
 
-    if query:
+    if query and len(query.split()):
         car_search_list = q_search(query)
+    elif not query:
+        messages.warning(request, "Введите заводской номер!")
+        return HttpResponseRedirect(reverse('main:index'))
     else:
-        car_search_list = query
+        car_search_list = None
 
     # print(car_search_list)
     context = {

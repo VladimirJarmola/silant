@@ -1,0 +1,12 @@
+<div class='myHead'>
+    <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
+</div>      
+
+<nav class="navbar bg-body-tertiary colorGray">
+    <div class="container-fluid">
+        <form class="d-flex" role="search" action="{% url "cars:car_search" %}" method="get">
+            <input class="form-control me-2" type="search" name="q" placeholder="Введите заводской номер или заводские номера" aria-label="Search">
+            <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
+        </form>
+    </div>
+ </nav>

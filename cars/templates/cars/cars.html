@@ -3,7 +3,7 @@
 {% load static %}
 {% load cars_tags %}
 
-{% block cars %}
+{% block content %}
     <div class="d-flex justify-content-end p-1">
         <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
     </div>
@@ -11,19 +11,7 @@
         <h4>Информация о комплектации и технических характеристиках Вашей техники </h4>
     </div>
 
-    <div class="d-flex btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio1">
-            <a href="{% url "cars:cars" %}">Общая информация</a></label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2">
-            <a href="{% url "maintenance:maintenance" %}">Техническое обслуживание</a></label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" >
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3">
-            <a href="{% url "reclamation:reclamation" %}">Рекламации</a></label>
-    </div>
+    {% include "includes/radiobuttons.html" %}
 
     <div class="d-flex pt-5">
         <!-- Форма сортировки -->
@@ -192,7 +180,7 @@
                     <td>{{ car.drive_axle_serial_number }}</td>
                     <td>{{ car.steering_axle_model }}</td>
                     <td>{{ car.serial_number_of_the_steered_axle }}</td>
-                    <td>{{ car.supply_contract }}</td>
+                    <td>{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
                     <td>{{ car.date_shipped_from_factory }}</td>
                     <td>{{ car.consignee }}</td>
                     <td>{{ car.delivery_address }}</td>

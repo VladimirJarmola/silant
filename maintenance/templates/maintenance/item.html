@@ -2,6 +2,11 @@
 
 {% load static %}
 
-{% block maintenance_item %}
+{% block content %}
     <div>This page about this maintenance </div>
+    {% if 'maintenance' in request.path %}
+        <h5>True</h5>
+    {% else %}
+        <h5>False</h5>
+    {% endif %}
 {% endblock %}

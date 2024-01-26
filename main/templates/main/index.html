@@ -1,37 +1,9 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block main_search %}
-    <div class='myHead'>
-        <h3>Проверьте комплектацию и технические характеристики техники Силант</h3>
-    </div>      
-
-     <nav class="navbar bg-body-tertiary colorGray">
-        <div class="container-fluid">
-            <form class="d-flex" role="search" action="{% url "cars:car_search" %}" method="get">
-                <input class="form-control me-2" type="search" name="q" placeholder="Введите заводской номер или заводские номера" aria-label="Search">
-                <button class="btn btn-outline-primary me-2" type="submit">Поиск</button>
-            </form>
-        </div>
-     </nav>
+{% block content %}
+    {% include "includes/search.html" %}
 {% endblock %}
 
-
-
-{% block main_footer %}
-
-    <footer class="myFooter">
-        <div class="container py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
-            <div class='footerText'>
-            <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
-            <p class="text-center text-body-secondary">&copy; 2024 Мой Силант</p>
-        </div>
-        </div>
-        
-    </footer>
-
-{% endblock %}
 
         
     

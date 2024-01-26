@@ -2,7 +2,9 @@
 
 {% load static %}
 
-    {% block car_search %}
+    {% block content %}
+
+        {% include "includes/search.html" %}
 
         {% if request.GET.q %}
             <div class='mySearch'>

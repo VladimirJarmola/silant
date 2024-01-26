@@ -37,27 +37,9 @@
       </div>
     </header>
     {% include "includes/notifications.html" %}
-    <section class='container' style='flex: 1 1 auto;'>
-
-      {% block login %}{% endblock %}
-
-      {% block main_search %}{% endblock %}
-
-      {% block car_search %}{% endblock %}   
+    <section class='container' style='flex: 1 1 auto;'>    
       
-      {% block main %}{% endblock %}
-      
-      {% block cars %}{% endblock %}
-      
-      {% block maintenance %}{% endblock %}
-      {% block maintenance_item %}{% endblock %}
-
-      {% block reclamation %}{% endblock %}
-      {% block reclamation_item %}{% endblock %}
-
-      {% block car %}{% endblock %}
-
-      {% block deskbook %}{% endblock %}
+      {% block content %}{% endblock %}
       
     </section>
 
