@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load reclamation_tags %}
+
+{% block reclamation %}
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+
+    <div class="d-flex justify-content-center p-4">
+        <h4>Информацию о заявленных клиентами рекламациях, и сроках их устранения </h4>
+    </div>
+
+    <div class="d-flex btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio1">
+            <a href="{% url "cars:cars" %}">Общая информация</a></label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2">
+            <a href="{% url "maintenance:maintenance" %}">Техническое обслуживание</a></label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3">
+            <a href="{% url "reclamation:reclamation" %}">Рекламации</a></label>
+    </div>
+
+    <div class="d-flex pt-5">
+
+        <!-- Форма сортировки -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Сортировка таблицы
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=date_of_refusal">По возрастанию даты отказа</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="?order_by=-date_of_refusal">По убыванию даты отказа</a></li>    
+            </ul>
+        </div>
+
+        <!-- Фильтрация по узел отказа -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Узел отказа
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_failure_node as failure_node %}
+                {% for node in failure_node %}
+                    <li>
+                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:failure_node" node.id %}">
+                            {{ node.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по способ восстановления -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cпособ восстановления
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_recovery_method as recovery_method %}
+                {% for method in recovery_method %}
+                    <li>
+                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:recovery_method" method.id %}">
+                            {{ method.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Фильтрация по сервисная компания -->
+        <div class="dropdown mb-2 me-2">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cервисная компания
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><hr class="dropdown-divider"></li>
+                {% tag_service_company as service_company %}
+                {% for company in service_company %}
+                    <li>
+                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:service_company" company.id %}">
+                            {{ company.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    
+    <table class="table table-striped">
+        <thead class='myTHead'>
+        <tr>
+            <th scope="col">Дата отказа</th>
+            <th scope="col">Наработка, м/час</th>
+            <th scope="col">Узел отказа</th>
+            <th scope="col">Описание отказа</th>
+            <th scope="col">Способ восстановления</th>
+            <th scope="col">Используемые запасные части</th>
+            <th scope="col">Дата восстановления</th>
+            <th scope="col">Время простоя техники</th>
+            <th scope="col">Сервисная компания</th>
+            <th scope="col">Машина</th>
+            
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in reclamation %}
+        
+            <tr 
+                onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false"
+            >
+                
+                <td>{{ item.date_of_refusal }}</td>
+                <td>{{ item.operating_hours }}</td>
+                <td>{{ item.failure_node }}</td>
+                <td>{{ item.description_of_failure|truncatechars:25 }}</td>
+                <td>{{ item.recovery_method }}</td>
+                <td>{{ item.parts_used|truncatechars:25 }}</td>
+                <td>{{ item.restore_date }}</td>
+                <td>{{ item.equipment_downtime }}</td>
+                <td>{{ item.service_company }}</td>
+                <td>{{ item.car }}</td>
+                 
+            </tr>
+        
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <!-- Пагинация -->
+    {% if reclamation %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {% if not reclamation.has_previous %}disabled{% endif %}">
+                    <a class="page-link" href="{% if reclamation.has_previous %}?{% change_params page=reclamation.previous_page_number %}
+                    {% else %}
+                        #
+                    {% endif %}">Назад</a>
+                </li>
+
+                {% for page in reclamation.paginator.page_range %}
+                    {% if page >= reclamation.number|add:-2 and page <= reclamation.number|add:2 %}
+                        <li class="page-item {% if reclamation.number == page %} active {% endif %}">
+                            <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                <li class="page-item {% if not reclamation.has_next %}disabled{% endif %}">
+                    <a class="page-link" href="{% if reclamation.has_next %}?{% change_params page=reclamation.next_page_number %}
+                    {% else %}
+                        #
+                    {% endif %}">Вперед</a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}

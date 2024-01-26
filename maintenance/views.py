@@ -35,7 +35,11 @@ def maintenance(
     paginator = Paginator(maintenance_all, 5)
     current_page = paginator.page(int(page))
 
-    context = {"title": "ТО", "maintenance": current_page}
+    context = {
+        "title": "ТО", 
+        "maintenance": current_page
+    }
+    
     return render(request, "maintenance/maintenance.html", context)
 
 

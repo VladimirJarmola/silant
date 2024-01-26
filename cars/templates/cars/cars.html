@@ -20,8 +20,9 @@
         <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2">
             <a href="{% url "maintenance:maintenance" %}">Техническое обслуживание</a></label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3">Рекламации</label>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" >
+        <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3">
+            <a href="{% url "reclamation:reclamation" %}">Рекламации</a></label>
     </div>
 
     <div class="d-flex pt-5">

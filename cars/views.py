@@ -21,7 +21,7 @@ def car_search(request):
     # print(car_search_list)
     context = {
         "car_search": car_search_list,
-        "content": 'По вашему запросу ничего не найдено'
+        "content": 'По вашему запросу ничего не найдено, данных о машине с таким заводским номером нет в системе'
     }
 
     return render(request, "cars/car_search.html", context)

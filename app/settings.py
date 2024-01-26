@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'main',
     'cars',
     'maintenance',
+    'reclamation',
     'deskbook',
     'users',
 ]
