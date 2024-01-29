@@ -1,23 +1,7 @@
 from django.db import models
 
 from deskbook.models import DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
-
-
-class ServiceCompany(models.Model):
-    name = models.CharField(
-        verbose_name="Название", max_length=256, unique=True, null=False, blank=False
-    )
-    description = models.TextField(
-        verbose_name="Описание", unique=False, null=True, blank=True
-    )
-
-    class Meta:
-        db_table = "service"
-        verbose_name = "Сервисная компания"
-        verbose_name_plural = "Сревисные компании"
-
-    def __str__(self):
-        return f"{self.name}"
+from users.models import ServiceCompany, User
 
 
 class Cars(models.Model):

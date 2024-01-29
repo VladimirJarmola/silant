@@ -9,12 +9,13 @@
         <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
     </div>
 
-    <div class="d-flex justify-content-center p-4">
-        <h4>Информацию о заявленных клиентами рекламациях, и сроках их устранения </h4>
+    <div class="d-flex justify-content-around p-2">
+        <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
+        <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
     </div>
 
-    {% include "includes/radiobuttons.html" %}
-
+    {% include "includes/radiobuttons_item.html" %}
+    
     <div class="d-flex pt-5">
 
         <!-- Форма сортировки -->
@@ -36,15 +37,18 @@
                 Узел отказа
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_failure_node as failure_node %}
                 {% for node in failure_node %}
+                {% if node.id in fn_for_watch %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:failure_node" node.id %}">
+                        <a class="dropdown-item fontSizeBtn" 
+                        href="{% url "reclamation:car_reclamations_failure_node" car.id node.id %}">
                             {{ node.name }}
                         </a>
                     </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
@@ -55,15 +59,18 @@
                 Cпособ восстановления
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_recovery_method as recovery_method %}
                 {% for method in recovery_method %}
+                {% if method.id in rm_for_watch %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:recovery_method" method.id %}">
+                        <a class="dropdown-item fontSizeBtn" 
+                        href="{% url "reclamation:car_reclamations_recovery_method" car.id method.id %}">
                             {{ method.name }}
                         </a>
                     </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
@@ -74,21 +81,23 @@
                 Cервисная компания
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:reclamation" %}">Все узлы</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_service_company as service_company %}
                 {% for company in service_company %}
+                {% if company.id in sc_for_watch %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:service_company" company.id %}">
+                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations_service_company" car.id company.id %}">
                             {{ company.name }}
                         </a>
                     </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
 
     </div>
-    
+
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
@@ -101,16 +110,15 @@
             <th scope="col">Дата восстановления</th>
             <th scope="col">Время простоя техники</th>
             <th scope="col">Сервисная компания</th>
-            <th scope="col">Машина</th>
             
         </tr>
         </thead>
 
         <tbody>
-        {% for item in reclamation %}
+        {% for item in reclamations %}
         
             <tr 
-                onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false"
+                {% comment %} onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false" {% endcomment %}
             >
                 
                 <td>{{ item.date_of_refusal }}</td>
@@ -122,7 +130,6 @@
                 <td>{{ item.restore_date }}</td>
                 <td>{{ item.equipment_downtime }}</td>
                 <td>{{ item.service_company }}</td>
-                <td>{{ item.car }}</td>
                  
             </tr>
         
@@ -132,31 +139,33 @@
     </table>
 
     <!-- Пагинация -->
-    {% if reclamation %}
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item {% if not reclamation.has_previous %}disabled{% endif %}">
-                    <a class="page-link" href="{% if reclamation.has_previous %}?{% change_params page=reclamation.previous_page_number %}
-                    {% else %}
-                        #
-                    {% endif %}">Назад</a>
-                </li>
+{% if reclamations %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if not reclamations.has_previous %}disabled{% endif %}">
+                <a class="page-link" href="{% if reclamations.has_previous %}?{% change_params page=reclamations.previous_page_number %}
+                {% else %}
+                    #
+                {% endif %}">Назад</a>
+            </li>
 
-                {% for page in reclamation.paginator.page_range %}
-                    {% if page >= reclamation.number|add:-2 and page <= reclamation.number|add:2 %}
-                        <li class="page-item {% if reclamation.number == page %} active {% endif %}">
-                            <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
+            {% for page in reclamations.paginator.page_range %}
+                {% if page >= reclamations.number|add:-2 and page <= reclamations.number|add:2 %}
+                    <li class="page-item {% if reclamations.number == page %} active {% endif %}">
+                        <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
 
-                <li class="page-item {% if not reclamation.has_next %}disabled{% endif %}">
-                    <a class="page-link" href="{% if reclamation.has_next %}?{% change_params page=reclamation.next_page_number %}
-                    {% else %}
-                        #
-                    {% endif %}">Вперед</a>
-                </li>
-            </ul>
-        </nav>
-    {% endif %}
+            <li class="page-item {% if not reclamations.has_next %}disabled{% endif %}">
+                <a class="page-link" href="{% if reclamations.has_next %}?{% change_params page=reclamations.next_page_number %}
+                {% else %}
+                    #
+                {% endif %}">Вперед</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}
+
+
 {% endblock %}

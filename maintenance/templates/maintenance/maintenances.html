@@ -5,19 +5,19 @@
 {% load maintenance_tags %}
 
 {% block content %}
-
     <div class="d-flex justify-content-end p-1">
         <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
     </div>
 
-    <div class="d-flex justify-content-center p-4">
-        <h4>Информация о проведенных ТО Вашей техники </h4>
+    <div class="d-flex justify-content-around p-2">
+        <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
+        <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
     </div>
 
-    {% include "includes/radiobuttons.html" %}
+    {% include "includes/radiobuttons_item.html" %}
     
     <div class="d-flex pt-5">
-            <!-- Форма сортировки -->
+        <!-- Форма сортировки -->
         <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сортировка таблицы
@@ -29,68 +29,71 @@
                 <li><a class="dropdown-item fontSizeBtn" href="?order_by=-Date_maintenance">По убыванию даты проведения ТО</a></li>    
             </ul>
         </div>
-            <!-- Фильтрация по виду ТО -->
+        <!-- Фильтрация по виду ТО -->
         <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Вид ТО
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance" %}">Все виды</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все виды</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_view_maintenance as view_maintenance %}
                 {% for view in view_maintenance %}
+                {% if view.id in wm_for_watch %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:view_maintenance" view.id %}">
+                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_view" car.id view.id %}">
                             {{ view.name }}
                         </a>
                     </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
-            <!-- Фильтрация по машине -->
+        <!-- Фильтрация по машине -->
         <div class="dropdown mb-2 me-2">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                 Машина
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance" %}">Все машины</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="">Все машины</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_vehicle_models as vehicle_models %}
                 {% for car in vehicle_models %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" car.id %}">
+                        <a class="dropdown-item fontSizeBtn" href="">
                             {{ car.name }}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-
-            <!-- Фильтрация по сервисная компания -->
+    
+        <!-- Фильтрация по сервисная компания -->
         <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сервисная компания
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance" %}">Все компании</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все компании</a></li>
                 <li><hr class="dropdown-divider"></li>
                 {% tag_service_company as service_company %}
                 {% for company in service_company %}
+                    {% if company.id in sc_for_watch %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:service_company" company.id %}">
+                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_service" car.id company.id %}">
                             {{ company.name }}
                         </a>
                     </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
-
+    
     </div>
 
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
-            <th scope="col">Машина</th>
             <th scope="col">Вид ТО</th>
             <th scope="col">Дата проведения ТО</th>
             <th scope="col">Наработка, м/час</th>
@@ -101,13 +104,9 @@
         </thead>
 
         <tbody>
-        {% for item in maintenance %}
+        {% for item in maintenances %}
         
-            <tr 
-                onclick="window.location.href='{% url "maintenance:this_maintenance" item.id %}'; return false"
-            >
-                
-                <td>{{ item.car.vehicle_model }}</td>
+            <tr>
                 <td>{{ item.view_maintenance }}</td>
                 <td>{{ item.Date_maintenance }}</td>
                 <td>{{ item.operating_hours }}</td>
@@ -122,33 +121,34 @@
         </tbody>
     </table>
 
-    <!-- Пагинация -->
-{% if maintenance %}
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item {% if not maintenance.has_previous %}disabled{% endif %}">
-                <a class="page-link" href="{% if maintenance.has_previous %}?{% change_params page=maintenance.previous_page_number %}
-                {% else %}
-                    #
-                {% endif %}">Назад</a>
-            </li>
+        <!-- Пагинация -->
+{% if maintenances %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item {% if not maintenances.has_previous %}disabled{% endif %}">
+            <a class="page-link" href="{% if maintenances.has_previous %}?{% change_params page=maintenances.previous_page_number %}
+            {% else %}
+                #
+            {% endif %}">Назад</a>
+        </li>
 
-            {% for page in maintenance.paginator.page_range %}
-                {% if page >= maintenance.number|add:-2 and page <= maintenance.number|add:2 %}
-                    <li class="page-item {% if maintenance.number == page %} active {% endif %}">
-                        <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
+        {% for page in maintenances.paginator.page_range %}
+            {% if page >= maintenances.number|add:-2 and page <= maintenances.number|add:2 %}
+                <li class="page-item {% if maintenances.number == page %} active {% endif %}">
+                    <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
 
-            <li class="page-item {% if not maintenance.has_next %}disabled{% endif %}">
-                <a class="page-link" href="{% if maintenance.has_next %}?{% change_params page=maintenance.next_page_number %}
-                {% else %}
-                    #
-                {% endif %}">Вперед</a>
-            </li>
-        </ul>
-    </nav>
+        <li class="page-item {% if not maintenances.has_next %}disabled{% endif %}">
+            <a class="page-link" href="{% if maintenances.has_next %}?{% change_params page=maintenances.next_page_number %}
+            {% else %}
+                #
+            {% endif %}">Вперед</a>
+        </li>
+    </ul>
+</nav>
 {% endif %}
+
 
 {% endblock %}

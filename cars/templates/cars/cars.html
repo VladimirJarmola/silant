@@ -147,14 +147,14 @@
         <thead class='myTHead'>
         <tr>
             <th scope="col">Зав. № машины</th>
-            <th scope="col">Модель техники</th>
-            <th scope="col">Модель двигателя</th>
+            <th scope="col" {% if 'vehicle_model' in request.path %} class="colorRed" {% endif %}>Модель техники</th>
+            <th scope="col" {% if 'engine_model' in request.path %} class="colorRed" {% endif %}>Модель двигателя</th>
             <th scope="col">Зав. № двигателя</th>
-            <th scope="col">Модель трансмиссии</th>
+            <th scope="col" {% if 'transmission_model' in request.path %} class="colorRed" {% endif %}>Модель трансмиссии</th>
             <th scope="col">Зав. № трансмиссии</th>
-            <th scope="col">Модель ведущего моста</th>
+            <th scope="col" {% if 'drive_axle_model' in request.path %} class="colorRed" {% endif %}>Модель ведущего моста</th>
             <th scope="col">Зав. № ведущего моста</th>
-            <th scope="col">Модель управляемого моста</th>
+            <th scope="col" {% if 'steering_axle_model' in request.path %} class="colorRed" {% endif %}>Модель управляемого моста</th>
             <th scope="col">Зав. № управляемого моста</th>
             <th scope="col">Договор поставки №, дата</th>
             <th scope="col">Дата отгрузки с завода</th>
@@ -168,9 +168,12 @@
         <tbody>
         {% for car in cars %}
         
-            <tr onclick="window.location.href='{% url "cars:car" car.id %}'; return false">
+            <tr 
+            {% comment %} onclick="window.location.href='{% url "cars:car" car.id %}'; return false" {% endcomment %}
+            >
                 
-                    <td>{{ car.serial_number_vehicle }}</td>
+                    <td>
+                        <a href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a></td>
                     <td>{{ car.vehicle_model }}</td>
                     <td>{{ car.engine_model }}</td>
                     <td>{{ car.serial_number_of_the_engine }}</td>

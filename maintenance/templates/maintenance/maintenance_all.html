@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load maintenance_tags %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+
+    <div class="d-flex justify-content-center p-4">
+        <h4>Информация о проведенных ТО Вашей техники </h4>
+    </div>
+
+    {% include "includes/radiobuttons.html" %}
+    
+    {% include "includes/maintenancefilter.html" %}
+
+    <table class="table table-striped">
+        <thead class='myTHead'>
+        <tr>
+            <th scope="col" {% if 'car' in request.path %} class="colorRed" {% endif %}>Машина</th>
+            <th scope="col" {% if 'view_maintenance' in request.path %} class="colorRed" {% endif %}>Вид ТО</th>
+            <th scope="col">Дата проведения ТО</th>
+            <th scope="col">Наработка, м/час</th>
+            <th scope="col">№ заказ-наряда</th>
+            <th scope="col">Дата заказ-наряда</th>
+            <th scope="col" {% if 'service_company' in request.path %} class="colorRed" {% endif %}>Сервисная компания</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in maintenance %}
+        
+            <tr 
+                {% comment %} onclick="window.location.href='{% url "maintenance:car_maintenances" item.id %}'; return false" {% endcomment %}
+            >
+                
+                <td>{{ item.car.vehicle_model }}</td>
+                <td>{{ item.view_maintenance }}</td>
+                <td>{{ item.Date_maintenance }}</td>
+                <td>{{ item.operating_hours }}</td>
+                <td>{{ item.work_order_number }}</td>
+                <td>{{ item.work_order_date }}</td>
+                <td>{{ item.service_company }}</td>
+                
+            </tr>
+        
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <!-- Пагинация -->
+{% if maintenance %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if not maintenance.has_previous %}disabled{% endif %}">
+                <a class="page-link" href="{% if maintenance.has_previous %}?{% change_params page=maintenance.previous_page_number %}
+                {% else %}
+                    #
+                {% endif %}">Назад</a>
+            </li>
+
+            {% for page in maintenance.paginator.page_range %}
+                {% if page >= maintenance.number|add:-2 and page <= maintenance.number|add:2 %}
+                    <li class="page-item {% if maintenance.number == page %} active {% endif %}">
+                        <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="page-item {% if not maintenance.has_next %}disabled{% endif %}">
+                <a class="page-link" href="{% if maintenance.has_next %}?{% change_params page=maintenance.next_page_number %}
+                {% else %}
+                    #
+                {% endif %}">Вперед</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}
+
+{% endblock %}

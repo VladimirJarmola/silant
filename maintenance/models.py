@@ -1,7 +1,8 @@
 from django.db import models
 
 from deskbook.models import ViewMaintenance
-from cars.models import Cars, ServiceCompany
+from cars.models import Cars
+from users.models import ServiceCompany
 
 # Create your models here.
 class Maintenance(models.Model):

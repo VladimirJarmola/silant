@@ -1,0 +1,76 @@
+{% load static %}
+
+{% load maintenance_tags %}
+
+<div class="d-flex pt-5">
+    <!-- Форма сортировки -->
+    <div class="dropdown mb-2 me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Сортировка таблицы
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item fontSizeBtn" href="?order_by=Date_maintenance">По возрастанию даты проведения ТО</a></li>
+            <li><a class="dropdown-item fontSizeBtn" href="?order_by=-Date_maintenance">По убыванию даты проведения ТО</a></li>    
+        </ul>
+    </div>
+
+    <!-- Фильтрация по машине -->
+    <div class="dropdown mb-2 me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Машина
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все машины</a></li>
+            <li><hr class="dropdown-divider"></li>
+            {% tag_vehicle_models as vehicle_models %}
+            {% for car in vehicle_models %}
+                <li>
+                    <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" car.id %}">
+                        {{ car.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Фильтрация по виду ТО -->
+    <div class="dropdown mb-2 me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Вид ТО
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все виды</a></li>
+            <li><hr class="dropdown-divider"></li>
+            {% tag_view_maintenance as view_maintenance %}
+            {% for view in view_maintenance %}
+                <li>
+                    <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:view_maintenance" view.id %}">
+                        {{ view.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Фильтрация по сервисная компания -->
+    <div class="dropdown mb-2 me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Сервисная компания
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все компании</a></li>
+            <li><hr class="dropdown-divider"></li>
+            {% tag_service_company as service_company %}
+            {% for company in service_company %}
+                <li>
+                    <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:service_company" company.id %}">
+                        {{ company.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>

@@ -1,6 +1,7 @@
 from django.db import models
 
-from cars.models import Cars, ServiceCompany
+from cars.models import Cars
+from users.models import ServiceCompany
 from deskbook.models import FailureNode, RecoveryMethod
 
 # Create your models here.
