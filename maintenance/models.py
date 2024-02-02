@@ -14,7 +14,6 @@ class Maintenance(models.Model):
     work_order_number = models.CharField(
         verbose_name="№ заказ-наряда",
         max_length=128,
-        unique=True,
         null=False,
         blank=False,
     )

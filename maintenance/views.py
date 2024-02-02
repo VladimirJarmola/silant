@@ -1,8 +1,12 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from cars.models import Cars
+from maintenance.forms import AddMaintenanceForm
 from maintenance.models import Maintenance
 
 
@@ -80,3 +84,49 @@ def get_maintenances(request, car_id, view_maintenance_id=False, service_company
     }
 
     return render(request, 'maintenance/maintenances.html', context)
+
+
+@login_required
+def add_maintenance(request, car_id=False):
+    if request.method == "POST" and not car_id:
+        form = AddMaintenanceForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, f"{request.user.username}, Вы успешно добавили ТО!"
+            )
+            return HttpResponseRedirect(reverse("maintenance:maintenance_all"))
+        else:
+            messages.warning(
+                request, f"{request.user.username}, Вы неверно ввели данные!"
+            )
+    elif request.method == "GET" and car_id:
+        car = Cars.objects.filter(id=car_id).values('id')[0]['id']
+        form = AddMaintenanceForm(initial={'car': car}, car_id=car_id)
+    else:
+        form = AddMaintenanceForm()
+
+    context = {
+        'title': 'ТО',
+        'form': form,
+    }
+    return render(request, 'maintenance/add_maintenance.html', context)
+
+
+
+
+
+@login_required
+def edit_maintenance(request, view_maintenance_id=False):
+    context = {
+        'title': 'ТО',
+    }
+    return render(request, 'maintenance/add_maintenance.html', context)
+
+@login_required
+def remove_maintenance(request, view_maintenance_id=False):
+    
+    context = {
+        'title': 'ТО'
+    }
+    return render(request, 'maintenance/add_maintenance.html', context)
