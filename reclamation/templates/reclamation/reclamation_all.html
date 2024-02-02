@@ -18,7 +18,7 @@
     <div class="d-flex pt-5">
 
         <!-- Форма сортировки -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сортировка таблицы
             </button>
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Фильтрация по узел отказа -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Узел отказа
             </button>
@@ -50,7 +50,7 @@
         </div>
 
         <!-- Фильтрация по способ восстановления -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cпособ восстановления
             </button>
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Фильтрация по сервисная компания -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cервисная компания
             </button>
@@ -94,13 +94,13 @@
         <tr>
             <th scope="col">Дата отказа</th>
             <th scope="col">Наработка, м/час</th>
-            <th scope="col">Узел отказа</th>
+            <th scope="col" {% if 'failure_node' in request.path %} class="colorRed"{% endif %}>Узел отказа</th>
             <th scope="col">Описание отказа</th>
-            <th scope="col">Способ восстановления</th>
+            <th scope="col" {% if 'recovery_method' in request.path %}class="colorRed"{% endif %}>Способ восстановления</th>
             <th scope="col">Используемые запасные части</th>
             <th scope="col">Дата восстановления</th>
             <th scope="col">Время простоя техники</th>
-            <th scope="col">Сервисная компания</th>
+            <th scope="col" {% if 'service_company' in request.path %}class="colorRed"{% endif %}>Сервисная компания</th>
             <th scope="col">Машина</th>
             
         </tr>

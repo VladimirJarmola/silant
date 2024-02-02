@@ -39,8 +39,10 @@ class User(AbstractUser):
 
     class Meta:
         db_table = "user"
-        verbose_name = "Пользователя"
-        verbose_name_plural = "Пользователи"
+        verbose_name = "Клиента"
+        verbose_name_plural = "Клиенты"
 
     def __str__(self):
-        return f"{self.username}"
+        if not self.first_name:
+            return f"{self.username}"
+        return f"{self.first_name}"

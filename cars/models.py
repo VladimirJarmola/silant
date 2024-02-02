@@ -8,69 +8,59 @@ class Cars(models.Model):
     serial_number_vehicle = models.CharField(
         verbose_name="Зав. № машины",
         max_length=32,
-        unique=True,
         null=False,
         blank=False,
     )
     vehicle_model = models.ForeignKey(
         to=VehicleModel,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Модель техники",
     )
 
     engine_model = models.ForeignKey(
         to=EngineModel,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Модель двигателя",
     )
     serial_number_of_the_engine = models.CharField(
         verbose_name="Зав. № двигателя",
         max_length=32,
-        unique=True,
         null=False,
         blank=False,
     )
 
     transmission_model = models.ForeignKey(
         to=TransmissionModel,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Модель трансмиссии",
     )
     serial_number_of_the_transmission = models.CharField(
         verbose_name="Зав. № трансмиссии",
         max_length=32,
-        unique=True,
         null=False,
         blank=False,
     )
 
     drive_axle_model = models.ForeignKey(
         to=DriveAxle,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Модель ведущего моста",
     )
     drive_axle_serial_number = models.CharField(
         verbose_name="Зав. № ведущего моста",
         max_length=32,
-        unique=True,
         null=False,
         blank=False,
     )
 
     steering_axle_model = models.ForeignKey(
         to=SteeringAxle,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Модель управляемого моста",
     )
     serial_number_of_the_steered_axle = models.CharField(
         verbose_name="Зав. № управляемого моста",
         max_length=32,
-        unique=True,
         null=False,
         blank=False,
     )
@@ -105,14 +95,15 @@ class Cars(models.Model):
         verbose_name="Комплектация (доп. опции)", unique=False, null=True, blank=True
     )
 
-    client = models.CharField(
-        verbose_name="Клиент", max_length=128, unique=False, null=True, blank=True
+    client = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        verbose_name='Клиент',
     )
 
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Сервисная компания",
     )
 

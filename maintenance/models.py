@@ -22,14 +22,12 @@ class Maintenance(models.Model):
     # organization = models.CharField(verbose_name='Организация, проводившая ТО', max_length=128, unique=False, null=False, blank=False)
     car = models.ForeignKey(
         to=Cars,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Машина",
     )
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Сервисная компания",
     )
 

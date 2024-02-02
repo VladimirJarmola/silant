@@ -1,0 +1,154 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$eE4f2OIOOb52ILwYrYdObp$v9vNHuvcRjXWdUE4KGIiawbkhBqjQB7mZTBshH+vYeM=",
+            "last_login": "2024-01-26T09:03:54.439Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-01-22T09:50:43Z",
+            "user_role": "AD",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Trudnikov",
+            "first_name": "ИП Трудников С.В.",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:26:10Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "MHC77",
+            "first_name": "ООО \"МНС77\"",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:32:49Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 6,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "RLPH",
+            "first_name": "ООО \"Ранский ЛПХ\"",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:36:56Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "RMK",
+            "first_name": "ООО \"РМК\"",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:39:15Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 9,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Zander",
+            "first_name": "АО Зандер",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:40:04Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "FPK21",
+            "first_name": "ООО \"ФПК21\"",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:40:25Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 11,
+        "fields": {
+            "password": "client",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Komplekt-Postavka",
+            "first_name": "ООО \"Комплект-Поставка\"",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-30T11:40:51Z",
+            "user_role": "CL",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

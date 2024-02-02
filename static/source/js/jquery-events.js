@@ -8,4 +8,17 @@ $(document).ready(function () {
             notification.alert('close');
         }, 4000);
     }
+
+    
+    // const modalDiv = $("#modal-div");
+
+    // $(".open-modal").on("click", function() {
+    //     $.ajax({
+    //         url: $(this).attr("data-url"),
+    //         success: function(data) {
+    //             modalDiv.html(data);
+    //             $("#exampleModal").modal();
+    //         }
+    //         });
+    //     });
 })

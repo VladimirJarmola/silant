@@ -25,14 +25,12 @@ class Reclamation(models.Model):
     restore_date = models.DateField(verbose_name="Дата восстановления")
     car = models.ForeignKey(
         to=Cars,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Машина",
     )
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.SET_DEFAULT,
-        default="Не назначено",
+        on_delete=models.CASCADE,
         verbose_name="Сервисная компания",
     )
 

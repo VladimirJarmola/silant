@@ -13,7 +13,7 @@
 
     {% include "includes/radiobuttons.html" %}
 
-    <div class="d-flex pt-5">
+    <div class="d-flex pt-5 gap-2">
         <!-- Форма сортировки -->
         {% comment %} <div class="dropdown mb-2 me-2">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -51,7 +51,7 @@
             </form>
         </div> {% endcomment %}
         
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сортировка таблицы
             </button>
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Фильтрация по модели техники -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Модель техники
             </button>
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Фильтрация по модели двигателя -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Модель двигателя
             </button>
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Фильтрация по модели трансмиссии -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Модель трансмиссии
             </button>
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Фильтрация по модели ведущего моста -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Модель ведущего моста
             </button>
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Фильтрация по модели управляемого моста -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Модель управляемого моста
             </button>
@@ -141,7 +141,13 @@
                 {% endfor %}
             </ul>
         </div>
-    </div>
+
+        <!-- Button trigger modal -->
+        <button class="btn btn-primary btn-sm mb-2 w-100" type="button" onclick="window.location.href='{% url "cars:add_car" %}'; return false">
+            <img class="mx-1" src="{% static "source/icons/bus-front-fill.svg" %}" alt="add" width="16" height="16">
+            Добавить машину
+        </button>
+    </div>  
 
     <table class="table table-striped">
         <thead class='myTHead'>
@@ -163,6 +169,7 @@
             <th scope="col">Комплектация (доп. опции)</th>
             <th scope="col">Клиент</th>
             <th scope="col">Сервисная компания</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -172,31 +179,62 @@
             {% comment %} onclick="window.location.href='{% url "cars:car" car.id %}'; return false" {% endcomment %}
             >
                 
-                    <td>
-                        <a href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a></td>
-                    <td>{{ car.vehicle_model }}</td>
-                    <td>{{ car.engine_model }}</td>
-                    <td>{{ car.serial_number_of_the_engine }}</td>
-                    <td>{{ car.transmission_model }}</td>
-                    <td>{{ car.serial_number_of_the_transmission }}</td>
-                    <td>{{ car.drive_axle_model }}</td>
-                    <td>{{ car.drive_axle_serial_number }}</td>
-                    <td>{{ car.steering_axle_model }}</td>
-                    <td>{{ car.serial_number_of_the_steered_axle }}</td>
-                    <td>{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
-                    <td>{{ car.date_shipped_from_factory }}</td>
-                    <td>{{ car.consignee }}</td>
-                    <td>{{ car.delivery_address }}</td>
-                    <td>{{ car.equipment|truncatechars:40 }}</td>
-                    <td>{{ car.client }}</td>
-                    <td>{{ car.service_company }}</td>
+                <td>
+                    <a class="fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
+                </td>
+                <td>{{ car.vehicle_model }}</td>
+                <td>{{ car.engine_model }}</td>
+                <td>{{ car.serial_number_of_the_engine }}</td>
+                <td>{{ car.transmission_model }}</td>
+                <td>{{ car.serial_number_of_the_transmission }}</td>
+                <td>{{ car.drive_axle_model }}</td>
+                <td>{{ car.drive_axle_serial_number }}</td>
+                <td>{{ car.steering_axle_model }}</td>
+                <td>{{ car.serial_number_of_the_steered_axle }}</td>
+                <td>{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
+                <td>{{ car.date_shipped_from_factory }}</td>
+                <td>{{ car.consignee }}</td>
+                <td>{{ car.delivery_address }}</td>
+                <td>{{ car.equipment|truncatechars:40 }}</td>
+                <td>{{ car.client }}</td>
+                <td>{{ car.service_company }}</td>
+                <td class="p-1">
+                    <div class="d-inline-flex justify-content-between">
+                        <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{car.id}}">
+                            <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                        <a href="{% url "cars:edit_car" pk=car.id %}" class="remove-from-cart m-2">
+                            <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
+                        </a>
+                    </div>
+                    
+                      <!-- Modal -->
+                    <div class="modal fade" id="exampleModal_{{car.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{car.id}}" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body fs-5">
+                                Вы действительно хотите удалить машину {{car}}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                <button type="button" class="btn btn-primary" 
+                                    onclick="window.location.href='{% url "cars:remove_car" car.id %}'; return false">Удалить</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </td>
                 
             </tr>
-        
         {% endfor %}
 
         </tbody>
     </table>
+
 <!-- Пагинация -->
 {% if cars %}
     <nav aria-label="Page navigation example">

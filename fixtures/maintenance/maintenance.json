@@ -1,6 +1,6 @@
 [
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 1,
         "fields": {
             "view_maintenance": 1,
@@ -13,7 +13,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 2,
         "fields": {
             "view_maintenance": 2,
@@ -26,7 +26,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 3,
         "fields": {
             "view_maintenance": 3,
@@ -39,7 +39,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 4,
         "fields": {
             "view_maintenance": 4,
@@ -52,7 +52,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 5,
         "fields": {
             "view_maintenance": 5,
@@ -65,7 +65,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 6,
         "fields": {
             "view_maintenance": 1,
@@ -78,7 +78,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 7,
         "fields": {
             "view_maintenance": 2,
@@ -91,7 +91,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 8,
         "fields": {
             "view_maintenance": 3,
@@ -104,7 +104,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 9,
         "fields": {
             "view_maintenance": 4,
@@ -117,7 +117,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 10,
         "fields": {
             "view_maintenance": 5,
@@ -130,7 +130,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 11,
         "fields": {
             "view_maintenance": 1,
@@ -143,7 +143,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 12,
         "fields": {
             "view_maintenance": 2,
@@ -156,7 +156,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 13,
         "fields": {
             "view_maintenance": 3,
@@ -169,7 +169,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 14,
         "fields": {
             "view_maintenance": 4,
@@ -182,7 +182,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 15,
         "fields": {
             "view_maintenance": 5,
@@ -195,7 +195,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 16,
         "fields": {
             "view_maintenance": 1,
@@ -208,7 +208,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 17,
         "fields": {
             "view_maintenance": 2,
@@ -221,7 +221,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 18,
         "fields": {
             "view_maintenance": 3,
@@ -234,7 +234,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 19,
         "fields": {
             "view_maintenance": 1,
@@ -247,7 +247,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 20,
         "fields": {
             "view_maintenance": 2,
@@ -260,7 +260,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 21,
         "fields": {
             "view_maintenance": 3,
@@ -273,7 +273,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 22,
         "fields": {
             "view_maintenance": 1,
@@ -286,7 +286,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 23,
         "fields": {
             "view_maintenance": 2,
@@ -299,7 +299,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 24,
         "fields": {
             "view_maintenance": 3,
@@ -312,7 +312,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 25,
         "fields": {
             "view_maintenance": 1,
@@ -325,7 +325,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 26,
         "fields": {
             "view_maintenance": 2,
@@ -338,7 +338,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 27,
         "fields": {
             "view_maintenance": 3,
@@ -351,7 +351,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 28,
         "fields": {
             "view_maintenance": 1,
@@ -364,7 +364,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 29,
         "fields": {
             "view_maintenance": 2,
@@ -377,7 +377,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 30,
         "fields": {
             "view_maintenance": 3,
@@ -390,7 +390,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 31,
         "fields": {
             "view_maintenance": 1,
@@ -403,7 +403,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 32,
         "fields": {
             "view_maintenance": 2,
@@ -416,7 +416,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 33,
         "fields": {
             "view_maintenance": 3,
@@ -429,7 +429,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 34,
         "fields": {
             "view_maintenance": 1,
@@ -442,7 +442,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 35,
         "fields": {
             "view_maintenance": 2,
@@ -455,7 +455,7 @@
         }
     },
     {
-        "model": "cars.maintenance",
+        "model": "maintenance.maintenance",
         "pk": 36,
         "fields": {
             "view_maintenance": 3,

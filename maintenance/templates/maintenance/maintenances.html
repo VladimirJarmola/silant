@@ -18,7 +18,7 @@
     
     <div class="d-flex pt-5">
         <!-- Форма сортировки -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сортировка таблицы
             </button>
@@ -30,7 +30,7 @@
             </ul>
         </div>
         <!-- Фильтрация по виду ТО -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Вид ТО
             </button>
@@ -50,7 +50,7 @@
             </ul>
         </div>
         <!-- Фильтрация по машине -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                 Машина
             </button>
@@ -69,7 +69,7 @@
         </div>
     
         <!-- Фильтрация по сервисная компания -->
-        <div class="dropdown mb-2 me-2">
+        <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Сервисная компания
             </button>
@@ -94,12 +94,12 @@
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
-            <th scope="col">Вид ТО</th>
+            <th scope="col" {% if 'view_maintenance' in request.path %} class="colorRed"{% endif %}>Вид ТО</th>
             <th scope="col">Дата проведения ТО</th>
             <th scope="col">Наработка, м/час</th>
             <th scope="col">№ заказ-наряда</th>
             <th scope="col">Дата заказ-наряда</th>
-            <th scope="col">Сервисная компания</th>
+            <th scope="col" {% if 'service_company' in request.path %}class="colorRed"{% endif %}>Сервисная компания</th>
         </tr>
         </thead>
 
