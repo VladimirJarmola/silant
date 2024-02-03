@@ -1,7 +1,7 @@
 from django import template
 from django.utils.http import urlencode
 
-from cars.models import ServiceCompany
+from cars.models import Cars, ServiceCompany
 
 from deskbook.models import VehicleModel, ViewMaintenance
 
@@ -22,8 +22,8 @@ def tag_view_maintenance():
 
 
 @register.simple_tag()
-def tag_vehicle_models():
-    return VehicleModel.objects.all()
+def tag_serial_number_vehicle():
+    return Cars.objects.all()
 
 
 @register.simple_tag()

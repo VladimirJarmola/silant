@@ -98,7 +98,6 @@ def add_car(request):
             messages.warning(
                 request, f"{request.user.username}, Вы неверно ввели данные!"
             )
-
     else:
         form = AddCarForm()
 

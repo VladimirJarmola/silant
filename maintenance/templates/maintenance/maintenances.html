@@ -52,16 +52,16 @@
         <!-- Фильтрация по машине -->
         <div class="dropdown mb-2 me-1">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                Машина
+                Зав. номер машины
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="">Все машины</a></li>
+                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все машины</a></li>
                 <li><hr class="dropdown-divider"></li>
-                {% tag_vehicle_models as vehicle_models %}
-                {% for car in vehicle_models %}
+                {% tag_serial_number_vehicle as serial_number %}
+                {% for number in serial_number %}
                     <li>
-                        <a class="dropdown-item fontSizeBtn" href="">
-                            {{ car.name }}
+                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" number.id %}">
+                            {{ number.serial_number_vehicle }}
                         </a>
                     </li>
                 {% endfor %}
@@ -152,9 +152,10 @@
             </tr>
         
         {% endfor %}
-
-        </tbody>
+    </tbody>
+    
     </table>
+    {% if not maintenances %} <div class="d-flex justify-content-center"><h3>Нет данных о техническом обслуживании</h3></div> {% endif %}
 
         <!-- Пагинация -->
 {% if maintenances %}

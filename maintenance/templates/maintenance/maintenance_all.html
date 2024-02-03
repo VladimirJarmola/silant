@@ -83,7 +83,7 @@
 
         </tbody>
     </table>
-
+    {% if not maintenance %} <div class="d-flex justify-content-center"><h3>Нет данных о техническом обслуживании</h3></div> {% endif %}
     <!-- Пагинация -->
 {% if maintenance %}
     <nav aria-label="Page navigation example">

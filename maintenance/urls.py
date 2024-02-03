@@ -9,7 +9,7 @@ urlpatterns = [
     # Отображение всех ТО для зарегестрированных пользователей
     path('all/', views.maintenance, name='maintenance_all'),
     # ТО для конкретной машины
-    path('<int:car_id>', views.get_maintenances, name='car_maintenances'),
+    path('<int:car_id>/', views.get_maintenances, name='car_maintenances'),
     # Фильтрация ТО конкретной машины
     path('<int:car_id>/view_maintenance/<int:view_maintenance_id>', views.get_maintenances, name='car_maintenances_view'),
     path('<int:car_id>/service_company/<int:service_company_id>', views.get_maintenances, name='car_maintenances_service'),
