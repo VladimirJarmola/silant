@@ -48,7 +48,7 @@ class AddMaintenanceForm(forms.ModelForm):
     )
 
     operating_hours = forms.IntegerField(
-        label="Наработка, машина-час: ",
+        label="Наработка, моточас: ",
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Введите число",

@@ -152,7 +152,7 @@ def remove_maintenance(request, view_maintenance_id):
     removable = Maintenance.objects.get(id=view_maintenance_id)
     removable.delete()
     messages.success(
-        request, f"{request.user.username}, Вы успешно удалили машину {removable}!"
+        request, f"{request.user.username}, Вы успешно удалили ТО {removable}!"
     )
     try:
         return redirect(request.META["HTTP_REFERER"])
