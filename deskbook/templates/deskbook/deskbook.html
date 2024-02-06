@@ -1,8 +1,140 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load deskbook_tags %}
 
 {% block content %}
-    <div>from desktop</div>
-    <div>{{ deskbook.name }}</div>
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+
+    <div class="d-flex justify-content-center p-4">
+        <h4>Справочники </h4>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" {% if 'vehicle' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio1" 
+            onclick="window.location.href='{% url "deskbook:vehicle" %}'; return false"
+        >Модель техники</label>
+      
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" {% if 'engine' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio2"
+            onclick="window.location.href='{% url "deskbook:engine" %}'; return false"
+        >Модель двигателя</label>
+      
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" {% if 'transmission' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio3"
+            onclick="window.location.href='{% url "deskbook:transmission" %}'; return false"
+        >Модель трансмиссии</label>
+        
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" {% if 'drive_axle' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio4"
+            onclick="window.location.href='{% url "deskbook:drive_axle" %}'; return false"
+        >Модель ведущего моста</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" {% if 'steering_axle' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio5"
+            onclick="window.location.href='{% url "deskbook:steering_axle" %}'; return false"
+        >Модель управляемого моста</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off" {% if 'failure_node' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio6"
+            onclick="window.location.href='{% url "deskbook:failure_node" %}'; return false"
+        >Узел отказа</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off" {% if 'recovery_method' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio7"
+            onclick="window.location.href='{% url "deskbook:recovery_method" %}'; return false"
+        >Способ востановления</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off" {% if 'view_maintenance' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio8"
+            onclick="window.location.href='{% url "deskbook:view_maintenance" %}'; return false"
+        >Вид ТО</label>
+
+      </div>
+
+      <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+        {% for item in deskbook %}
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{item.id}}" aria-expanded="true" aria-controls="panelsStayOpen-{{item.id}}">
+                        <p class="w-100">{{item.name}}</p>
+
+                        <div class="d-inline-flex justify-content-end pe-3 w-100 ">
+                            <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
+                                <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                            <a href="{% url "deskbook:edit_deskbook" request.resolver_match.url_name item.id %}" class="remove-from-cart m-2">
+                                <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
+                            </a>
+                        </div>
+
+                    </button>
+                </h2>
+
+                <div id="panelsStayOpen-{{item.id}}" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        {{item.description}}
+                    </div>
+                </div>
+            </div>
+
+              <!-- Modal -->
+            <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body fs-5">
+                        Вы действительно хотите удалить {{item}}?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-primary" 
+                            onclick="window.location.href='{% url "deskbook:remove_deskbook" request.resolver_match.url_name item.id %}'; return false">Удалить</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+
+      <button class="btn btn-primary btn-sm mt-2 float-end" type="button" onclick="window.location.href='{% url "deskbook:add_deskbook" request.resolver_match.url_name %}'; return false">
+        <img class="mx-1" src="{% static "source/icons/journal-bookmark-fill.svg" %}" alt="add" width="16" height="16">
+        Добавить запись
+    </button> 
+
+  <!-- Пагинация -->
+{% if deskbook %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pt-5">
+        <li class="page-item {% if not deskbook.has_previous %}disabled{% endif %}">
+            <a class="page-link" href="{% if deskbook.has_previous %}?{% change_params page=deskbook.previous_page_number %}
+            {% else %}
+                #
+            {% endif %}">Назад</a>
+        </li>
+
+        {% for page in deskbook.paginator.page_range %}
+            {% if page >= deskbook.number|add:-2 and page <= deskbook.number|add:2 %}
+                <li class="page-item {% if deskbook.number == page %} active {% endif %}">
+                    <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <li class="page-item {% if not deskbook.has_next %}disabled{% endif %}">
+            <a class="page-link" href="{% if deskbook.has_next %}?{% change_params page=deskbook.next_page_number %}
+            {% else %}
+                #
+            {% endif %}">Вперед</a>
+        </li>
+    </ul>
+</nav>
+{% endif %}
+
 {% endblock %}
+
+

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-10 auth-width">
+            
+            <div class="row">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 bg-white p-4 mb-4 mx-3 rounded custom-shadow">
+                            <h2 class="text-center mb-4">Форма добавления записи в справочник</h2>
+                            <form action="
+                                {% if 'add_deskbook' in request.path %}
+                                    {% url "deskbook:add_deskbook" slug %}
+                                {% elif 'edit_deskbook' in request.path %}
+                                    {% url "deskbook:edit_deskbook" slug item_id %}
+                                {% endif %} 
+                            " method="post">
+
+                                {% csrf_token %}
+                                
+                                {% comment %} {% for field in form  %}
+                                    <div class="mb-3">
+                                        {% if field.errors%}
+                                            {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                {{error}}
+                                            </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <label for="{{field.id_for_label}}" class="form-label" >{{ field.label }}</label>
+                                        {{ field }}
+                                        
+                                    </div>
+                                {% endfor %}                                 {% endcomment %}
+                                <div class="mb-3">
+                                    <label for="id_name" class="form-label">{{form.name.label}}</label>
+                                    <input type="text" class="form-control auth-width" value="{% if form.name.value %}{{form.name.value}}{% endif %}" name="name" id="id_name" placeholder="Введите название" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="id_description" class="form-label">{{form.description.label}}</label>
+                                    <input type="description" class="form-control auth-width" value="{% if form.description.value %}{{form.description.value}}{% endif %}" name="description" id="id_description" placeholder="Введите описание">
+                                </div>
+                                <button type="submit" class="btn btn-primary float-end">Сохранить</button> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

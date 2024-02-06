@@ -21,14 +21,15 @@
     
           <div><p>+7-8352-20-12-09, telegram</p></div>
     
-          <div class="col-md-3 text-end">
+          <div class="d-flex flex-row">
             {% if not user.is_authenticated %}
-              <a class="btn btn-primary" href="{% url "user:login" %}" role="button">Авторизация</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C" href="{% url "user:login" %}" role="button">Авторизация</a>
             {% elif user.user_role == 'AD' %}
-              <a class="btn btn-primary" href="{% url "admin:index" %}" role="button">Админ панель</a>
-              <a class="btn btn-primary" href="{% url "user:logout" %}" role="button">Выйти</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "deskbook:vehicle" %}" role="button">Справочники</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "admin:index" %}" role="button">Админ панель</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "user:logout" %}" role="button">Выйти</a>
             {% else %}
-              <a class="btn btn-primary" href="{% url "user:logout" %}" role="button">Выйти</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "user:logout" %}" role="button">Выйти</a>
             {% endif %}          
           </div>
           

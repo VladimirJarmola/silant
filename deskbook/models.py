@@ -5,7 +5,7 @@ class VehicleModel(models.Model):
     name = models.CharField(
         verbose_name="Модель техники",
         max_length=128,
-        unique=False,
+        unique=True,
         null=False,
         blank=False,
     )
@@ -17,6 +17,7 @@ class VehicleModel(models.Model):
         db_table = "vehicle_model"
         verbose_name = "Модель техники"
         verbose_name_plural = "Модели техники"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
@@ -26,7 +27,7 @@ class EngineModel(models.Model):
     name = models.CharField(
         verbose_name="Модель двигателя",
         max_length=128,
-        unique=False,
+        unique=True,
         null=False,
         blank=False,
     )
@@ -38,6 +39,7 @@ class EngineModel(models.Model):
         db_table = "engine_model"
         verbose_name = "Модель двигателя"
         verbose_name_plural = "Модели двигателя"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
@@ -47,7 +49,7 @@ class TransmissionModel(models.Model):
     name = models.CharField(
         verbose_name="Модель трансмиссии",
         max_length=128,
-        unique=False,
+        unique=True,
         null=False,
         blank=False,
     )
@@ -59,6 +61,7 @@ class TransmissionModel(models.Model):
         db_table = "transmission_model"
         verbose_name = "Модель трансмиссии"
         verbose_name_plural = "Модели трансмиссии"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}" 
@@ -68,7 +71,7 @@ class DriveAxle(models.Model):
     name = models.CharField(
         verbose_name="Модель ведущего моста",
         max_length=128,
-        unique=False,
+        unique=True,
         null=False,
         blank=False,
     )
@@ -80,6 +83,7 @@ class DriveAxle(models.Model):
         db_table = "drive_axle_model"
         verbose_name = "Модель ведущего моста"
         verbose_name_plural = "Модели ведущего моста"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
@@ -89,7 +93,7 @@ class SteeringAxle(models.Model):
     name = models.CharField(
         verbose_name="Модель управляемого моста",
         max_length=128,
-        unique=False,
+        unique=True,
         null=False,
         blank=False,
     )
@@ -101,13 +105,14 @@ class SteeringAxle(models.Model):
         db_table = "steering_axle_model"
         verbose_name = "Модель управляемого моста"
         verbose_name_plural = "Модели управляемого моста"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
 
 class FailureNode(models.Model):
     name = models.CharField(
-        verbose_name="Название", max_length=256, unique=False, null=False, blank=False
+        verbose_name="Узел отказа", max_length=256, unique=True, null=False, blank=False
     )
     description = models.TextField(
         verbose_name="Описание", unique=False, null=True, blank=True
@@ -117,6 +122,7 @@ class FailureNode(models.Model):
         db_table = "failure_node"
         verbose_name = "Узел отказа"
         verbose_name_plural = "Узлы отказа"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
@@ -124,7 +130,7 @@ class FailureNode(models.Model):
 
 class RecoveryMethod(models.Model):
     name = models.CharField(
-        verbose_name="Название", max_length=256, unique=False, null=False, blank=False
+        verbose_name="Способ востановления", max_length=256, unique=True, null=False, blank=False
     )
     description = models.TextField(
         verbose_name="Описание", unique=False, null=True, blank=True
@@ -134,6 +140,7 @@ class RecoveryMethod(models.Model):
         db_table = "recovery_method"
         verbose_name = "Способ востановления"
         verbose_name_plural = "Способы восстановления"
+        ordering = ('name',)
 
     def __str__(self):
         return f"{self.name}"
@@ -141,7 +148,7 @@ class RecoveryMethod(models.Model):
 
 class ViewMaintenance(models.Model):
     name = models.CharField(
-        verbose_name="Название", max_length=256, unique=True, null=False, blank=False
+        verbose_name="Вид ТО", max_length=256, unique=True, null=False, blank=False
     )
     description = models.TextField(
         verbose_name="Описание", unique=False, null=True, blank=True
@@ -151,6 +158,7 @@ class ViewMaintenance(models.Model):
         db_table = "view_maintenance"
         verbose_name = "Вид ТО"
         verbose_name_plural = "Виды ТО"
+        ordering = ('-name',)
 
     def __str__(self):
         return f"{self.name}"
