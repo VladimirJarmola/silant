@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from deskbook.models import DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
 from users.models import ServiceCompany, User
@@ -116,3 +117,7 @@ class Cars(models.Model):
 
     def __str__(self):
         return f"{self.serial_number_vehicle} - {self.vehicle_model}"
+    
+    def get_absolute_url(self):
+        return reverse("cars:cars")
+    

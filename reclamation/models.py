@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from cars.models import Cars
 from users.models import ServiceCompany
@@ -42,6 +43,9 @@ class Reclamation(models.Model):
 
     def __str__(self):
         return f"{self.car} - {self.failure_node} - {self.service_company}"
+    
+    def get_absolute_url(self):
+        return reverse("reclamation:reclamation_all")
 
     def equipment_downtime(self):
         self.delta = self.restore_date - self.date_of_refusal

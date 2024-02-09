@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from deskbook.models import ViewMaintenance
 from cars.models import Cars
@@ -38,3 +39,7 @@ class Maintenance(models.Model):
 
     def __str__(self):
         return f"{self.car} - {self.view_maintenance}"
+    
+    def get_absolute_url(self):
+        return reverse("maintenance:maintenance_all")
+    
