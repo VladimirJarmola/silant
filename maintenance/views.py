@@ -113,6 +113,7 @@ def add_maintenance(request, car_id=False):
         form = AddMaintenanceForm(initial={'car': car_list}, car_id=car_id)
     else:
         form = AddMaintenanceForm()
+        car = car_id
 
     context = {
         'title': 'ТО',

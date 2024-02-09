@@ -29,3 +29,9 @@ def tag_serial_number_vehicle():
 @register.simple_tag()
 def tag_service_company():
     return ServiceCompany.objects.all()
+
+
+@register.simple_tag()
+def tag_list_deskbook():
+    list_deskbook = ['view_maintenance']
+    return list_deskbook

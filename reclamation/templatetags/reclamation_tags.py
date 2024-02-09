@@ -27,4 +27,9 @@ def tag_recovery_method():
 
 @register.simple_tag()
 def tag_service_company():
-    return ServiceCompany.objects.all().exclude(name="самостоятельно")
+    return ServiceCompany.objects.all()
+
+@register.simple_tag()
+def tag_list_deskbook():
+    list_deskbook = ['failure_node', 'recovery_method']
+    return list_deskbook

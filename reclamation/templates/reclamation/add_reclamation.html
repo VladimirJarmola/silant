@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load reclamation_tags %}
 
 {% block content %}
     <div class="d-flex justify-content-end p-1">
         <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
     </div>
-
-    <div class="d-flex justify-content-around p-2">
-        <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
-        <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
-    </div>
+    {% if car %}
+        <div class="d-flex justify-content-around p-2">
+            <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
+            <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
+        </div>
+    {% endif %}
 
     <div class="container">
         <div class="col-lg-10 auth-width">
@@ -26,12 +28,14 @@
                                 {% elif 'edit_reclamation' in request.path %}
                                     {% url "reclamation:edit_reclamation" item.id %}
                                 {% else %}
-                                    {% url "reclamation:add_reclamation" car.id %}
+                                    {% url "reclamation:add_reclamation" %}
                                 {% endif %}
                             " method="post">
                                 {% csrf_token %}
+                                {% tag_list_deskbook as list_deskbook %}
                                 {% for field in form  %}
-                                    <div class="mb-3">
+
+                                    <div class="d-flex flex-row mb-3">
                                         {% if field.errors%}
                                             {% for error in field.errors %}
                                             <div class="alert alert-danger">
@@ -39,10 +43,22 @@
                                             </div>
                                             {% endfor %}
                                         {% endif %}
-                                        <label for="{{field.id_for_label}}" class="form-label" >{{ field.label }}</label>
-                                        {{ field }}
+
+                                        <div class="auth-width">
+                                            <label for="{{field.id_for_label}}" class="form-label" >{{ field.label }}</label>
+                                            {{ field }}
+                                        </div>
+
+                                        {% if field.name in list_deskbook %}
+                                        <div class="d-flex flex-column justify-content-end">
+                                            <a href="{% url "deskbook:add_deskbook" field.name %}" class="m-2">
+                                                <img class="mx-1" src="{% static "source/icons/plus-lg.svg" %}" alt="Plus" width="16" height="16">
+                                            </a>
+                                        </div>
+                                        {% endif %}
                                         
                                     </div>
+
                                 {% endfor %}                                
 
                                 <button type="submit" class="btn btn-primary float-end">Сохранить</button> 

@@ -179,25 +179,61 @@
             >
                 
                 <td>
-                    <a class="fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
+                    <a class="align-middle fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
                 </td>
-                <td>{{ car.vehicle_model }}</td>
-                <td>{{ car.engine_model }}</td>
-                <td>{{ car.serial_number_of_the_engine }}</td>
-                <td>{{ car.transmission_model }}</td>
-                <td>{{ car.serial_number_of_the_transmission }}</td>
-                <td>{{ car.drive_axle_model }}</td>
-                <td>{{ car.drive_axle_serial_number }}</td>
-                <td>{{ car.steering_axle_model }}</td>
-                <td>{{ car.serial_number_of_the_steered_axle }}</td>
-                <td>{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
-                <td>{{ car.date_shipped_from_factory }}</td>
-                <td>{{ car.consignee }}</td>
-                <td>{{ car.delivery_address }}</td>
-                <td>{{ car.equipment|truncatechars:40 }}</td>
-                <td>{{ car.client }}</td>
-                <td>{{ car.service_company }}</td>
-                <td class="p-1">
+                <td class="align-middle"> 
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.vehicle_model }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="vehicle_model" data-deskbook-id="{{ car.vehicle_model.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+
+                </td>
+                <td class="align-middle" >
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.engine_model }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="engine_model" data-deskbook-id="{{ car.engine_model.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle">{{ car.serial_number_of_the_engine }}</td>
+                <td class="align-middle">
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.transmission_model }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="transmission_model" data-deskbook-id="{{ car.transmission_model.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle">{{ car.serial_number_of_the_transmission }}</td>
+                <td class="align-middle">
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.drive_axle_model }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="drive_axle_model" data-deskbook-id="{{ car.drive_axle_model.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle">{{ car.drive_axle_serial_number }}</td>
+                <td class="align-middle">
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.steering_axle_model }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="steering_axle_model" data-deskbook-id="{{ car.steering_axle_model.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle">{{ car.serial_number_of_the_steered_axle }}</td>
+                <td class="align-middle">{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
+                <td class="align-middle">{{ car.date_shipped_from_factory }}</td>
+                <td class="align-middle">{{ car.consignee }}</td>
+                <td class="align-middle">{{ car.delivery_address }}</td>
+                <td class="align-middle">{{ car.equipment|truncatechars:40 }}</td>
+                <td class="align-middle">{{ car.client }}</td>
+                <td class="align-middle">{{ car.service_company }}</td>
+                <td class="p-1 align-middle">
                     <div class="d-inline-flex justify-content-between">
                         <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{car.id}}">
                             <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">

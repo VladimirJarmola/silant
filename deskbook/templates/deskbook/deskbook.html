@@ -12,29 +12,29 @@
         <h4>Справочники </h4>
     </div>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" {% if 'vehicle' in request.path %}checked{% endif %}>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" {% if 'vehicle_model' in request.path %}checked{% endif %}>
         <label class="btn btn-outline-primary" for="btnradio1" 
-            onclick="window.location.href='{% url "deskbook:vehicle" %}'; return false"
+            onclick="window.location.href='{% url "deskbook:vehicle_model" %}'; return false"
         >Модель техники</label>
       
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" {% if 'engine' in request.path %}checked{% endif %}>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" {% if 'engine_model' in request.path %}checked{% endif %}>
         <label class="btn btn-outline-primary" for="btnradio2"
-            onclick="window.location.href='{% url "deskbook:engine" %}'; return false"
+            onclick="window.location.href='{% url "deskbook:engine_model" %}'; return false"
         >Модель двигателя</label>
       
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" {% if 'transmission' in request.path %}checked{% endif %}>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" {% if 'transmission_model' in request.path %}checked{% endif %}>
         <label class="btn btn-outline-primary" for="btnradio3"
-            onclick="window.location.href='{% url "deskbook:transmission" %}'; return false"
+            onclick="window.location.href='{% url "deskbook:transmission_model" %}'; return false"
         >Модель трансмиссии</label>
         
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" {% if 'drive_axle' in request.path %}checked{% endif %}>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" {% if 'drive_axle_model' in request.path %}checked{% endif %}>
         <label class="btn btn-outline-primary" for="btnradio4"
-            onclick="window.location.href='{% url "deskbook:drive_axle" %}'; return false"
+            onclick="window.location.href='{% url "deskbook:drive_axle_model" %}'; return false"
         >Модель ведущего моста</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" {% if 'steering_axle' in request.path %}checked{% endif %}>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" {% if 'steering_axle_model' in request.path %}checked{% endif %}>
         <label class="btn btn-outline-primary" for="btnradio5"
-            onclick="window.location.href='{% url "deskbook:steering_axle" %}'; return false"
+            onclick="window.location.href='{% url "deskbook:steering_axle_model" %}'; return false"
         >Модель управляемого моста</label>
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off" {% if 'failure_node' in request.path %}checked{% endif %}>

@@ -7,6 +7,7 @@ from deskbook.models import DriveAxle, EngineModel, SteeringAxle, TransmissionMo
 register = template.Library()
 
 
+
 @register.simple_tag(takes_context=True)
 def change_params(context, **kwargs):
     query = context['request'].GET.dict()
@@ -37,3 +38,9 @@ def tag_drive_axle_models():
 @register.simple_tag()
 def tag_steering_axle_models():
     return SteeringAxle.objects.all()
+
+
+@register.simple_tag()
+def tag_list_deskbook():
+    list_deskbook = ['vehicle_model', 'engine_model', 'transmission_model', 'drive_axle_model', 'steering_axle_model']
+    return list_deskbook

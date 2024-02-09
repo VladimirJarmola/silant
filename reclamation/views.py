@@ -81,7 +81,7 @@ def get_reclamation(request, car_id, failure_node_id=False, recovery_method_id=F
 
 
 def add_reclamation(request, car_id=False):
-    car = get_object_or_404(Cars, pk=car_id)
+    
 
     if request.method == "POST":
         restore_date_introduced = request.POST['restore_date']
@@ -113,11 +113,13 @@ def add_reclamation(request, car_id=False):
                 request, f"{request.user.username}, Вы неверно ввели данные!"
             )
     elif request.method == "GET" and car_id:
+        car = get_object_or_404(Cars, pk=car_id)
         sc_list = Cars.objects.filter(id=car_id).values_list('service_company', flat=True)[0]
         car_list = Cars.objects.filter(id=car_id).values('id')[0]['id']
         form = AddReclamationForm(initial={'car': car_list, 'service_company': sc_list}, car_id=car_id)
     else:
         form = AddReclamationForm()
+        car = False
 
     context = {
         'title': 'Рекламации',

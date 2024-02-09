@@ -119,16 +119,30 @@
                 {% comment %} onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false" {% endcomment %}
             >
                 
-                <td>{{ item.date_of_refusal }}</td>
-                <td>{{ item.operating_hours }}</td>
-                <td>{{ item.failure_node }}</td>
-                <td>{{ item.description_of_failure|truncatechars:25 }}</td>
-                <td>{{ item.recovery_method }}</td>
-                <td>{{ item.parts_used|truncatechars:25 }}</td>
-                <td>{{ item.restore_date }}</td>
-                <td>{{ item.equipment_downtime }}</td>
-                <td>{{ item.service_company }}</td>
-                <td>{{ item.car }}</td>
+                <td class="align-middle" >{{ item.date_of_refusal }}</td>
+                <td class="align-middle" >{{ item.operating_hours }}</td>
+                <td class="align-middle" >
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ item.failure_node }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="failure_node" data-deskbook-id="{{ item.failure_node.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
+                <td class="align-middle" >
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ item.recovery_method }}
+                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="recovery_method" data-deskbook-id="{{ item.recovery_method.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
+                <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
+                <td class="align-middle" >{{ item.restore_date }}</td>
+                <td class="align-middle" >{{ item.equipment_downtime }}</td>
+                <td class="align-middle" >{{ item.service_company }}</td>
+                <td class="align-middle" >{{ item.car }}</td>
                 <td class="p-1">
                     <div class="d-inline-flex justify-content-between">
                         <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
@@ -142,19 +156,19 @@
                       <!-- Modal -->
                     <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
                         <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body fs-5">
+                                    Вы действительно хотите удалить рекламацию {{item}}?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                    <button type="button" class="btn btn-primary" 
+                                        onclick="window.location.href='{% url "reclamation:remove_reclamation" item.id %}'; return false">Удалить</button>
+                                </div>
                             </div>
-                            <div class="modal-body fs-5">
-                                Вы действительно хотите удалить рекламацию {{item}}?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                                <button type="button" class="btn btn-primary" 
-                                    onclick="window.location.href='{% url "reclamation:remove_reclamation" item.id %}'; return false">Удалить</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
 

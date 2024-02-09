@@ -23,6 +23,10 @@ body {
     background: #D20A11 !important;
 }
 
+.textRed {
+    color: #D20A11
+}
+
 .border-bottom {
     border-bottom: 2px solid #163E6C !important;
 }
