@@ -225,7 +225,7 @@ def edit_deskbook(request, slug, item_id):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
-def api_deskbook(request):
+def deskbook_ajax(request):
     item_id = request.GET.get("deskbook_id")
     slug = request.GET.get("deskbook_name")
 
@@ -253,7 +253,7 @@ def api_deskbook(request):
     item_html = render_to_string("includes/modal_deskbook.html", context, request=request)
 
     response_data = {
-        "message": "ответ",
+        # "message": "ответ",
         "item_html": item_html,
     }
 

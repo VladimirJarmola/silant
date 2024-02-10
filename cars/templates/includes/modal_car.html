@@ -1,0 +1,142 @@
+{% comment %} {% block content %}
+    <div class="d-flex justify-content-end p-1">
+        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    </div>
+    <div class="d-flex justify-content-around p-2">
+        <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
+        <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
+    </div>
+
+{% endblock %} {% endcomment %}
+
+{% load static %}
+
+<div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="carModalLabel">Информация о машине {{car}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fs-5" id="car-content">
+                <div >
+                    <h2 class="modal-title fs-5 text-center pb-4" id="carModalLabel">Характеристики машины</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Клиент: {{car.client}} </p>
+                        <p>Сервисная компания: {{car.service_company}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Модель техники: {{car.vehicle_model}} </p>
+                        <p>Заводской номер машины: {{car.serial_number_vehicle}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Модель двигателя: {{car.engine_model}} </p>
+                        <p>Заводской номер двигателя: {{car.serial_number_of_the_engine}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Модель трансмиссии: {{car.transmission_model}} </p>
+                        <p>Заводской номер трансмиссии: {{car.serial_number_of_the_transmission}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Модель ведущего моста: {{car.drive_axle_model}} </p>
+                        <p>Заводской номер ведущего моста: {{car.drive_axle_serial_number}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Модель управляемого моста: {{car.steering_axle_model}} </p>
+                        <p>Заводской номер управляемого моста: {{car.serial_number_of_the_steered_axle}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Договор поставки №, дата: {{car.supply_contract}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Дата отгрузки с завода: {{car.date_shipped_from_factory}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Грузополучатель (конечный потребитель): {{car.consignee}} </p>
+                        <p>Адрес поставки (эксплуатации): {{car.delivery_address}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Комплектация (дополнительные опции): {{car.equipment}} </p>
+                    </div>
+                </div> 
+                <div>
+                    <h2 class="modal-title fs-5 text-center pb-4">Техническое обслуживание</h2>
+
+                    <table class="table table-striped">
+                        <thead class='myTHead'>
+                            <tr>
+                                <th scope="col">Вид ТО</th>
+                                <th scope="col">Дата проведения ТО</th>
+                                <th scope="col">Наработка, м/час</th>
+                                <th scope="col">№ заказ-наряда</th>
+                                <th scope="col">Дата заказ-наряда</th>
+                                <th scope="col">Сервисная компания</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                
+                        <tbody>
+                            {% for item in maintenances %}
+                            
+                                <tr>
+                                    <td class="align-middle">{{ item.view_maintenance }}</td>
+                                    <td class="align-middle">{{ item.Date_maintenance }}</td>
+                                    <td class="align-middle">{{ item.operating_hours }}</td>
+                                    <td class="align-middle">{{ item.work_order_number }}</td>
+                                    <td class="align-middle">{{ item.work_order_date }}</td>
+                                    <td class="align-middle">{{ item.service_company }}</td>
+                                </tr>
+                            
+                            {% endfor %}
+                        </tbody>
+                    
+                    </table>
+
+
+                </div>
+
+                <div>
+                    <h2 class="modal-title fs-5 text-center pb-4">Рекламации</h2>
+
+                    <table class="table table-striped">
+                        <thead class='myTHead'>
+                        <tr>
+                            <th scope="col">Дата отказа</th>
+                            <th scope="col">Наработка, м/час</th>
+                            <th scope="col">Узел отказа</th>
+                            <th scope="col">Описание отказа</th>
+                            <th scope="col">Способ восстановления</th>
+                            <th scope="col">Используемые запасные части</th>
+                            <th scope="col">Дата восстановления</th>
+                            <th scope="col">Время простоя техники</th>
+                            <th scope="col">Сервисная компания</th>
+                            <th scope="col">Машина</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for item in reclamations %}
+                            <tr>
+                                <td class="align-middle" >{{ item.date_of_refusal }}</td>
+                                <td class="align-middle" >{{ item.operating_hours }}</td>
+                                <td class="align-middle" >{{ item.failure_node }}</td>
+                                <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
+                                <td class="align-middle" >{{ item.recovery_method }}</td>
+                                <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
+                                <td class="align-middle" >{{ item.restore_date }}</td>
+                                <td class="align-middle" >{{ item.equipment_downtime }}</td>
+                                <td class="align-middle" >{{ item.service_company }}</td>
+                                <td class="align-middle" >{{ item.car }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

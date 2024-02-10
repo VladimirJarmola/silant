@@ -1,16 +1,17 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, Paginator
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.template.loader import render_to_string
 from django.urls import reverse
+
 from cars.forms import AddCarForm, EditCarForm
-
 from cars.models import Cars
-
 from deskbook.models import VehicleModel
-
 from cars.utils import q_search
+from maintenance.models import Maintenance
+from reclamation.models import Reclamation
 
 
 def car_search(request):
@@ -214,3 +215,26 @@ def edit_car(request, pk):
         "car": car,
     }
     return render(request, "cars/add_car.html", context)
+
+
+@login_required
+def car_ajax(request):
+    car_id = request.GET.get('car_id')
+
+    car = get_object_or_404(Cars, pk=car_id)
+    maintenances = Maintenance.objects.filter(car=car_id)
+    reclamations = Reclamation.objects.filter(car=car_id)
+
+    context = {
+        'car': car,
+        'maintenances': maintenances,
+        'reclamations': reclamations,
+    }
+
+    car_html = render_to_string("includes/modal_car.html", context, request=request)
+
+    response_data = {
+        "car_html": car_html,
+    }
+    
+    return JsonResponse(response_data)

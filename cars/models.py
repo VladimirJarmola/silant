@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from traitlets import default
 
 from deskbook.models import DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
 from users.models import ServiceCompany, User
@@ -98,14 +99,16 @@ class Cars(models.Model):
 
     client = models.ForeignKey(
         to=User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
         verbose_name='Клиент',
+        default=None
     )
 
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
         verbose_name="Сервисная компания",
+        default=None
     )
 
     class Meta:

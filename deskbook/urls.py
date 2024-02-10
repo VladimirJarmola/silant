@@ -20,5 +20,5 @@ urlpatterns = [
     path('edit_deskbook/<slug:slug>/<int:item_id>', views.edit_deskbook, name='edit_deskbook'),
     path('remove_deskbook/<slug:slug>/<int:item_id>', views.remove_deskbook, name='remove_deskbook'),
 
-    path('api_deskbook/', views.api_deskbook, name='api_deskbook'),
+    path('deskbook_ajax/', views.deskbook_ajax, name='deskbook_ajax'),
 ]

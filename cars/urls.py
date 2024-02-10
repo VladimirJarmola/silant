@@ -20,6 +20,6 @@ urlpatterns = [
     path('add_car/', views.add_car, name='add_car'),
     path('edit_car/<int:pk>', views.edit_car, name='edit_car'),
     path('remove_car/<int:car_id>', views.remove_car, name='remove_car'),
-
-    # path('car/<int:car_id>', views.get_car, name='car'),
+    # ajax запрос машины
+    path('car_ajax', views.car_ajax, name='car_ajax'),
 ]

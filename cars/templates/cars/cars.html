@@ -178,13 +178,19 @@
             {% comment %} onclick="window.location.href='{% url "cars:car" car.id %}'; return false" {% endcomment %}
             >
                 
-                <td>
-                    <a class="align-middle fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
+                <td class="align-middle">
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        <a class="align-middle fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
+
+                        <a href="{% url "cars:car_ajax" %}" class="modalCarLink ms-2" aria-expanded="false" data-car-id="{{ car.id }}" >
+                            <img class="mx-1" src="{% static "source/icons/box-arrow-up-right.svg" %}" alt="box-arrow" width="16" height="16">
+                        </a>
+                    </div>
                 </td>
                 <td class="align-middle"> 
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.vehicle_model }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="vehicle_model" data-deskbook-id="{{ car.vehicle_model.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="vehicle_model" data-deskbook-id="{{ car.vehicle_model.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
@@ -193,7 +199,7 @@
                 <td class="align-middle" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.engine_model }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="engine_model" data-deskbook-id="{{ car.engine_model.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="engine_model" data-deskbook-id="{{ car.engine_model.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
@@ -202,7 +208,7 @@
                 <td class="align-middle">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.transmission_model }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="transmission_model" data-deskbook-id="{{ car.transmission_model.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="transmission_model" data-deskbook-id="{{ car.transmission_model.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
@@ -211,7 +217,7 @@
                 <td class="align-middle">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.drive_axle_model }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="drive_axle_model" data-deskbook-id="{{ car.drive_axle_model.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="drive_axle_model" data-deskbook-id="{{ car.drive_axle_model.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
@@ -220,7 +226,7 @@
                 <td class="align-middle">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.steering_axle_model }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" data-deskbook-name="steering_axle_model" data-deskbook-id="{{ car.steering_axle_model.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="steering_axle_model" data-deskbook-id="{{ car.steering_axle_model.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>

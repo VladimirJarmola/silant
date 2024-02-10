@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     // берем в переменную элемент разметки с id jq-notification для оповещений от ajax
     const successMessage = $("#jq-notification");
-
+    // модальное окно справочников, по нажатию на "?"
     $('.modalLink').click(function (e) {
         // блокируем базовое поведение элемента
         e.preventDefault();
@@ -65,6 +65,44 @@ $(document).ready(function () {
             }
         });
     });
+
+    // модальное окно детальной информация о машине
+    $('.modalCarLink').click(function (e) {
+        // блокируем базовое поведение элемента
+        e.preventDefault();
+        const car_id = $(this).data('car-id')
+        const car_url = $(this).attr('href')        
+        $.ajax({
+            url: car_url,         /* Куда отправить запрос */
+            method: 'get',             /* Метод запроса (post или get) */
+            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
+            data: { 
+                car_id: car_id
+            },     /* словарь с передаваемыми данными */
+            success: function(data) {   /* функция которая будет выполнена после успешного запроса.  */
+                $(data.car_html).appendTo('body');
+                $('#carModal').modal('show');
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    console.log('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    console.log('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    console.log('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    console.log('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    console.log('Time out error.');
+                } else if (exception === 'abort') {
+                    console.log('Ajax request aborted.');
+                } else {
+                    console.log('Uncaught Error. ' + jqXHR.responseText);
+                }
+            }
+        });
+    });
+
 
     // $(document).on("click", ".modalLink", function (e) {
     //     $('#deskbookModal').appendTo('body');

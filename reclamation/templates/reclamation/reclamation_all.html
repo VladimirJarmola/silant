@@ -124,7 +124,7 @@
                 <td class="align-middle" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ item.failure_node }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="failure_node" data-deskbook-id="{{ item.failure_node.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="failure_node" data-deskbook-id="{{ item.failure_node.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
@@ -133,7 +133,7 @@
                 <td class="align-middle" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ item.recovery_method }}
-                        <a href="{% url "deskbook:api_deskbook" %}" class="modalLink" aria-expanded="false" data-deskbook-name="recovery_method" data-deskbook-id="{{ item.recovery_method.id}}">
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="recovery_method" data-deskbook-id="{{ item.recovery_method.id}}">
                             <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
                         </a>
                     </div>
