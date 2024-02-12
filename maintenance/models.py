@@ -8,7 +8,7 @@ from users.models import ServiceCompany
 # Create your models here.
 class Maintenance(models.Model):
     view_maintenance = models.ForeignKey(
-        to=ViewMaintenance, on_delete=models.CASCADE, verbose_name="Вид ТО"
+        to=ViewMaintenance, on_delete=models.SET_DEFAULT, default=None, verbose_name="Вид ТО"
     )
     Date_maintenance = models.DateField(verbose_name="Дата проведения ТО")
     operating_hours = models.IntegerField(verbose_name="Наработка, м/час")
@@ -22,12 +22,14 @@ class Maintenance(models.Model):
     # organization = models.CharField(verbose_name='Организация, проводившая ТО', max_length=128, unique=False, null=False, blank=False)
     car = models.ForeignKey(
         to=Cars,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Машина",
     )
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Сервисная компания",
     )
 

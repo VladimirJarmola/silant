@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from traitlets import default
 
 from deskbook.models import DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
 from users.models import ServiceCompany, User
@@ -15,13 +14,15 @@ class Cars(models.Model):
     )
     vehicle_model = models.ForeignKey(
         to=VehicleModel,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Модель техники",
     )
 
     engine_model = models.ForeignKey(
         to=EngineModel,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Модель двигателя",
     )
     serial_number_of_the_engine = models.CharField(
@@ -33,7 +34,8 @@ class Cars(models.Model):
 
     transmission_model = models.ForeignKey(
         to=TransmissionModel,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Модель трансмиссии",
     )
     serial_number_of_the_transmission = models.CharField(
@@ -45,7 +47,8 @@ class Cars(models.Model):
 
     drive_axle_model = models.ForeignKey(
         to=DriveAxle,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Модель ведущего моста",
     )
     drive_axle_serial_number = models.CharField(
@@ -57,7 +60,8 @@ class Cars(models.Model):
 
     steering_axle_model = models.ForeignKey(
         to=SteeringAxle,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Модель управляемого моста",
     )
     serial_number_of_the_steered_axle = models.CharField(

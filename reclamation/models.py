@@ -10,14 +10,15 @@ class Reclamation(models.Model):
     date_of_refusal = models.DateField(verbose_name="Дата отказа")
     operating_hours = models.IntegerField(verbose_name="Наработка, м/час")
     failure_node = models.ForeignKey(
-        to=FailureNode, on_delete=models.CASCADE, verbose_name="Узел отказа"
+        to=FailureNode, on_delete=models.SET_DEFAULT, default=None, verbose_name="Узел отказа"
     )
     description_of_failure = models.TextField(
         verbose_name="Описание отказа", unique=False, null=True, blank=True
     )
     recovery_method = models.ForeignKey(
         to=RecoveryMethod,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Способ восстановления",
     )
     parts_used = models.TextField(
@@ -26,12 +27,14 @@ class Reclamation(models.Model):
     restore_date = models.DateField(verbose_name="Дата восстановления")
     car = models.ForeignKey(
         to=Cars,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Машина",
     )
     service_company = models.ForeignKey(
         to=ServiceCompany,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=None,
         verbose_name="Сервисная компания",
     )
 
