@@ -1,6 +1,7 @@
 from django import forms
 
 from deskbook.models import (
+    ServiceCompany,
     DriveAxle,
     EngineModel,
     FailureNode,
@@ -11,6 +12,19 @@ from deskbook.models import (
     ViewMaintenance,
 )
 
+
+class AddServiceCompany(forms.ModelForm):
+    def clean_name(self):
+        name = self.cleaned_data["name"]
+        if ServiceCompany.objects.filter(name=name).exists():
+            raise forms.ValidationError(
+                message="Это имя уже используется!", code="invalid"
+            )
+        return name
+    
+    class Meta:
+        model = ServiceCompany
+        fields = "__all__"
 
 class AddVehicleForm(forms.ModelForm):
     def clean_name(self):
@@ -118,6 +132,68 @@ class AddViewMaintenanceForm(forms.ModelForm):
                 message="Это имя уже используется!", code="invalid"
             )
         return name
+    
+    class Meta:
+        model = ViewMaintenance
+        fields = "__all__"
+
+
+class EditServiceCompany(forms.ModelForm):
+    
+    class Meta:
+        model = ServiceCompany
+        fields = "__all__"
+
+class EditVehicleForm(forms.ModelForm):
+    
+    class Meta:
+        model = VehicleModel
+        fields = "__all__"
+
+
+class EditEngineForm(forms.ModelForm):
+    
+    class Meta:
+        model = EngineModel
+        fields = "__all__"
+
+
+class EditTransmissionForm(forms.ModelForm):
+    
+    class Meta:
+        model = TransmissionModel
+        fields = "__all__"
+
+
+class EditDriveAxleForm(forms.ModelForm):
+    
+    class Meta:
+        model = DriveAxle
+        fields = "__all__"
+
+
+class EditSteeringAxleForm(forms.ModelForm):
+    
+    class Meta:
+        model = SteeringAxle
+        fields = "__all__"
+
+
+class EditFailureNodeForm(forms.ModelForm):
+    
+    class Meta:
+        model = FailureNode
+        fields = "__all__"
+
+
+class EditRecoveryMethodForm(forms.ModelForm):
+    
+    class Meta:
+        model = RecoveryMethod
+        fields = "__all__"
+
+
+class EditViewMaintenanceForm(forms.ModelForm):
     
     class Meta:
         model = ViewMaintenance

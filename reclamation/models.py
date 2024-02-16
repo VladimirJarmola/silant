@@ -2,8 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from cars.models import Cars
-from users.models import ServiceCompany
-from deskbook.models import FailureNode, RecoveryMethod
+from deskbook.models import FailureNode, RecoveryMethod, ServiceCompany
 
 # Create your models here.
 class Reclamation(models.Model):

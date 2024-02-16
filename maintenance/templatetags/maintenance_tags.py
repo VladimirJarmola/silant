@@ -1,9 +1,9 @@
 from django import template
 from django.utils.http import urlencode
 
-from cars.models import Cars, ServiceCompany
+from cars.models import Cars
 
-from deskbook.models import VehicleModel, ViewMaintenance
+from deskbook.models import ViewMaintenance, ServiceCompany
 
 
 register = template.Library()

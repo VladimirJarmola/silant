@@ -1,32 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
-class ServiceCompany(models.Model):
-    name = models.CharField(
-        verbose_name="Название", max_length=256, unique=True, null=False, blank=False
-    )
-    description = models.TextField(
-        verbose_name="Описание", unique=False, null=True, blank=True
-    )
-
-    class Meta:
-        db_table = "service"
-        verbose_name = "Сервисная компания"
-        verbose_name_plural = "Сервисные компании"
-
-    def __str__(self):
-        return f"{self.name}"
+from deskbook.models import ServiceCompany
 
 
 class User(AbstractUser):
-    ANONYMOUS = "AN"
     CLIENT = "CL"
     SERVICE = "SE"
     MANAGER = "MG"
     ADMIN = "AD"
     ROLE_CHOISES = [
-        (ANONYMOUS, "Пользователь без авторизации"),
         (CLIENT, "Клиент"),
         (SERVICE, "Сервисная организация"),
         (MANAGER, "Менеджер"),
@@ -34,13 +17,22 @@ class User(AbstractUser):
     ]
 
     user_role = models.CharField(
-        max_length=2, choices=ROLE_CHOISES, default=ANONYMOUS, verbose_name="Роль пользователя"
+        max_length=2, choices=ROLE_CHOISES, verbose_name="Роль пользователя"
+    )
+
+    service_company = models.ForeignKey(
+        to=ServiceCompany,
+        on_delete=models.SET_DEFAULT,
+        verbose_name="Сервисная компания",
+        default=None,
+        blank=True,
+        null=True,
     )
 
     class Meta:
         db_table = "user"
-        verbose_name = "Клиента"
-        verbose_name_plural = "Клиенты"
+        verbose_name = "Пользователя"
+        verbose_name_plural = "Пользователи"
 
     def __str__(self):
         if not self.first_name:

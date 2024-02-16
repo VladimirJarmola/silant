@@ -1,10 +1,9 @@
 from dataclasses import fields
 from django import forms
-from cars.models import Cars
-from deskbook.models import FailureNode, RecoveryMethod
 
+from cars.models import Cars
+from deskbook.models import FailureNode, RecoveryMethod, ServiceCompany
 from reclamation.models import Reclamation
-from users.models import ServiceCompany
 
 
 class AddReclamationForm(forms.ModelForm):

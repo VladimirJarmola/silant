@@ -1,9 +1,9 @@
 from django.db import models
 from django.urls import reverse
 
-from deskbook.models import ViewMaintenance
+from deskbook.models import ViewMaintenance, ServiceCompany
 from cars.models import Cars
-from users.models import ServiceCompany
+
 
 # Create your models here.
 class Maintenance(models.Model):

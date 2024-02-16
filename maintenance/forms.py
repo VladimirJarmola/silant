@@ -1,10 +1,9 @@
 from django import forms
 from django.db.models import Q
-from cars.models import Cars
-from deskbook.models import ViewMaintenance
 
+from cars.models import Cars
+from deskbook.models import ViewMaintenance, ServiceCompany
 from maintenance.models import Maintenance
-from users.models import ServiceCompany
 
 
 class AddMaintenanceForm(forms.ModelForm):

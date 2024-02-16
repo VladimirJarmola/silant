@@ -9,8 +9,15 @@ from deskbook.models import (
     FailureNode,
     RecoveryMethod,
     ViewMaintenance,
+    ServiceCompany
 )
 
+
+@admin.register(ServiceCompany)
+class ServiceCompanyAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description']
+    list_editable = ['description']
+    search_fields = ['name', 'description']
 
 @admin.register(VehicleModel)
 class VehicleModelAdmin(admin.ModelAdmin):

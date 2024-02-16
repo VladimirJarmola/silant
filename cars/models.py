@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
-from deskbook.models import DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
-from users.models import ServiceCompany, User
+from deskbook.models import ServiceCompany, DriveAxle, EngineModel, TransmissionModel, VehicleModel, SteeringAxle
+from users.models import User
 
 
 class Cars(models.Model):

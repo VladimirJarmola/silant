@@ -2,13 +2,14 @@ from django import forms
 
 from cars.models import Cars
 from deskbook.models import (
+    ServiceCompany,
     DriveAxle,
     EngineModel,
     SteeringAxle,
     TransmissionModel,
     VehicleModel,
 )
-from users.models import ServiceCompany, User
+from users.models import User
 
 
 class AddCarForm(forms.ModelForm):

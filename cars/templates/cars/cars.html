@@ -151,24 +151,24 @@
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
-            <th scope="col">Зав. № машины</th>
-            <th scope="col" {% if 'vehicle_model' in request.path %} class="colorRed" {% endif %}>Модель техники</th>
-            <th scope="col" {% if 'engine_model' in request.path %} class="colorRed" {% endif %}>Модель двигателя</th>
-            <th scope="col">Зав. № двигателя</th>
-            <th scope="col" {% if 'transmission_model' in request.path %} class="colorRed" {% endif %}>Модель трансмиссии</th>
-            <th scope="col">Зав. № трансмиссии</th>
-            <th scope="col" {% if 'drive_axle_model' in request.path %} class="colorRed" {% endif %}>Модель ведущего моста</th>
-            <th scope="col">Зав. № ведущего моста</th>
-            <th scope="col" {% if 'steering_axle_model' in request.path %} class="colorRed" {% endif %}>Модель управляемого моста</th>
-            <th scope="col">Зав. № управляемого моста</th>
-            <th scope="col">Договор поставки №, дата</th>
-            <th scope="col">Дата отгрузки с завода</th>
-            <th scope="col">Грузополучатель (конечный потребитель)</th>
-            <th scope="col">Адрес поставки (эксплуатации)</th>
-            <th scope="col">Комплектация (доп. опции)</th>
-            <th scope="col">Клиент</th>
-            <th scope="col">Сервисная компания</th>
-            <th scope="col"></th>
+            <th scope="col" class="p-1">Зав. № машины</th>
+            <th scope="col" class="p-1" {% if 'vehicle_model' in request.path %} class="colorRed" {% endif %}>Модель техники</th>
+            <th scope="col" class="p-1" {% if 'engine_model' in request.path %} class="colorRed" {% endif %}>Модель двигателя</th>
+            <th scope="col" class="p-1">Зав. № двигателя</th>
+            <th scope="col" class="p-1" {% if 'transmission_model' in request.path %} class="colorRed" {% endif %}>Модель трансмиссии</th>
+            <th scope="col" class="p-1">Зав. № трансмиссии</th>
+            <th scope="col" class="p-1" {% if 'drive_axle_model' in request.path %} class="colorRed" {% endif %}>Модель ведущего моста</th>
+            <th scope="col" class="p-1">Зав. № ведущего моста</th>
+            <th scope="col" class="p-1" {% if 'steering_axle_model' in request.path %} class="colorRed" {% endif %}>Модель управляемого моста</th>
+            <th scope="col" class="p-1">Зав. № управляемого моста</th>
+            <th scope="col" class="p-1">Договор поставки №, дата</th>
+            <th scope="col" class="p-1">Дата отгрузки с завода</th>
+            <th scope="col" class="p-1">Грузополучатель (конечный потребитель)</th>
+            <th scope="col" class="p-1">Адрес поставки (эксплуатации)</th>
+            <th scope="col" class="p-1">Комплектация (доп. опции)</th>
+            <th scope="col" class="p-1">Клиент</th>
+            <th scope="col" class="p-1">Сервисная компания</th>
+            <th scope="col" class="p-1"></th>
         </tr>
         </thead>
         <tbody>
@@ -178,7 +178,7 @@
             {% comment %} onclick="window.location.href='{% url "cars:car" car.id %}'; return false" {% endcomment %}
             >
                 
-                <td class="align-middle">
+                <td class="align-middle p-2">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         <a class="align-middle fs-6" href="{% url "maintenance:car_maintenances" car.id %}">{{ car.serial_number_vehicle }}</a>
 
@@ -187,7 +187,7 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle"> 
+                <td class="align-middle p-2"> 
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.vehicle_model }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="vehicle_model" data-deskbook-id="{{ car.vehicle_model.id}}">
@@ -196,7 +196,7 @@
                     </div>
 
                 </td>
-                <td class="align-middle" >
+                <td class="align-middle p-2" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.engine_model }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="engine_model" data-deskbook-id="{{ car.engine_model.id}}">
@@ -204,8 +204,8 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle">{{ car.serial_number_of_the_engine }}</td>
-                <td class="align-middle">
+                <td class="align-middle p-2">{{ car.serial_number_of_the_engine }}</td>
+                <td class="align-middle p-2">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.transmission_model }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="transmission_model" data-deskbook-id="{{ car.transmission_model.id}}">
@@ -213,8 +213,8 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle">{{ car.serial_number_of_the_transmission }}</td>
-                <td class="align-middle">
+                <td class="align-middle p-2">{{ car.serial_number_of_the_transmission }}</td>
+                <td class="align-middle p-2">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.drive_axle_model }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="drive_axle_model" data-deskbook-id="{{ car.drive_axle_model.id}}">
@@ -222,8 +222,8 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle">{{ car.drive_axle_serial_number }}</td>
-                <td class="align-middle">
+                <td class="align-middle p-2">{{ car.drive_axle_serial_number }}</td>
+                <td class="align-middle p-2">
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ car.steering_axle_model }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="steering_axle_model" data-deskbook-id="{{ car.steering_axle_model.id}}">
@@ -231,14 +231,21 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle">{{ car.serial_number_of_the_steered_axle }}</td>
-                <td class="align-middle">{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
-                <td class="align-middle">{{ car.date_shipped_from_factory }}</td>
-                <td class="align-middle">{{ car.consignee }}</td>
-                <td class="align-middle">{{ car.delivery_address }}</td>
-                <td class="align-middle">{{ car.equipment|truncatechars:40 }}</td>
-                <td class="align-middle">{{ car.client }}</td>
-                <td class="align-middle">{{ car.service_company }}</td>
+                <td class="align-middle p-2">{{ car.serial_number_of_the_steered_axle }}</td>
+                <td class="align-middle p-2">{% if not car.supply_contract %} Не указан {% else %}{{ car.supply_contract }}{% endif %}</td>
+                <td class="align-middle p-2">{{ car.date_shipped_from_factory }}</td>
+                <td class="align-middle p-2">{{ car.consignee }}</td>
+                <td class="align-middle p-2">{{ car.delivery_address }}</td>
+                <td class="align-middle p-2">{{ car.equipment|truncatechars:40 }}</td>
+                <td class="align-middle p-2">{{ car.client }}</td>
+                <td class="align-middle p-2">
+                    <div class='d-inline-flex justify-content-between align-items-center' >
+                        {{ car.service_company }}
+                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" data-deskbook-name="service_company" data-deskbook-id="{{ car.service_company.id}}">
+                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                        </a>
+                    </div>
+                </td>
                 <td class="p-1 align-middle">
                     <div class="d-inline-flex justify-content-between">
                         <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{car.id}}">

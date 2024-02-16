@@ -1,6 +1,24 @@
 from django.db import models
 
 
+class ServiceCompany(models.Model):
+    name = models.CharField(
+        verbose_name="Название", max_length=256, unique=True, null=False, blank=False
+    )
+    description = models.TextField(
+        verbose_name="Описание", unique=False, null=True, blank=True
+    )
+
+    class Meta:
+        db_table = "service"
+        verbose_name = "Сервисная компания"
+        verbose_name_plural = "Сервисные компании"
+        ordering = ('name',)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class VehicleModel(models.Model):
     name = models.CharField(
         verbose_name="Модель техники",

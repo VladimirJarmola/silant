@@ -51,6 +51,11 @@
         <label class="btn btn-outline-primary" for="btnradio8"
             onclick="window.location.href='{% url "deskbook:view_maintenance" %}'; return false"
         >Вид ТО</label>
+        
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off" {% if 'service_company' in request.path %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="btnradio8"
+            onclick="window.location.href='{% url "deskbook:service_company" %}'; return false"
+        >Сервисная компания</label>
 
       </div>
 
@@ -59,7 +64,9 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{item.id}}" aria-expanded="true" aria-controls="panelsStayOpen-{{item.id}}">
-                        <p class="w-100">{{item.name}}</p>
+                        <div class='d-flex-row w-100'>
+                            <div class="pt-2"><p>{{item.name}}</p></div>
+                        </div>
 
                         <div class="d-inline-flex justify-content-end pe-3 w-100 ">
                             <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">

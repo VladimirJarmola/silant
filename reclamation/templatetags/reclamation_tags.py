@@ -1,9 +1,7 @@
 from django.utils.http import urlencode
 from django import template
 
-from cars.models import ServiceCompany
-
-from deskbook.models import FailureNode, RecoveryMethod
+from deskbook.models import FailureNode, RecoveryMethod, ServiceCompany
 
 
 register = template.Library()

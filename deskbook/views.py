@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 from deskbook.forms import (
+    AddServiceCompany,
     AddDriveAxleForm,
     AddEngineForm,
     AddFailureNodeForm,
@@ -15,7 +16,19 @@ from deskbook.forms import (
     AddVehicleForm,
     AddViewMaintenanceForm,
 )
+from deskbook.forms import (
+    EditServiceCompany,
+    EditDriveAxleForm,
+    EditEngineForm,
+    EditFailureNodeForm,
+    EditRecoveryMethodForm,
+    EditSteeringAxleForm,
+    EditTransmissionForm,
+    EditVehicleForm,
+    EditViewMaintenanceForm,
+)
 from deskbook.models import (
+    ServiceCompany,
     FailureNode,
     RecoveryMethod,
     VehicleModel,
@@ -29,7 +42,9 @@ from deskbook.models import (
 def add_deskbook(request, slug):
     if request.method == "GET":
         path = request.META["HTTP_REFERER"]
-        if slug == "vehicle_model":
+        if slug == "service_company":
+            form = AddServiceCompany()
+        elif slug == "vehicle_model":
             form = AddVehicleForm()
         elif slug == "engine_model":
             form = AddEngineForm()
@@ -48,7 +63,9 @@ def add_deskbook(request, slug):
 
     elif request.method == "POST":
         path = request.POST.get('path_referer', None)
-        if slug == "vehicle_model":
+        if slug == "service_company":
+            form = AddServiceCompany(data=request.POST)
+        elif slug == "vehicle_model":
             form = AddVehicleForm(data=request.POST)
         elif slug == "engine_model":
             form = AddEngineForm(data=request.POST)
@@ -92,7 +109,9 @@ def add_deskbook(request, slug):
 def get_deskbook(request):
     page = request.GET.get("page", 1)
 
-    if "vehicle_model" in request.path:
+    if "service_company" in request.path:
+        qs = ServiceCompany.objects.all()
+    elif "vehicle_model" in request.path:
         qs = VehicleModel.objects.all()
     elif "engine_model" in request.path:
         qs = EngineModel.objects.all()
@@ -125,7 +144,9 @@ def get_deskbook(request):
 
 
 def remove_deskbook(request, slug, item_id):
-    if slug == "vehicle_model":
+    if slug == "service_company":
+        removable = get_object_or_404(ServiceCompany, id=item_id)
+    elif slug == "vehicle_model":
         removable = get_object_or_404(VehicleModel, id=item_id)
     elif slug == "engine_model":
         removable = get_object_or_404(EngineModel, id=item_id)
@@ -151,7 +172,9 @@ def remove_deskbook(request, slug, item_id):
 
 
 def edit_deskbook(request, slug, item_id):
-    if slug == "vehicle_model":
+    if slug == "service_company":
+        item = get_object_or_404(ServiceCompany, id=item_id)
+    elif slug == "vehicle_model":
         item = get_object_or_404(VehicleModel, id=item_id)
     elif slug == "engine_model":
         item = get_object_or_404(EngineModel, id=item_id)
@@ -169,40 +192,44 @@ def edit_deskbook(request, slug, item_id):
         item = get_object_or_404(ViewMaintenance, id=item_id)
 
     if request.method == "GET":
-        if slug == "vehicle_model":
-            form = AddVehicleForm(instance=item)
+        if slug == "service_company":
+            form = EditServiceCompany(instance=item)
+        elif slug == "vehicle_model":
+            form = EditVehicleForm(instance=item)
         elif slug == "engine_model":
-            form = AddEngineForm(instance=item)
+            form = EditEngineForm(instance=item)
         elif slug == "transmission_model":
-            form = AddTransmissionForm(instance=item)
+            form = EditTransmissionForm(instance=item)
         elif slug == "drive_axle_model":
-            form = AddDriveAxleForm(instance=item)
+            form = EditDriveAxleForm(instance=item)
         elif slug == "steering_axle_model":
-            form = AddSteeringAxleForm(instance=item)
+            form = EditSteeringAxleForm(instance=item)
         elif slug == "failure_node":
-            form = AddFailureNodeForm(instance=item)
+            form = EditFailureNodeForm(instance=item)
         elif slug == "recovery_method":
-            form = AddRecoveryMethodForm(instance=item)
+            form = EditRecoveryMethodForm(instance=item)
         elif slug == "view_maintenance":
-            form = AddViewMaintenanceForm(instance=item)
+            form = EditViewMaintenanceForm(instance=item)
 
     elif request.method == "POST":
-        if slug == "vehicle_model":
-            form = AddVehicleForm(data=request.POST, instance=item)
+        if slug == "service_company":
+            form = EditServiceCompany(data=request.POST, instance=item)
+        elif slug == "vehicle_model":
+            form = EditVehicleForm(data=request.POST, instance=item)
         elif slug == "engine_model":
-            form = AddEngineForm(data=request.POST, instance=item)
+            form = EditEngineForm(data=request.POST, instance=item)
         elif slug == "transmission_model":
-            form = AddTransmissionForm(data=request.POST, instance=item)
+            form = EditTransmissionForm(data=request.POST, instance=item)
         elif slug == "drive_axle_model":
-            form = AddDriveAxleForm(data=request.POST, instance=item)
+            form = EditDriveAxleForm(data=request.POST, instance=item)
         elif slug == "steering_axle_model":
-            form = AddSteeringAxleForm(data=request.POST, instance=item)
+            form = EditSteeringAxleForm(data=request.POST, instance=item)
         elif slug == "failure_node":
-            form = AddFailureNodeForm(data=request.POST, instance=item)
+            form = EditFailureNodeForm(data=request.POST, instance=item)
         elif slug == "recovery_method":
-            form = AddRecoveryMethodForm(data=request.POST, instance=item)
+            form = EditRecoveryMethodForm(data=request.POST, instance=item)
         elif slug == "view_maintenance":
-            form = AddViewMaintenanceForm(data=request.POST, instance=item)
+            form = EditViewMaintenanceForm(data=request.POST, instance=item)
 
         if form.is_valid():
             form.save()
@@ -229,7 +256,9 @@ def deskbook_ajax(request):
     item_id = request.GET.get("deskbook_id")
     slug = request.GET.get("deskbook_name")
 
-    if slug == "vehicle_model":
+    if slug == "service_company":
+        item = get_object_or_404(ServiceCompany, id=item_id)
+    elif slug == "vehicle_model":
         item = get_object_or_404(VehicleModel, id=item_id)
     elif slug == "engine_model":
         item = get_object_or_404(EngineModel, id=item_id)

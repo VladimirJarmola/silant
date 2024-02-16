@@ -7,6 +7,7 @@ app_name = 'deskbook'
 
 urlpatterns = [
 
+    path('service_company/', views.get_deskbook, name='service_company'),
     path('vehicle_model/', views.get_deskbook, name='vehicle_model'),
     path('engine_model/', views.get_deskbook, name='engine_model'),
     path('transmission_model/', views.get_deskbook, name='transmission_model'),
