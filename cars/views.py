@@ -9,7 +9,7 @@ from django.urls import reverse
 from cars.forms import AddCarForm, EditCarForm
 from cars.models import Cars
 from cars.utils import q_search
-from deskbook.models import VehicleModel
+from deskbook.models import DriveAxle, EngineModel, SteeringAxle, TransmissionModel, VehicleModel
 from maintenance.models import Maintenance
 from reclamation.models import Reclamation
 
@@ -45,24 +45,32 @@ def cars(
 ):
     page = request.GET.get("page", 1)
     ordering = request.GET.get("order_by", None)
+    user_role = request.user.user_role
 
+    if user_role == 'CL':
+        cars_limited = Cars.objects.filter(client=request.user.id)
+    elif user_role == 'SE':
+        cars_limited = Cars.objects.filter(service_company=request.user.service_company_id)
+    elif user_role == 'MG' or user_role == 'AD':
+        cars_limited = Cars.objects.all()
+    
     if vehicle_model_id:
-        cars_all = Cars.objects.filter(vehicle_model=vehicle_model_id)
+        user_cars = cars_limited.filter(vehicle_model=vehicle_model_id)
     elif engine_model_id:
-        cars_all = Cars.objects.filter(engine_model=engine_model_id)
+        user_cars = cars_limited.filter(engine_model=engine_model_id)
     elif transmission_model_id:
-        cars_all = Cars.objects.filter(transmission_model=transmission_model_id)
+        user_cars = cars_limited.filter(transmission_model=transmission_model_id)
     elif drive_axle_model_id:
-        cars_all = Cars.objects.filter(drive_axle_model=drive_axle_model_id)
+        user_cars = cars_limited.filter(drive_axle_model=drive_axle_model_id)
     elif steering_axle_model_id:
-        cars_all = Cars.objects.filter(steering_axle_model=steering_axle_model_id)
+        user_cars = cars_limited.filter(steering_axle_model=steering_axle_model_id)
     else:
-        cars_all = Cars.objects.all()
+        user_cars = cars_limited
 
     if ordering and ordering != "default":
-        cars_all = cars_all.order_by(ordering)
+        user_cars = user_cars.order_by(ordering)
 
-    paginator = Paginator(cars_all, 5)
+    paginator = Paginator(user_cars, 5)
     try:
         current_page = paginator.page(int(page))
     except EmptyPage:
@@ -214,11 +222,20 @@ def car_ajax(request):
     car = get_object_or_404(Cars, pk=car_id)
     maintenances = Maintenance.objects.filter(car=car_id)
     reclamations = Reclamation.objects.filter(car=car_id)
-
+    # справочники по машине, описания
+    deskbook_for_car = {
+        'vehicle_model_description': VehicleModel.objects.get(name=car.vehicle_model).description,
+        'engine_model_description': EngineModel.objects.get(name=car.engine_model).description,
+        'transmission_model_description': TransmissionModel.objects.get(name=car.transmission_model).description,
+        'drive_axle_model_description': DriveAxle.objects.get(name=car.drive_axle_model).description,
+        'steering_axle_model_description': SteeringAxle.objects.get(name=car.steering_axle_model).description,
+    }
+    
     context = {
         'car': car,
         'maintenances': maintenances,
         'reclamations': reclamations,
+        'deskbook': deskbook_for_car,
     }
 
     car_html = render_to_string("includes/modal_car.html", context, request=request)

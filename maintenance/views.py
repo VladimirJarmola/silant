@@ -13,30 +13,38 @@ from maintenance.models import Maintenance
 @permission_required('maintenance.view_maintenance', raise_exception=True)
 def maintenance(
     request, view_maintenance_id=False, car_id=False, service_company_id=False
-):
-    
+):    
     page = request.GET.get("page", 1)
     ordering = request.GET.get("order_by", None)
+    user_role = request.user.user_role
+
+    if user_role == 'CL':
+        user_cars_list = Cars.objects.filter(client=request.user.id).values_list('id', flat=True)
+        maintenance_limited = Maintenance.objects.filter(car__in=user_cars_list)
+    elif user_role == 'SE':
+        maintenance_limited = Maintenance.objects.filter(service_company=request.user.service_company_id)
+    elif user_role == 'MG' or user_role == 'AD':
+        maintenance_limited = Maintenance.objects.all()
 
     if view_maintenance_id:
-        maintenance_all = Maintenance.objects.filter(
+        user_maintenance = maintenance_limited.filter(
             view_maintenance=view_maintenance_id
         )
     elif car_id:
-        maintenance_all = Maintenance.objects.filter(
+        user_maintenance = maintenance_limited.filter(
             car=car_id
         )
     elif service_company_id:
-        maintenance_all = Maintenance.objects.filter(
+        user_maintenance = maintenance_limited.filter(
             service_company__id=service_company_id
         )
     else:
-        maintenance_all = Maintenance.objects.all()
+        user_maintenance = maintenance_limited
 
     if ordering and ordering != "default":
-        maintenance_all = maintenance_all.order_by(ordering)
+        user_maintenance = user_maintenance.order_by(ordering)
 
-    paginator = Paginator(maintenance_all, 5)
+    paginator = Paginator(user_maintenance, 5)
     current_page = paginator.page(int(page))
 
     context = {

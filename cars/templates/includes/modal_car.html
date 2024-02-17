@@ -23,27 +23,44 @@
                     <h2 class="modal-title fs-5 text-center pb-4" id="carModalLabel">Характеристики машины</h2>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Клиент: {{car.client}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <p>Сервисная компания: {{car.service_company}} </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Модель техники: {{car.vehicle_model}} </p>
                         <p>Заводской номер машины: {{car.serial_number_vehicle}} </p>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>{{deskbook.vehicle_model_description}} </p>
+                    </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Модель двигателя: {{car.engine_model}} </p>
                         <p>Заводской номер двигателя: {{car.serial_number_of_the_engine}} </p>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>{{deskbook.engine_model_description}} </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Модель трансмиссии: {{car.transmission_model}} </p>
                         <p>Заводской номер трансмиссии: {{car.serial_number_of_the_transmission}} </p>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>{{deskbook.transmission_model_description}} </p>
+                    </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Модель ведущего моста: {{car.drive_axle_model}} </p>
                         <p>Заводской номер ведущего моста: {{car.drive_axle_serial_number}} </p>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>{{deskbook.drive_axle_model_description}} </p>
+                    </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Модель управляемого моста: {{car.steering_axle_model}} </p>
                         <p>Заводской номер управляемого моста: {{car.serial_number_of_the_steered_axle}} </p>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>{{deskbook.steering_axle_model_description}} </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Договор поставки №, дата: {{car.supply_contract}} </p>
@@ -53,6 +70,8 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <p>Грузополучатель (конечный потребитель): {{car.consignee}} </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <p>Адрес поставки (эксплуатации): {{car.delivery_address}} </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">

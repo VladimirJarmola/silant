@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.models import Permission
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -40,8 +41,24 @@ from deskbook.models import (
     ViewMaintenance,
 )
 
+deskbook_view_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+    content_type__app_label="deskbook", codename__startswith="view"
+).values_list("codename", flat=True)]
 
-@permission_required('deskbook.add_deskbook', raise_exception=True)
+deskbook_add_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+    content_type__app_label="deskbook", codename__startswith="add"
+).values_list("codename", flat=True)]
+
+deskbook_delete_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+    content_type__app_label="deskbook", codename__startswith="delete"
+).values_list("codename", flat=True)]
+
+deskbook_change_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+    content_type__app_label="deskbook", codename__startswith="change"
+).values_list("codename", flat=True)]
+
+
+@permission_required(deskbook_add_permission, raise_exception=True)
 def add_deskbook(request, slug):
     if request.method == "GET":
         path = request.META["HTTP_REFERER"]
@@ -65,7 +82,7 @@ def add_deskbook(request, slug):
             form = AddViewMaintenanceForm()
 
     elif request.method == "POST":
-        path = request.POST.get('path_referer', None)
+        path = request.POST.get("path_referer", None)
         if slug == "service_company":
             form = AddServiceCompany(data=request.POST)
         elif slug == "vehicle_model":
@@ -88,7 +105,8 @@ def add_deskbook(request, slug):
         if form.is_valid():
             form.save()
             messages.success(
-                request, f"{request.user.username}, Вы успешно добавили запись в справочник!"
+                request,
+                f"{request.user.username}, Вы успешно добавили запись в справочник!",
             )
             if path:
                 return HttpResponseRedirect(path)
@@ -105,11 +123,11 @@ def add_deskbook(request, slug):
         "slug": slug,
         "path": path,
     }
-    
+
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
-@permission_required('deskbook.view_deskbook', raise_exception=True)
+@permission_required(deskbook_view_permission, raise_exception=True)
 def get_deskbook(request):
     page = request.GET.get("page", 1)
 
@@ -147,7 +165,7 @@ def get_deskbook(request):
     return render(request, "deskbook/deskbook.html", context=context)
 
 
-@permission_required('deskbook.delete_deskbook', raise_exception=True)
+@permission_required(deskbook_delete_permission, raise_exception=True)
 def remove_deskbook(request, slug, item_id):
     if slug == "service_company":
         removable = get_object_or_404(ServiceCompany, id=item_id)
@@ -176,7 +194,7 @@ def remove_deskbook(request, slug, item_id):
         return HttpResponseRedirect(reverse(f"deskbook:{slug}"))
 
 
-@permission_required('deskbook.change_deskbook', raise_exception=True)
+@permission_required(deskbook_change_permission, raise_exception=True)
 def edit_deskbook(request, slug, item_id):
     if slug == "service_company":
         item = get_object_or_404(ServiceCompany, id=item_id)
@@ -258,7 +276,7 @@ def edit_deskbook(request, slug, item_id):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
-@permission_required('deskbook.view_deskbook', raise_exception=True)
+@permission_required(deskbook_view_permission, raise_exception=True)
 def deskbook_ajax(request):
     item_id = request.GET.get("deskbook_id")
     slug = request.GET.get("deskbook_name")
@@ -281,12 +299,14 @@ def deskbook_ajax(request):
         item = get_object_or_404(RecoveryMethod, id=item_id)
     elif slug == "view_maintenance":
         item = get_object_or_404(ViewMaintenance, id=item_id)
-    
+
     context = {
-        'item': item,
+        "item": item,
     }
 
-    item_html = render_to_string("includes/modal_deskbook.html", context, request=request)
+    item_html = render_to_string(
+        "includes/modal_deskbook.html", context, request=request
+    )
 
     response_data = {
         # "message": "ответ",

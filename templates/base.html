@@ -28,6 +28,9 @@
               <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "deskbook:vehicle_model" %}" role="button">Справочники</a>
               <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "admin:index" %}" role="button">Админ панель</a>
               <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "user:logout" %}" role="button">Выйти</a>
+            {% elif user.user_role == 'MG' %}
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "deskbook:vehicle_model" %}" role="button">Справочники</a>
+              <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "user:logout" %}" role="button">Выйти</a>
             {% else %}
               <a class="btn btn-primary btn-sm colorBlue m-1" style="--bs-btn-border-color: #163E6C; --bs-btn-hover-color: #D20A11" href="{% url "user:logout" %}" role="button">Выйти</a>
             {% endif %}          

@@ -38,4 +38,4 @@ class CustomUserAdmin(UserAdmin):
         return ['service_company']
 
 admin.site.register(User, CustomUserAdmin)
-admin.site.unregister(Group)
+# admin.site.unregister(Group)

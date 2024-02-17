@@ -16,20 +16,29 @@ def reclamation(request, failure_node_id=False, recovery_method_id=False, servic
 
     page = request.GET.get("page", 1)
     ordering = request.GET.get("order_by", None)
+    user_role = request.user.user_role
+
+    if user_role == 'CL':
+        user_cars_list = Cars.objects.filter(client=request.user.id).values_list('id', flat=True)
+        reclamation_limited = Reclamation.objects.filter(car__in=user_cars_list)
+    elif user_role == 'SE':
+        reclamation_limited = Reclamation.objects.filter(service_company=request.user.service_company_id)
+    elif user_role == 'MG' or user_role == 'AD':
+        reclamation_limited = Reclamation.objects.all()
 
     if failure_node_id:
-        reclamation_all = Reclamation.objects.filter(failure_node=failure_node_id)
+        user_reclamation = reclamation_limited.filter(failure_node=failure_node_id)
     elif recovery_method_id:
-        reclamation_all = Reclamation.objects.filter(recovery_method=recovery_method_id)
+        user_reclamation = reclamation_limited.filter(recovery_method=recovery_method_id)
     elif service_company_id:
-        reclamation_all = Reclamation.objects.filter(service_company__id=service_company_id)
+        user_reclamation = reclamation_limited.filter(service_company__id=service_company_id)
     else:
-        reclamation_all = Reclamation.objects.all()
-
+        user_reclamation = reclamation_limited
+        
     if ordering and ordering != "default":
-        reclamation_all = reclamation_all.order_by(ordering)
+        user_reclamation = user_reclamation.order_by(ordering)
 
-    paginator = Paginator(reclamation_all, 5)
+    paginator = Paginator(user_reclamation, 5)
     current_page = paginator.page(int(page))
 
     context = {

@@ -442,6 +442,461 @@
         }
     },
     {
+        "model": "admin.logentry",
+        "pk": 35,
+        "fields": {
+            "action_time": "2024-02-17T14:24:03.884Z",
+            "user": 2,
+            "content_type": 17,
+            "object_id": "5",
+            "object_repr": "ТО-5 (2000м/час)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 36,
+        "fields": {
+            "action_time": "2024-02-17T14:24:03.965Z",
+            "user": 2,
+            "content_type": 17,
+            "object_id": "4",
+            "object_repr": "ТО-4 (1000м/час)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 37,
+        "fields": {
+            "action_time": "2024-02-17T14:24:03.968Z",
+            "user": 2,
+            "content_type": 17,
+            "object_id": "3",
+            "object_repr": "ТО-2 (400 м/час)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 38,
+        "fields": {
+            "action_time": "2024-02-17T14:24:03.971Z",
+            "user": 2,
+            "content_type": 17,
+            "object_id": "2",
+            "object_repr": "ТО-1 (200 м/час)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 39,
+        "fields": {
+            "action_time": "2024-02-17T14:24:03.976Z",
+            "user": 2,
+            "content_type": 17,
+            "object_id": "1",
+            "object_repr": "ТО-0 (50 м/час)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 40,
+        "fields": {
+            "action_time": "2024-02-17T14:24:23.146Z",
+            "user": 2,
+            "content_type": 9,
+            "object_id": "1",
+            "object_repr": "20VA-00101",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 41,
+        "fields": {
+            "action_time": "2024-02-17T14:24:23.150Z",
+            "user": 2,
+            "content_type": 9,
+            "object_id": "2",
+            "object_repr": "20VB-00102",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 42,
+        "fields": {
+            "action_time": "2024-02-17T14:24:23.153Z",
+            "user": 2,
+            "content_type": 9,
+            "object_id": "3",
+            "object_repr": "HA30-02020",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 43,
+        "fields": {
+            "action_time": "2024-02-17T14:24:23.155Z",
+            "user": 2,
+            "content_type": 9,
+            "object_id": "4",
+            "object_repr": "HA50-VP010",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 44,
+        "fields": {
+            "action_time": "2024-02-17T14:24:38.464Z",
+            "user": 2,
+            "content_type": 10,
+            "object_id": "1",
+            "object_repr": "Kubota D1803",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 45,
+        "fields": {
+            "action_time": "2024-02-17T14:24:38.469Z",
+            "user": 2,
+            "content_type": 10,
+            "object_id": "2",
+            "object_repr": "Kubota V3300",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 46,
+        "fields": {
+            "action_time": "2024-02-17T14:24:38.473Z",
+            "user": 2,
+            "content_type": 10,
+            "object_id": "3",
+            "object_repr": "MMZ-4D",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 47,
+        "fields": {
+            "action_time": "2024-02-17T14:24:38.476Z",
+            "user": 2,
+            "content_type": 10,
+            "object_id": "4",
+            "object_repr": "Nissan K21",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 48,
+        "fields": {
+            "action_time": "2024-02-17T14:24:38.478Z",
+            "user": 2,
+            "content_type": 10,
+            "object_id": "5",
+            "object_repr": "ММЗ Д-243",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 49,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.233Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "1",
+            "object_repr": "ПГ1,5",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 50,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.244Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "2",
+            "object_repr": "ПД1,5",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 51,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.248Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "3",
+            "object_repr": "ПД2,0",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 52,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.251Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "4",
+            "object_repr": "ПД2,5",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 53,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.255Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "5",
+            "object_repr": "ПД3,0",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 54,
+        "fields": {
+            "action_time": "2024-02-17T14:25:01.258Z",
+            "user": 2,
+            "content_type": 16,
+            "object_id": "6",
+            "object_repr": "ПД5,0",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 55,
+        "fields": {
+            "action_time": "2024-02-17T14:25:21.788Z",
+            "user": 2,
+            "content_type": 15,
+            "object_id": "1",
+            "object_repr": "10VA-00105",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 56,
+        "fields": {
+            "action_time": "2024-02-17T14:25:21.793Z",
+            "user": 2,
+            "content_type": 15,
+            "object_id": "2",
+            "object_repr": "10VB-00106",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 57,
+        "fields": {
+            "action_time": "2024-02-17T14:25:21.797Z",
+            "user": 2,
+            "content_type": 15,
+            "object_id": "3",
+            "object_repr": "HF30-VP010",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 58,
+        "fields": {
+            "action_time": "2024-02-17T14:25:21.800Z",
+            "user": 2,
+            "content_type": 15,
+            "object_id": "4",
+            "object_repr": "HF50-VP020",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 59,
+        "fields": {
+            "action_time": "2024-02-17T14:25:40.779Z",
+            "user": 2,
+            "content_type": 14,
+            "object_id": "1",
+            "object_repr": "B350655A",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 60,
+        "fields": {
+            "action_time": "2024-02-17T14:25:40.784Z",
+            "user": 2,
+            "content_type": 14,
+            "object_id": "2",
+            "object_repr": "VS20-00001",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 61,
+        "fields": {
+            "action_time": "2024-02-17T14:25:40.787Z",
+            "user": 2,
+            "content_type": 14,
+            "object_id": "3",
+            "object_repr": "VS30-00001",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 62,
+        "fields": {
+            "action_time": "2024-02-17T14:26:04.031Z",
+            "user": 2,
+            "content_type": 12,
+            "object_id": "1",
+            "object_repr": "Замена узла",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 63,
+        "fields": {
+            "action_time": "2024-02-17T14:26:04.037Z",
+            "user": 2,
+            "content_type": 12,
+            "object_id": "2",
+            "object_repr": "Ремонт узла",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 64,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.469Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "1",
+            "object_repr": "Ведущий мост",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 65,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.477Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "2",
+            "object_repr": "Гидросистема",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 66,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.481Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "3",
+            "object_repr": "Двигатель",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 67,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.484Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "4",
+            "object_repr": "Подъёмное устройство",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 68,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.487Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "5",
+            "object_repr": "Трансмиссия",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 69,
+        "fields": {
+            "action_time": "2024-02-17T14:26:32.492Z",
+            "user": 2,
+            "content_type": 11,
+            "object_id": "6",
+            "object_repr": "Управляемый мост",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+        }
+    },
+    {
         "model": "auth.permission",
         "pk": 1,
         "fields": {
@@ -1407,10 +1862,10 @@
     },
     {
         "model": "sessions.session",
-        "pk": "jdryk0nix6r7d8vzq4fly60drfyhgvew",
+        "pk": "b75fha2iaxw7qc405aewewwcmzipeyca",
         "fields": {
-            "session_data": ".eJxVjDsOwjAQBe_iGlleE_8o6XMGy-vd4ACypTipEHeHSCmgfTPzXiKmbS1x67zEmcRFaHH63TDlB9cd0D3VW5O51XWZUe6KPGiXYyN-Xg_376CkXr61R_AWTODgHYeUFRlDE4IDnbLPBBPSYGEgAnsmNIpZoQ5srHFe2yDeH-oON-I:1rayZo:nljDXKQg5XMjF0KxFLpUnU5smb-E1bhqCa7pRWNOw3Y",
-            "expire_date": "2024-03-01T13:48:28.514Z"
+            "session_data": ".eJxVjDsOwjAQBe_iGlleE_8o6XMGy-vd4ACypTipEHeHSCmgfTPzXiKmbS1x67zEmcRFaHH63TDlB9cd0D3VW5O51XWZUe6KPGiXYyN-Xg_376CkXr61R_AWTODgHYeUFRlDE4IDnbLPBBPSYGEgAnsmNIpZoQ5srHFe2yDeH-oON-I:1rbLad:J-w4VRkIGWAaGTTDjlGbn3XhNd2q4W3VAvTpsHtdRmg",
+            "expire_date": "2024-03-02T14:22:51.070Z"
         }
     },
     {
@@ -2328,7 +2783,7 @@
         "pk": 1,
         "fields": {
             "name": "ПГ1,5",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2336,7 +2791,7 @@
         "pk": 2,
         "fields": {
             "name": "ПД1,5",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2344,7 +2799,7 @@
         "pk": 3,
         "fields": {
             "name": "ПД2,0",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2352,7 +2807,7 @@
         "pk": 4,
         "fields": {
             "name": "ПД2,5",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2360,7 +2815,7 @@
         "pk": 5,
         "fields": {
             "name": "ПД3,0",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2368,7 +2823,7 @@
         "pk": 6,
         "fields": {
             "name": "ПД5,0",
-            "description": ""
+            "description": "Описание модели погрузчика"
         }
     },
     {
@@ -2376,7 +2831,7 @@
         "pk": 1,
         "fields": {
             "name": "Kubota D1803",
-            "description": ""
+            "description": "Описание двигателя"
         }
     },
     {
@@ -2384,7 +2839,7 @@
         "pk": 2,
         "fields": {
             "name": "Kubota V3300",
-            "description": ""
+            "description": "Описание двигателя"
         }
     },
     {
@@ -2392,7 +2847,7 @@
         "pk": 3,
         "fields": {
             "name": "MMZ-4D",
-            "description": ""
+            "description": "Описание двигателя"
         }
     },
     {
@@ -2400,7 +2855,7 @@
         "pk": 4,
         "fields": {
             "name": "Nissan K21",
-            "description": ""
+            "description": "Описание двигателя"
         }
     },
     {
@@ -2408,7 +2863,7 @@
         "pk": 5,
         "fields": {
             "name": "ММЗ Д-243",
-            "description": ""
+            "description": "Описание двигателя"
         }
     },
     {
@@ -2416,7 +2871,7 @@
         "pk": 1,
         "fields": {
             "name": "10VA-00105",
-            "description": ""
+            "description": "Описание модели трансмиссии"
         }
     },
     {
@@ -2424,7 +2879,7 @@
         "pk": 2,
         "fields": {
             "name": "10VB-00106",
-            "description": ""
+            "description": "Описание модели трансмиссии"
         }
     },
     {
@@ -2432,7 +2887,7 @@
         "pk": 3,
         "fields": {
             "name": "HF30-VP010",
-            "description": ""
+            "description": "Описание модели трансмиссии"
         }
     },
     {
@@ -2440,7 +2895,7 @@
         "pk": 4,
         "fields": {
             "name": "HF50-VP020",
-            "description": ""
+            "description": "Описание модели трансмиссии"
         }
     },
     {
@@ -2448,7 +2903,7 @@
         "pk": 1,
         "fields": {
             "name": "20VA-00101",
-            "description": ""
+            "description": "Описание ведущего моста"
         }
     },
     {
@@ -2456,7 +2911,7 @@
         "pk": 2,
         "fields": {
             "name": "20VB-00102",
-            "description": ""
+            "description": "Описание ведущего моста"
         }
     },
     {
@@ -2464,7 +2919,7 @@
         "pk": 3,
         "fields": {
             "name": "HA30-02020",
-            "description": ""
+            "description": "Описание ведущего моста"
         }
     },
     {
@@ -2472,7 +2927,7 @@
         "pk": 4,
         "fields": {
             "name": "HA50-VP010",
-            "description": ""
+            "description": "Описание ведущего моста"
         }
     },
     {
@@ -2480,7 +2935,7 @@
         "pk": 1,
         "fields": {
             "name": "B350655A",
-            "description": ""
+            "description": "описание модели управляемого моста"
         }
     },
     {
@@ -2488,7 +2943,7 @@
         "pk": 2,
         "fields": {
             "name": "VS20-00001",
-            "description": ""
+            "description": "описание модели управляемого моста"
         }
     },
     {
@@ -2496,7 +2951,7 @@
         "pk": 3,
         "fields": {
             "name": "VS30-00001",
-            "description": ""
+            "description": "описание модели управляемого моста"
         }
     },
     {
@@ -2504,7 +2959,7 @@
         "pk": 1,
         "fields": {
             "name": "Ведущий мост",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2512,7 +2967,7 @@
         "pk": 2,
         "fields": {
             "name": "Гидросистема",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2520,7 +2975,7 @@
         "pk": 3,
         "fields": {
             "name": "Двигатель",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2528,7 +2983,7 @@
         "pk": 4,
         "fields": {
             "name": "Подъёмное устройство",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2536,7 +2991,7 @@
         "pk": 5,
         "fields": {
             "name": "Трансмиссия",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2544,7 +2999,7 @@
         "pk": 6,
         "fields": {
             "name": "Управляемый мост",
-            "description": ""
+            "description": "Описание узла отказа"
         }
     },
     {
@@ -2552,7 +3007,7 @@
         "pk": 1,
         "fields": {
             "name": "Замена узла",
-            "description": ""
+            "description": "Описание способа восстановления"
         }
     },
     {
@@ -2560,7 +3015,7 @@
         "pk": 2,
         "fields": {
             "name": "Ремонт узла",
-            "description": ""
+            "description": "Описание способа восстановления"
         }
     },
     {
@@ -2568,7 +3023,7 @@
         "pk": 1,
         "fields": {
             "name": "ТО-0 (50 м/час)",
-            "description": ""
+            "description": "описание ТО"
         }
     },
     {
@@ -2576,7 +3031,7 @@
         "pk": 2,
         "fields": {
             "name": "ТО-1 (200 м/час)",
-            "description": ""
+            "description": "описание ТО"
         }
     },
     {
@@ -2584,7 +3039,7 @@
         "pk": 3,
         "fields": {
             "name": "ТО-2 (400 м/час)",
-            "description": ""
+            "description": "описание ТО"
         }
     },
     {
@@ -2592,7 +3047,7 @@
         "pk": 4,
         "fields": {
             "name": "ТО-4 (1000м/час)",
-            "description": ""
+            "description": "описание ТО"
         }
     },
     {
@@ -2600,7 +3055,7 @@
         "pk": 5,
         "fields": {
             "name": "ТО-5 (2000м/час)",
-            "description": ""
+            "description": "описание ТО"
         }
     },
     {
@@ -2608,7 +3063,7 @@
         "pk": 2,
         "fields": {
             "password": "pbkdf2_sha256$600000$eO9R9Xufjzl3HBrO5ekfLP$rbqGn0pHilvH+BsaM6rvtAF+SsK0VfD3dzVbG8Ec++w=",
-            "last_login": "2024-02-16T13:48:28.243Z",
+            "last_login": "2024-02-17T14:22:50.929Z",
             "is_superuser": true,
             "username": "admin",
             "first_name": "",
@@ -2744,7 +3199,7 @@
         "pk": 9,
         "fields": {
             "password": "pbkdf2_sha256$600000$cbvhXK26ZJUmGrZ9uxNCfx$S0WPN5EU8IRrjmiEgNfClq0QE9PbDdLt0dljhNFE9cs=",
-            "last_login": null,
+            "last_login": "2024-02-17T13:35:34.982Z",
             "is_superuser": false,
             "username": "FPK21",
             "first_name": "",
