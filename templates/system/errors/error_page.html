@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error_message }} | <a href="{% url 'cars:cars' %}"><strong>Вернуться на главную</strong></a>
+        
+    </div>
+{% endblock content %}
