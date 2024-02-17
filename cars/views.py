@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -8,8 +8,8 @@ from django.urls import reverse
 
 from cars.forms import AddCarForm, EditCarForm
 from cars.models import Cars
-from deskbook.models import VehicleModel
 from cars.utils import q_search
+from deskbook.models import VehicleModel
 from maintenance.models import Maintenance
 from reclamation.models import Reclamation
 
@@ -34,7 +34,7 @@ def car_search(request):
     return render(request, "cars/car_search.html", context)
 
 
-@login_required
+@permission_required('cars.view_cars', raise_exception=True)
 def cars(
     request,
     vehicle_model_id=False,
@@ -75,17 +75,7 @@ def cars(
     return render(request, "cars/cars.html", context)
 
 
-@login_required
-def get_car(request, car_id):
-    car_item = Cars.objects.get(id=car_id)
-    car_vehicle_deskbook = VehicleModel.objects.get(id=car_item.vehicle_model_id)
-
-    context = {"car": car_item, "car_vehicle_deskbook": car_vehicle_deskbook}
-
-    return render(request, "cars/car.html", context)
-
-
-@login_required
+@permission_required('cars.add_cars', raise_exception=True)
 def add_car(request):
     if request.method == "POST":
         form = AddCarForm(data=request.POST)
@@ -109,7 +99,7 @@ def add_car(request):
     return render(request, "cars/add_car.html", context)
 
 
-@login_required
+@permission_required('cars.delete_cars', raise_exception=True)
 def remove_car(request, car_id):
     car = Cars.objects.get(id=car_id)
     car.delete()
@@ -122,7 +112,7 @@ def remove_car(request, car_id):
         return HttpResponseRedirect(reverse("cars:cars"))
 
 
-@login_required
+@permission_required('cars.change_cars', raise_exception=True)
 def edit_car(request, pk):
     car = get_object_or_404(Cars, pk=pk)
     if request.method == "POST":
@@ -217,7 +207,7 @@ def edit_car(request, pk):
     return render(request, "cars/add_car.html", context)
 
 
-@login_required
+@permission_required('cars.view_cars', raise_exception=True)
 def car_ajax(request):
     car_id = request.GET.get('car_id')
 

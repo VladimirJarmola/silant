@@ -1,10 +1,10 @@
 [
     {
         "model": "users.user",
-        "pk": 1,
+        "pk": 2,
         "fields": {
-            "password": "pbkdf2_sha256$600000$eE4f2OIOOb52ILwYrYdObp$v9vNHuvcRjXWdUE4KGIiawbkhBqjQB7mZTBshH+vYeM=",
-            "last_login": "2024-01-26T09:03:54.439Z",
+            "password": "pbkdf2_sha256$600000$eO9R9Xufjzl3HBrO5ekfLP$rbqGn0pHilvH+BsaM6rvtAF+SsK0VfD3dzVbG8Ec++w=",
+            "last_login": "2024-02-16T13:48:28.243Z",
             "is_superuser": true,
             "username": "admin",
             "first_name": "",
@@ -12,27 +12,10 @@
             "email": "",
             "is_staff": true,
             "is_active": true,
-            "date_joined": "2024-01-22T09:50:43Z",
+            "date_joined": "2024-02-16T11:17:05.531Z",
+            "company": null,
             "user_role": "AD",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "users.user",
-        "pk": 2,
-        "fields": {
-            "password": "client",
-            "last_login": null,
-            "is_superuser": false,
-            "username": "Trudnikov",
-            "first_name": "ИП Трудников С.В.",
-            "last_name": "",
-            "email": "",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2024-01-30T11:26:10Z",
-            "user_role": "CL",
+            "service_company": null,
             "groups": [],
             "user_permissions": []
         }
@@ -41,18 +24,45 @@
         "model": "users.user",
         "pk": 4,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$LjXpnmTjDI8wqyhQdUOKX7$8J9c1hTkMJkRgCmDUJ14prSh4Sc8XGjeQmVCek+3mlg=",
             "last_login": null,
             "is_superuser": false,
-            "username": "MHC77",
-            "first_name": "ООО \"МНС77\"",
+            "username": "Trudnikov",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:32:49Z",
+            "date_joined": "2024-02-16T14:50:19.069Z",
+            "company": "ИП Трудников С.В.",
             "user_role": "CL",
-            "groups": [],
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$IPkbOJADbWaMLT6azQM2Bt$nzbHnVJt5jQl8HuGlLOz41wNa61m5dS6J08JeUNl8v0=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "MNS77",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:51:18.139Z",
+            "company": "ООО МНС77",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
     },
@@ -60,18 +70,45 @@
         "model": "users.user",
         "pk": 6,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$85k8AItQpWRjDqLOEcJ80l$jg3Xb+0+EptxrveQxCwvC5RrazQ63SGL8wbWqvqtC3k=",
             "last_login": null,
             "is_superuser": false,
             "username": "RLPH",
-            "first_name": "ООО \"Ранский ЛПХ\"",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:36:56Z",
+            "date_joined": "2024-02-16T14:52:36.400Z",
+            "company": "ООО \"Ранский ЛПХ\"",
             "user_role": "CL",
-            "groups": [],
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$zTd8sizOQwjzr1KccSa31H$JfoHSc9Nfq4YuAR+Oi/y+OV7hGYmqkkE8sQwy5qUBdI=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "RMK",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:54:39.895Z",
+            "company": "ООО \"РМК\"",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
     },
@@ -79,18 +116,22 @@
         "model": "users.user",
         "pk": 8,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$2ZpYkfWkJs24wjm2V7zY55$upk+q+WHEB5Ydw7yWDaQt8Ez7u/ybclPZc4LdJGZvBI=",
             "last_login": null,
             "is_superuser": false,
-            "username": "RMK",
-            "first_name": "ООО \"РМК\"",
+            "username": "Zander",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:39:15Z",
+            "date_joined": "2024-02-16T14:57:10.950Z",
+            "company": "АО Зандер",
             "user_role": "CL",
-            "groups": [],
+            "service_company": null,
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
     },
@@ -98,18 +139,22 @@
         "model": "users.user",
         "pk": 9,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$cbvhXK26ZJUmGrZ9uxNCfx$S0WPN5EU8IRrjmiEgNfClq0QE9PbDdLt0dljhNFE9cs=",
             "last_login": null,
             "is_superuser": false,
-            "username": "Zander",
-            "first_name": "АО Зандер",
+            "username": "FPK21",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:40:04Z",
+            "date_joined": "2024-02-16T14:57:55.210Z",
+            "company": "ООО \"ФПК21\"",
             "user_role": "CL",
-            "groups": [],
+            "service_company": null,
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
     },
@@ -117,18 +162,22 @@
         "model": "users.user",
         "pk": 10,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$UlEcRj1xg6CTR2slWIZRXF$SsrWH/hyIjHOI+CD9etvFHw7VPyyMgfXmJAbrdIGdfU=",
             "last_login": null,
             "is_superuser": false,
-            "username": "FPK21",
-            "first_name": "ООО \"ФПК21\"",
+            "username": "Komplekt-Postavka",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:40:25Z",
+            "date_joined": "2024-02-16T14:58:53.538Z",
+            "company": "ООО \"Комплект-Поставка\"",
             "user_role": "CL",
-            "groups": [],
+            "service_company": null,
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
     },
@@ -136,18 +185,114 @@
         "model": "users.user",
         "pk": 11,
         "fields": {
-            "password": "client",
+            "password": "pbkdf2_sha256$600000$b8YvoLwst6RHMLpwd3v3JR$6sgm3NWeeOlcSdRXHm5bOU7OfaUWm9RueRHiDUp5eik=",
             "last_login": null,
             "is_superuser": false,
-            "username": "Komplekt-Postavka",
-            "first_name": "ООО \"Комплект-Поставка\"",
+            "username": "PromTech",
+            "first_name": "",
             "last_name": "",
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2024-01-30T11:40:51Z",
-            "user_role": "CL",
-            "groups": [],
+            "date_joined": "2024-02-16T15:07:59.490Z",
+            "company": "ООО Промышленная техника",
+            "user_role": "SE",
+            "service_company": 1,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$nUAgWktTZmP0exl95wRR0l$D1qj+E8pfm/kD5sqvwYLXFQMkgW9c+rb6svBJpczP5k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Silant",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:09:28.393Z",
+            "company": "ООО Силант",
+            "user_role": "SE",
+            "service_company": 2,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$sasYWeZjxGbKhMeuUK7rVS$JP6OtIb+xSRR3/4mhU9GCuuHLtx455EiG319OkQ+CnQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "FNS",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:10:22.636Z",
+            "company": "ООО ФНС",
+            "user_role": "SE",
+            "service_company": 3,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 15,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$cM7KSPIRM4yrDQ4EmPgpzT$8X7BP12wWgY9QNgTqwydFG2Ku/cvdlUCWqiCSae25dY=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manager1",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:14:09.648Z",
+            "company": "ООО Силант",
+            "user_role": "MG",
+            "service_company": null,
+            "groups": [
+                3
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 16,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$yQuqjdPZDZOwSqW6OfWYYE$q4jI5rexZzWu4OcJFVcxHVj8sGPAXRb6jNyp/Ae6iq0=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Admin1",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:14:51.077Z",
+            "company": "ООО Силант",
+            "user_role": "AD",
+            "service_company": null,
+            "groups": [
+                4
+            ],
             "user_permissions": []
         }
     }

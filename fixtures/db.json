@@ -1,34 +1,1416 @@
 [
     {
-        "model": "cars.servicecompany",
+        "model": "admin.logentry",
         "pk": 1,
         "fields": {
-            "name": "ООО Промышленная техника",
-            "description": ""
+            "action_time": "2024-02-16T14:00:52.170Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "test",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "admin.logentry",
         "pk": 2,
         "fields": {
-            "name": "ООО Силант",
-            "description": ""
+            "action_time": "2024-02-16T14:20:14.102Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "test",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u043e\\u043b\\u044c \\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u0442\\u0435\\u043b\\u044f\"]}}]"
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "admin.logentry",
         "pk": 3,
         "fields": {
-            "name": "ООО ФНС",
-            "description": ""
+            "action_time": "2024-02-16T14:32:33.127Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "test",
+            "action_flag": 3,
+            "change_message": ""
         }
     },
     {
-        "model": "cars.servicecompany",
+        "model": "admin.logentry",
         "pk": 4,
         "fields": {
-            "name": "самостоятельно",
-            "description": ""
+            "action_time": "2024-02-16T14:50:19.654Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "4",
+            "object_repr": "Trudnikov",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2024-02-16T14:50:28.875Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "4",
+            "object_repr": "Trudnikov",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2024-02-16T14:51:18.717Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "5",
+            "object_repr": "MHC77",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2024-02-16T14:51:23.782Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "5",
+            "object_repr": "MHC77",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 8,
+        "fields": {
+            "action_time": "2024-02-16T14:51:51.033Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "5",
+            "object_repr": "MNS77",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Username\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 9,
+        "fields": {
+            "action_time": "2024-02-16T14:52:36.971Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "6",
+            "object_repr": "RLPH",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 10,
+        "fields": {
+            "action_time": "2024-02-16T14:52:41.445Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "6",
+            "object_repr": "RLPH",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 11,
+        "fields": {
+            "action_time": "2024-02-16T14:53:56.181Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "4",
+            "object_repr": "Trudnikov",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 12,
+        "fields": {
+            "action_time": "2024-02-16T14:54:40.474Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "7",
+            "object_repr": "RMK",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 13,
+        "fields": {
+            "action_time": "2024-02-16T14:54:55.652Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "7",
+            "object_repr": "RMK",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 14,
+        "fields": {
+            "action_time": "2024-02-16T14:56:23.407Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "7",
+            "object_repr": "RMK",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 15,
+        "fields": {
+            "action_time": "2024-02-16T14:57:11.487Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "8",
+            "object_repr": "Zander",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 16,
+        "fields": {
+            "action_time": "2024-02-16T14:57:16.101Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "8",
+            "object_repr": "Zander",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 17,
+        "fields": {
+            "action_time": "2024-02-16T14:57:55.817Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "9",
+            "object_repr": "FPK21",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 18,
+        "fields": {
+            "action_time": "2024-02-16T14:57:58.955Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "9",
+            "object_repr": "FPK21",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 19,
+        "fields": {
+            "action_time": "2024-02-16T14:58:54.079Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "10",
+            "object_repr": "Komplekt-Postavka",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 20,
+        "fields": {
+            "action_time": "2024-02-16T14:58:56.827Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "10",
+            "object_repr": "Komplekt-Postavka",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 21,
+        "fields": {
+            "action_time": "2024-02-16T14:59:05.411Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "2",
+            "object_repr": "admin",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u043e\\u043b\\u044c \\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u0442\\u0435\\u043b\\u044f\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 22,
+        "fields": {
+            "action_time": "2024-02-16T15:06:56.374Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "8",
+            "object_repr": "Zander",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 23,
+        "fields": {
+            "action_time": "2024-02-16T15:08:00.096Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "11",
+            "object_repr": "PromTech",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 24,
+        "fields": {
+            "action_time": "2024-02-16T15:08:45.785Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "11",
+            "object_repr": "PromTech",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0435\\u0440\\u0432\\u0438\\u0441\\u043d\\u0430\\u044f \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u044f\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 25,
+        "fields": {
+            "action_time": "2024-02-16T15:09:28.966Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "12",
+            "object_repr": "Silant",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 26,
+        "fields": {
+            "action_time": "2024-02-16T15:09:43.875Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "12",
+            "object_repr": "Silant",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0435\\u0440\\u0432\\u0438\\u0441\\u043d\\u0430\\u044f \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u044f\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 27,
+        "fields": {
+            "action_time": "2024-02-16T15:10:23.206Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "13",
+            "object_repr": "FNS",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 28,
+        "fields": {
+            "action_time": "2024-02-16T15:10:53.205Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "13",
+            "object_repr": "FNS",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0435\\u0440\\u0432\\u0438\\u0441\\u043d\\u0430\\u044f \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u044f\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 29,
+        "fields": {
+            "action_time": "2024-02-16T15:12:42.535Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "14",
+            "object_repr": "test",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 30,
+        "fields": {
+            "action_time": "2024-02-16T15:12:54.399Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "14",
+            "object_repr": "test",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 31,
+        "fields": {
+            "action_time": "2024-02-16T15:14:10.259Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "15",
+            "object_repr": "Manager1",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 32,
+        "fields": {
+            "action_time": "2024-02-16T15:14:16.271Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "15",
+            "object_repr": "Manager1",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 33,
+        "fields": {
+            "action_time": "2024-02-16T15:14:51.674Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "16",
+            "object_repr": "Admin1",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 34,
+        "fields": {
+            "action_time": "2024-02-16T15:14:59.137Z",
+            "user": 2,
+            "content_type": 18,
+            "object_id": "16",
+            "object_repr": "Admin1",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 4,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 4,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 4,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 4,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 5,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 5,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 5,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 5,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add Машину",
+            "content_type": 6,
+            "codename": "add_cars"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change Машину",
+            "content_type": 6,
+            "codename": "change_cars"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete Машину",
+            "content_type": 6,
+            "codename": "delete_cars"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view Машину",
+            "content_type": 6,
+            "codename": "view_cars"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add ТО",
+            "content_type": 7,
+            "codename": "add_maintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change ТО",
+            "content_type": 7,
+            "codename": "change_maintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete ТО",
+            "content_type": 7,
+            "codename": "delete_maintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view ТО",
+            "content_type": 7,
+            "codename": "view_maintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add Рекламация",
+            "content_type": 8,
+            "codename": "add_reclamation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change Рекламация",
+            "content_type": 8,
+            "codename": "change_reclamation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete Рекламация",
+            "content_type": 8,
+            "codename": "delete_reclamation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view Рекламация",
+            "content_type": 8,
+            "codename": "view_reclamation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add Модель ведущего моста",
+            "content_type": 9,
+            "codename": "add_driveaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change Модель ведущего моста",
+            "content_type": 9,
+            "codename": "change_driveaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete Модель ведущего моста",
+            "content_type": 9,
+            "codename": "delete_driveaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view Модель ведущего моста",
+            "content_type": 9,
+            "codename": "view_driveaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add Модель двигателя",
+            "content_type": 10,
+            "codename": "add_enginemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change Модель двигателя",
+            "content_type": 10,
+            "codename": "change_enginemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete Модель двигателя",
+            "content_type": 10,
+            "codename": "delete_enginemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view Модель двигателя",
+            "content_type": 10,
+            "codename": "view_enginemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add Узел отказа",
+            "content_type": 11,
+            "codename": "add_failurenode"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change Узел отказа",
+            "content_type": 11,
+            "codename": "change_failurenode"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete Узел отказа",
+            "content_type": 11,
+            "codename": "delete_failurenode"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view Узел отказа",
+            "content_type": 11,
+            "codename": "view_failurenode"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add Способ востановления",
+            "content_type": 12,
+            "codename": "add_recoverymethod"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change Способ востановления",
+            "content_type": 12,
+            "codename": "change_recoverymethod"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete Способ востановления",
+            "content_type": 12,
+            "codename": "delete_recoverymethod"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view Способ востановления",
+            "content_type": 12,
+            "codename": "view_recoverymethod"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 49,
+        "fields": {
+            "name": "Can add Сервисная компания",
+            "content_type": 13,
+            "codename": "add_servicecompany"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 50,
+        "fields": {
+            "name": "Can change Сервисная компания",
+            "content_type": 13,
+            "codename": "change_servicecompany"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 51,
+        "fields": {
+            "name": "Can delete Сервисная компания",
+            "content_type": 13,
+            "codename": "delete_servicecompany"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 52,
+        "fields": {
+            "name": "Can view Сервисная компания",
+            "content_type": 13,
+            "codename": "view_servicecompany"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 53,
+        "fields": {
+            "name": "Can add Модель управляемого моста",
+            "content_type": 14,
+            "codename": "add_steeringaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 54,
+        "fields": {
+            "name": "Can change Модель управляемого моста",
+            "content_type": 14,
+            "codename": "change_steeringaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 55,
+        "fields": {
+            "name": "Can delete Модель управляемого моста",
+            "content_type": 14,
+            "codename": "delete_steeringaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 56,
+        "fields": {
+            "name": "Can view Модель управляемого моста",
+            "content_type": 14,
+            "codename": "view_steeringaxle"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 57,
+        "fields": {
+            "name": "Can add Модель трансмиссии",
+            "content_type": 15,
+            "codename": "add_transmissionmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 58,
+        "fields": {
+            "name": "Can change Модель трансмиссии",
+            "content_type": 15,
+            "codename": "change_transmissionmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 59,
+        "fields": {
+            "name": "Can delete Модель трансмиссии",
+            "content_type": 15,
+            "codename": "delete_transmissionmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 60,
+        "fields": {
+            "name": "Can view Модель трансмиссии",
+            "content_type": 15,
+            "codename": "view_transmissionmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 61,
+        "fields": {
+            "name": "Can add Модель техники",
+            "content_type": 16,
+            "codename": "add_vehiclemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 62,
+        "fields": {
+            "name": "Can change Модель техники",
+            "content_type": 16,
+            "codename": "change_vehiclemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 63,
+        "fields": {
+            "name": "Can delete Модель техники",
+            "content_type": 16,
+            "codename": "delete_vehiclemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 64,
+        "fields": {
+            "name": "Can view Модель техники",
+            "content_type": 16,
+            "codename": "view_vehiclemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 65,
+        "fields": {
+            "name": "Can add Вид ТО",
+            "content_type": 17,
+            "codename": "add_viewmaintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 66,
+        "fields": {
+            "name": "Can change Вид ТО",
+            "content_type": 17,
+            "codename": "change_viewmaintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 67,
+        "fields": {
+            "name": "Can delete Вид ТО",
+            "content_type": 17,
+            "codename": "delete_viewmaintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 68,
+        "fields": {
+            "name": "Can view Вид ТО",
+            "content_type": 17,
+            "codename": "view_viewmaintenance"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 69,
+        "fields": {
+            "name": "Can add Пользователя",
+            "content_type": 18,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 70,
+        "fields": {
+            "name": "Can change Пользователя",
+            "content_type": 18,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 71,
+        "fields": {
+            "name": "Can delete Пользователя",
+            "content_type": 18,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 72,
+        "fields": {
+            "name": "Can view Пользователя",
+            "content_type": 18,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 1,
+        "fields": {
+            "name": "SERVICE",
+            "permissions": [
+                24,
+                36,
+                40,
+                44,
+                48,
+                52,
+                56,
+                60,
+                64,
+                68,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                72
+            ]
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 2,
+        "fields": {
+            "name": "CLIENT",
+            "permissions": [
+                24,
+                36,
+                40,
+                44,
+                48,
+                52,
+                56,
+                60,
+                64,
+                68,
+                25,
+                26,
+                27,
+                28,
+                32,
+                72
+            ]
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 3,
+        "fields": {
+            "name": "MANAGER",
+            "permissions": [
+                21,
+                22,
+                23,
+                24,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                72
+            ]
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 4,
+        "fields": {
+            "name": "ADMIN",
+            "permissions": [
+                21,
+                22,
+                23,
+                24,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                69,
+                70,
+                71,
+                72
+            ]
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "cars",
+            "model": "cars"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "maintenance",
+            "model": "maintenance"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "reclamation",
+            "model": "reclamation"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "driveaxle"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "enginemodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "failurenode"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "recoverymethod"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 13,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "servicecompany"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 14,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "steeringaxle"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 15,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "transmissionmodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 16,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "vehiclemodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 17,
+        "fields": {
+            "app_label": "deskbook",
+            "model": "viewmaintenance"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 18,
+        "fields": {
+            "app_label": "users",
+            "model": "user"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "jdryk0nix6r7d8vzq4fly60drfyhgvew",
+        "fields": {
+            "session_data": ".eJxVjDsOwjAQBe_iGlleE_8o6XMGy-vd4ACypTipEHeHSCmgfTPzXiKmbS1x67zEmcRFaHH63TDlB9cd0D3VW5O51XWZUe6KPGiXYyN-Xg_376CkXr61R_AWTODgHYeUFRlDE4IDnbLPBBPSYGEgAnsmNIpZoQ5srHFe2yDeH-oON-I:1rayZo:nljDXKQg5XMjF0KxFLpUnU5smb-E1bhqCa7pRWNOw3Y",
+            "expire_date": "2024-03-01T13:48:28.514Z"
         }
     },
     {
@@ -50,7 +1432,7 @@
             "consignee": "ИП Трудников С.В.",
             "delivery_address": "п. Знаменский,  Респ. Марий Эл",
             "equipment": "1. Гидролинии с БРС;\r\n2. Дополнительеная установка кабины",
-            "client": "ИП Трудников С.В.",
+            "client": 4,
             "service_company": 1
         }
     },
@@ -73,7 +1455,7 @@
             "consignee": "ООО \"ДЭТ №13\"",
             "delivery_address": "с. Акуловка, Московская обл.",
             "equipment": "Стандарт",
-            "client": "ООО \"ФПК21\"",
+            "client": 9,
             "service_company": 2
         }
     },
@@ -96,7 +1478,7 @@
             "consignee": "ООО \"Мосгоррест\"",
             "delivery_address": "г. Санкт-Петербург",
             "equipment": "1. Кабина с отопителем",
-            "client": "ООО \"МНС77\"",
+            "client": 5,
             "service_company": 1
         }
     },
@@ -119,7 +1501,7 @@
             "consignee": "ФРП России",
             "delivery_address": "г. Челябинск, в/ч",
             "equipment": "1. Кабина с отопителем;\r\n2. Медицинская аптечка;\r\n3. Проблесковый маячок;\r\n4. Знак аварийной остановки;\r\n5. Огнетушитель порошковый 5п;",
-            "client": "ООО \"ФПК21\"",
+            "client": 9,
             "service_company": 1
         }
     },
@@ -142,7 +1524,7 @@
             "consignee": "ООО \"Ранский ЛПХ\"",
             "delivery_address": "п. Опарино, Кировская обл.",
             "equipment": "Стандарт",
-            "client": "ООО \"Ранский ЛПХ\"",
+            "client": 6,
             "service_company": 2
         }
     },
@@ -165,7 +1547,7 @@
             "consignee": "ООО \"ГП СПБ\"",
             "delivery_address": "г. Санкт-Петербург",
             "equipment": "1. Кабина с отопителем;\r\n2. Каретка смещения + гидролинии;",
-            "client": "ООО \"Комплект-Поставка\"",
+            "client": 10,
             "service_company": 1
         }
     },
@@ -188,7 +1570,7 @@
             "consignee": "ФСН России",
             "delivery_address": "г. Москва",
             "equipment": "1. Высота подъёма вил - 4 500мм;\r\n2. Кабина с отопителем;\r\n3. Шины суперэластик;\r\n4. Прибор комбинированный КД8235;",
-            "client": "ООО \"РМК\"",
+            "client": 7,
             "service_company": 1
         }
     },
@@ -211,7 +1593,7 @@
             "consignee": "АО Зандер",
             "delivery_address": "г. Краснодар",
             "equipment": "1. Кабина с отопителем;\r\n2. Каретка бокового смещения 1050мм;\r\n3. Блокировка реверса хода;\r\n4. Высота подъёма вил - 4800мм;\r\n5. Прибор комбинированный КД8235;",
-            "client": "АО \"Зандер\"",
+            "client": 8,
             "service_company": 1
         }
     },
@@ -234,7 +1616,7 @@
             "consignee": "АО \"Т-Минус\"",
             "delivery_address": "г. Первоуральск,  Свердловской обл.",
             "equipment": "1. Высота подъёма вил - 4 500мм;\r\n2. Центральный цилиндр подъёма ;\r\n3. Кабина с отопителем;\r\n4. Стрела безблочная Г-образная;",
-            "client": "ООО \"ФПК21\"",
+            "client": 9,
             "service_company": 3
         }
     },
@@ -257,7 +1639,7 @@
             "consignee": "ООО \"ГП Краснодар\"",
             "delivery_address": "г. Краснодар",
             "equipment": "1. Кабина с отопителем;",
-            "client": "ООО \"Комплект-Поставка\"",
+            "client": 10,
             "service_company": 3
         }
     },
@@ -910,6 +2292,38 @@
         }
     },
     {
+        "model": "deskbook.servicecompany",
+        "pk": 1,
+        "fields": {
+            "name": "ООО Промышленная техника",
+            "description": "Описание сервисной компании"
+        }
+    },
+    {
+        "model": "deskbook.servicecompany",
+        "pk": 2,
+        "fields": {
+            "name": "ООО Силант",
+            "description": "Описание сервисной компании"
+        }
+    },
+    {
+        "model": "deskbook.servicecompany",
+        "pk": 3,
+        "fields": {
+            "name": "ООО ФНС",
+            "description": "Описание сервисной компании"
+        }
+    },
+    {
+        "model": "deskbook.servicecompany",
+        "pk": 4,
+        "fields": {
+            "name": "самостоятельно",
+            "description": "Описание сервисной компании"
+        }
+    },
+    {
         "model": "deskbook.vehiclemodel",
         "pk": 1,
         "fields": {
@@ -1187,6 +2601,303 @@
         "fields": {
             "name": "ТО-5 (2000м/час)",
             "description": ""
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$eO9R9Xufjzl3HBrO5ekfLP$rbqGn0pHilvH+BsaM6rvtAF+SsK0VfD3dzVbG8Ec++w=",
+            "last_login": "2024-02-16T13:48:28.243Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-02-16T11:17:05.531Z",
+            "company": null,
+            "user_role": "AD",
+            "service_company": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$LjXpnmTjDI8wqyhQdUOKX7$8J9c1hTkMJkRgCmDUJ14prSh4Sc8XGjeQmVCek+3mlg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Trudnikov",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:50:19.069Z",
+            "company": "ИП Трудников С.В.",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$IPkbOJADbWaMLT6azQM2Bt$nzbHnVJt5jQl8HuGlLOz41wNa61m5dS6J08JeUNl8v0=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "MNS77",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:51:18.139Z",
+            "company": "ООО МНС77",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$85k8AItQpWRjDqLOEcJ80l$jg3Xb+0+EptxrveQxCwvC5RrazQ63SGL8wbWqvqtC3k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "RLPH",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:52:36.400Z",
+            "company": "ООО \"Ранский ЛПХ\"",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$zTd8sizOQwjzr1KccSa31H$JfoHSc9Nfq4YuAR+Oi/y+OV7hGYmqkkE8sQwy5qUBdI=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "RMK",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:54:39.895Z",
+            "company": "ООО \"РМК\"",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$2ZpYkfWkJs24wjm2V7zY55$upk+q+WHEB5Ydw7yWDaQt8Ez7u/ybclPZc4LdJGZvBI=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Zander",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:57:10.950Z",
+            "company": "АО Зандер",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$cbvhXK26ZJUmGrZ9uxNCfx$S0WPN5EU8IRrjmiEgNfClq0QE9PbDdLt0dljhNFE9cs=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "FPK21",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:57:55.210Z",
+            "company": "ООО \"ФПК21\"",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$UlEcRj1xg6CTR2slWIZRXF$SsrWH/hyIjHOI+CD9etvFHw7VPyyMgfXmJAbrdIGdfU=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Komplekt-Postavka",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T14:58:53.538Z",
+            "company": "ООО \"Комплект-Поставка\"",
+            "user_role": "CL",
+            "service_company": null,
+            "groups": [
+                2
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$b8YvoLwst6RHMLpwd3v3JR$6sgm3NWeeOlcSdRXHm5bOU7OfaUWm9RueRHiDUp5eik=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "PromTech",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:07:59.490Z",
+            "company": "ООО Промышленная техника",
+            "user_role": "SE",
+            "service_company": 1,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$nUAgWktTZmP0exl95wRR0l$D1qj+E8pfm/kD5sqvwYLXFQMkgW9c+rb6svBJpczP5k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Silant",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:09:28.393Z",
+            "company": "ООО Силант",
+            "user_role": "SE",
+            "service_company": 2,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$sasYWeZjxGbKhMeuUK7rVS$JP6OtIb+xSRR3/4mhU9GCuuHLtx455EiG319OkQ+CnQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "FNS",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:10:22.636Z",
+            "company": "ООО ФНС",
+            "user_role": "SE",
+            "service_company": 3,
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 15,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$cM7KSPIRM4yrDQ4EmPgpzT$8X7BP12wWgY9QNgTqwydFG2Ku/cvdlUCWqiCSae25dY=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manager1",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:14:09.648Z",
+            "company": "ООО Силант",
+            "user_role": "MG",
+            "service_company": null,
+            "groups": [
+                3
+            ],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 16,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$yQuqjdPZDZOwSqW6OfWYYE$q4jI5rexZzWu4OcJFVcxHVj8sGPAXRb6jNyp/Ae6iq0=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Admin1",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-02-16T15:14:51.077Z",
+            "company": "ООО Силант",
+            "user_role": "AD",
+            "service_company": null,
+            "groups": [
+                4
+            ],
+            "user_permissions": []
         }
     }
 ]

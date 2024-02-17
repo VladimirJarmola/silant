@@ -12,20 +12,21 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = User
 
-    list_display = ['username', 'first_name', 'user_role', 'email']
-    search_fields = ['username', 'first_name', 'user_role', 'email']
-
+    list_display = ['username', "company", 'user_role', 'email']
+    search_fields = ['username', "company", 'user_role', 'email']
+    
     ordering = ['username',]
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (("Personal info"), {"fields": ("first_name", "last_name", "email")}),
-        ('Permissions', {'fields': ('is_staff', 'is_active', 'user_role')}),
+        (("Personal info"), {"fields": ("company", "email", 'service_company')}),
+        ('Permissions', {'fields': ('is_active', 'user_role')}),
+
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'user_role',)}
+            'fields': ('username', 'password1', 'password2', "company", 'user_role',)}
         ),
     )
 
@@ -36,20 +37,5 @@ class CustomUserAdmin(UserAdmin):
             return []
         return ['service_company']
 
-    
-
 admin.site.register(User, CustomUserAdmin)
 admin.site.unregister(Group)
-
-# @admin.register(User)
-# class UserAdmin(admin.ModelAdmin):
-
-#     list_display = ['username', 'first_name', 'user_role', 'email']
-#     search_fields = ['username', 'first_name', 'user_role', 'email']
-    
-#     inlines = [CarTabAdmin,]
-    
-    # def get_readonly_fields(self, request, obj=None):
-    #     if obj and obj.user_role == "SE":
-    #         return ['password']
-    #     return []

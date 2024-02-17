@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -39,6 +40,8 @@ from deskbook.models import (
     ViewMaintenance,
 )
 
+
+@permission_required('deskbook.add_deskbook', raise_exception=True)
 def add_deskbook(request, slug):
     if request.method == "GET":
         path = request.META["HTTP_REFERER"]
@@ -106,6 +109,7 @@ def add_deskbook(request, slug):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
+@permission_required('deskbook.view_deskbook', raise_exception=True)
 def get_deskbook(request):
     page = request.GET.get("page", 1)
 
@@ -143,6 +147,7 @@ def get_deskbook(request):
     return render(request, "deskbook/deskbook.html", context=context)
 
 
+@permission_required('deskbook.delete_deskbook', raise_exception=True)
 def remove_deskbook(request, slug, item_id):
     if slug == "service_company":
         removable = get_object_or_404(ServiceCompany, id=item_id)
@@ -171,6 +176,7 @@ def remove_deskbook(request, slug, item_id):
         return HttpResponseRedirect(reverse(f"deskbook:{slug}"))
 
 
+@permission_required('deskbook.change_deskbook', raise_exception=True)
 def edit_deskbook(request, slug, item_id):
     if slug == "service_company":
         item = get_object_or_404(ServiceCompany, id=item_id)
@@ -252,6 +258,7 @@ def edit_deskbook(request, slug, item_id):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
+@permission_required('deskbook.view_deskbook', raise_exception=True)
 def deskbook_ajax(request):
     item_id = request.GET.get("deskbook_id")
     slug = request.GET.get("deskbook_name")

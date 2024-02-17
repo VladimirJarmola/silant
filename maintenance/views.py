@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
@@ -10,8 +10,7 @@ from maintenance.forms import AddMaintenanceForm
 from maintenance.models import Maintenance
 
 
-# Create your views here.
-@login_required
+@permission_required('maintenance.view_maintenance', raise_exception=True)
 def maintenance(
     request, view_maintenance_id=False, car_id=False, service_company_id=False
 ):
@@ -48,7 +47,7 @@ def maintenance(
     return render(request, "maintenance/maintenance_all.html", context)
 
 
-@login_required
+@permission_required('maintenance.view_maintenance', raise_exception=True)
 def get_maintenances(request, car_id, view_maintenance_id=False, service_company_id=False):
 
     page = request.GET.get("page", 1)
@@ -90,7 +89,7 @@ def get_maintenances(request, car_id, view_maintenance_id=False, service_company
     return render(request, 'maintenance/maintenances.html', context)
 
 
-@login_required
+@permission_required('maintenance.add_maintenance', raise_exception=True)
 def add_maintenance(request, car_id=False):
     if request.method == "POST":
         form = AddMaintenanceForm(data=request.POST)
@@ -122,7 +121,7 @@ def add_maintenance(request, car_id=False):
     }
     return render(request, 'maintenance/add_maintenance.html', context)
 
-@login_required
+@permission_required('maintenance.change_maintenance', raise_exception=True)
 def edit_maintenance(request, view_maintenance_id):
     item = get_object_or_404(Maintenance, id=view_maintenance_id)
     car_id = item.car.id
@@ -148,7 +147,7 @@ def edit_maintenance(request, view_maintenance_id):
     }
     return render(request, 'maintenance/add_maintenance.html', context)
 
-@login_required
+@permission_required('maintenance.delete_maintenance', raise_exception=True)
 def remove_maintenance(request, view_maintenance_id):
     removable = Maintenance.objects.get(id=view_maintenance_id)
     removable.delete()

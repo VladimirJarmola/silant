@@ -1,6 +1,6 @@
 import datetime
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
@@ -10,8 +10,8 @@ from cars.models import Cars
 from reclamation.forms import AddReclamationForm
 from reclamation.models import Reclamation
 
-# Create your views here.
-@login_required
+
+@permission_required('reclamation.view_reclamation', raise_exception=True)
 def reclamation(request, failure_node_id=False, recovery_method_id=False, service_company_id=False):
 
     page = request.GET.get("page", 1)
@@ -39,7 +39,7 @@ def reclamation(request, failure_node_id=False, recovery_method_id=False, servic
     return render(request, 'reclamation/reclamation_all.html', context)
 
 
-@login_required
+@permission_required('reclamation.view_reclamation', raise_exception=True)
 def get_reclamation(request, car_id, failure_node_id=False, recovery_method_id=False, service_company_id=False):
 
     car_item = Cars.objects.get(id=car_id)
@@ -80,9 +80,8 @@ def get_reclamation(request, car_id, failure_node_id=False, recovery_method_id=F
     return render(request, 'reclamation/reclamations.html', context)
 
 
+@permission_required('reclamation.add_reclamation', raise_exception=True)
 def add_reclamation(request, car_id=False):
-    
-
     if request.method == "POST":
         restore_date_introduced = request.POST['restore_date']
         date_of_refusal_introduced = request.POST['date_of_refusal']
@@ -129,6 +128,8 @@ def add_reclamation(request, car_id=False):
     
     return render(request, 'reclamation/add_reclamation.html', context)
 
+
+@permission_required('reclamation.change_reclamation', raise_exception=True)
 def edit_reclamation(request, reclamation_id):
     item = get_object_or_404(Reclamation, id=reclamation_id)
     car_id = item.car.id
@@ -173,6 +174,7 @@ def edit_reclamation(request, reclamation_id):
     return render(request, 'reclamation/add_reclamation.html', context)
 
 
+@permission_required('reclamation.delete_reclamation', raise_exception=True)
 def remove_reclamation(request, reclamation_id):
     removable = Reclamation.objects.get(id=reclamation_id)
     removable.delete()
