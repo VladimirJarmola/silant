@@ -1,6 +1,36 @@
+@font-face {
+    font-family: 'Astra-Sans_Regular';            
+    src: url('../source/fonts/PT-Astra-Sans_Regular.ttf') format('truetype');
+}
+  
+@font-face {
+    font-family: 'Astra-Sans_Bold';            
+    src: url('../source/fonts/PT-Astra-Sans_Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Astra-Sans_Italic';            
+    src: url('../source/fonts/PT-Astra-Sans_Italic.ttf') format('truetype');
+}
+
 body {
+    font-family: 'Astra-Sans_Regular', Arial, Helvetica, sans-serif;
     background: #EBE6D6;
     height: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Astra-Sans_Bold', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.font-weight-bold {
+    font-family: 'Astra-Sans_Bold', Arial, Helvetica, sans-serif;
+    
+}
+
+i {
+    font-family: 'Astra-Sans_Italic';
 }
 
 .page {
