@@ -4,10 +4,7 @@
 {% load cars_tags %}
 
 {% block content %}
-    <div class="d-flex align-items-end flex-column">
-        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
-        <h5>компания - <strong>{{request.user.company}}</strong></h5>
-    </div>
+    {% include "includes/user_info.html" %}
     <div class="d-flex justify-content-center p-4">
         <h4>Информация о комплектации и технических характеристиках Вашей техники </h4>
     </div>
@@ -252,7 +249,7 @@
 
         </tbody>
     </table>
-
+    {% if not cars %} <div class="d-flex justify-content-center"><h3>Нет данных о машинах</h3></div> {% endif %}
 <!-- Пагинация -->
 {% if cars %}
     <nav aria-label="Page navigation example">

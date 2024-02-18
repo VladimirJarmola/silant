@@ -1,0 +1,6 @@
+<div class="d-flex align-items-end flex-column">
+    <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
+    {% if request.user.company %}
+        <h5>компания - <strong>{{request.user.company}}</strong></h5>
+    {% endif %}
+</div>

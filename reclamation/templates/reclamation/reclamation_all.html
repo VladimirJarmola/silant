@@ -5,9 +5,7 @@
 {% load reclamation_tags %}
 
 {% block content %}
-    <div class="d-flex justify-content-end p-1">
-        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
-    </div>
+    {% include "includes/user_info.html" %}
 
     <div class="d-flex justify-content-center p-4">
         <h4>Информацию о заявленных клиентами рекламациях, и сроках их устранения </h4>
@@ -191,6 +189,7 @@
 
         </tbody>
     </table>
+    {% if not reclamation %} <div class="d-flex justify-content-center"><h3>Нет данных о рекламациях</h3></div> {% endif %}
 
     <!-- Пагинация -->
     {% if reclamation %}
