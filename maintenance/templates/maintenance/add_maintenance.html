@@ -55,9 +55,11 @@
                                             <div class="d-flex flex-row justify-content-end">
                                                 {{ field }}
                                                 {% if field.name in list_deskbook %}
-                                                    <a href="{% url "deskbook:add_deskbook" field.name %}" class="m-2">
-                                                        <img class="mx-1" src="{% static "source/icons/plus-lg.svg" %}" alt="Plus" width="16" height="16">
-                                                    </a>
+                                                    {% if user.user_role == 'MG' or user.user_role == 'AD' %}
+                                                        <a href="{% url "deskbook:add_deskbook" field.name %}" class="m-2">
+                                                            <img class="mx-1" src="{% static "source/icons/plus-lg.svg" %}" alt="Plus" width="16" height="16">
+                                                        </a>
+                                                    {% endif %}
                                                 {% endif %}
                                             </div>
                                         </div>

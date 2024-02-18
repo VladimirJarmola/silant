@@ -24,7 +24,7 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все машины</a></li>
             <li><hr class="dropdown-divider"></li>
-            {% tag_serial_number_vehicle as serial_number %}
+            
             {% for number in serial_number %}
                 <li>
                     <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" number.id %}">
@@ -73,9 +73,10 @@
         </ul>
     </div>
 
-    <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "maintenance:add_maintenance" %}'; return false">
-        <img class="mx-1" src="{% static "source/icons/wrench-adjustable.svg" %}" alt="add" width="16" height="16">
-        Добавить ТО
-    </button>
-
+    {% if perms.maintenance.add_maintenance %}
+        <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "maintenance:add_maintenance" %}'; return false">
+            <img class="mx-1" src="{% static "source/icons/wrench-adjustable.svg" %}" alt="add" width="16" height="16">
+            Добавить ТО
+        </button>
+    {% endif %}
 </div>

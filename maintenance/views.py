@@ -17,10 +17,11 @@ def maintenance(
     page = request.GET.get("page", 1)
     ordering = request.GET.get("order_by", None)
     user_role = request.user.user_role
+    user_cars = Cars.objects.filter(client=request.user.id)
 
     if user_role == 'CL':
-        user_cars_list = Cars.objects.filter(client=request.user.id).values_list('id', flat=True)
-        maintenance_limited = Maintenance.objects.filter(car__in=user_cars_list)
+        user_cars_list_id = user_cars.values_list('id', flat=True)
+        maintenance_limited = Maintenance.objects.filter(car__in=user_cars_list_id)
     elif user_role == 'SE':
         maintenance_limited = Maintenance.objects.filter(service_company=request.user.service_company_id)
     elif user_role == 'MG' or user_role == 'AD':
@@ -49,7 +50,8 @@ def maintenance(
 
     context = {
         "title": "ТО", 
-        "maintenance": current_page
+        "maintenance": current_page,
+        "serial_number": user_cars,
     }
     
     return render(request, "maintenance/maintenance_all.html", context)
@@ -129,6 +131,7 @@ def add_maintenance(request, car_id=False):
     }
     return render(request, 'maintenance/add_maintenance.html', context)
 
+
 @permission_required('maintenance.change_maintenance', raise_exception=True)
 def edit_maintenance(request, view_maintenance_id):
     item = get_object_or_404(Maintenance, id=view_maintenance_id)
@@ -154,6 +157,7 @@ def edit_maintenance(request, view_maintenance_id):
         'item': item,
     }
     return render(request, 'maintenance/add_maintenance.html', context)
+
 
 @permission_required('maintenance.delete_maintenance', raise_exception=True)
 def remove_maintenance(request, view_maintenance_id):
