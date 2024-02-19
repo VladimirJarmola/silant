@@ -7,6 +7,10 @@
 {% block content %}
     {% include "includes/user_info.html" %}
 
+    <div class="d-flex justify-content-center p-4">
+        <h4 class="text-center">Информация о проведенных ТО Вашей техники </h4>
+    </div>
+
     <div class="d-flex justify-content-around p-2">
         <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
         <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
@@ -14,86 +18,21 @@
 
     {% include "includes/radiobuttons_item.html" %}
     
-    <div class="d-flex pt-5">
-        <!-- Форма сортировки -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Сортировка таблицы
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=Date_maintenance">По возрастанию даты проведения ТО</a></li>
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=-Date_maintenance">По убыванию даты проведения ТО</a></li>    
-            </ul>
-        </div>
-        <!-- Фильтрация по виду ТО -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Вид ТО
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все виды</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_view_maintenance as view_maintenance %}
-                {% for view in view_maintenance %}
-                {% if view.id in wm_for_watch %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_view" car.id view.id %}">
-                            {{ view.name }}
-                        </a>
-                    </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-        <!-- Фильтрация по машине -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                Зав. номер машины
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все машины</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_serial_number_vehicle as serial_number %}
-                {% for number in serial_number %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" number.id %}">
-                            {{ number.serial_number_vehicle }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    
-        <!-- Фильтрация по сервисная компания -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Сервисная компания
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все компании</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_service_company as service_company %}
-                {% for company in service_company %}
-                    {% if company.id in sc_for_watch %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_service" car.id company.id %}">
-                            {{ company.name }}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-        {% if perms.maintenance.add_maintenance %}
-            <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "maintenance:add_maintenance_car" car.id %}'; return false">
-                <img class="mx-1" src="{% static "source/icons/wrench-adjustable.svg" %}" alt="add" width="16" height="16">
-                Добавить ТО
-            </button>
-        {% endif %}    
+    <div class="filtrationButtons">
+        {% include "includes/maintenanceFiltrations_item.html" %}
     </div>
 
+    <button class="btn btn-primary filtrationButtonsCollaps ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+        <img class="mx-1" src="{% static "source/icons/list.svg" %}" alt="Burger" width="24" height="24">
+    </button>
+
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="filtrationButtonsCollaps">
+            {% include "includes/maintenanceFiltrations_item.html" %}
+        </div>
+    </div>
+
+    <div class='table-responsive-xxl'>
     <table class="table table-striped">
         <thead class='myTHead'>
         <tr>
@@ -111,7 +50,7 @@
         {% for item in maintenances %}
         
             <tr>
-                <td class="align-middle" >
+                <td class="align-middle t-width" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ item.view_maintenance }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="view_maintenance" data-deskbook-id="{{ item.view_maintenance.id}}">
@@ -119,11 +58,11 @@
                         </a>
                     </div>
                 </td>
-                <td class="align-middle" >{{ item.Date_maintenance }}</td>
-                <td class="align-middle" >{{ item.operating_hours }}</td>
-                <td class="align-middle" >{{ item.work_order_number }}</td>
-                <td class="align-middle" >{{ item.work_order_date }}</td>
-                <td class="align-middle" >
+                <td class="align-middle t-width" >{{ item.Date_maintenance }}</td>
+                <td class="align-middle t-width" >{{ item.operating_hours }}</td>
+                <td class="align-middle t-width" >{{ item.work_order_number }}</td>
+                <td class="align-middle t-width" >{{ item.work_order_date }}</td>
+                <td class="align-middle t-width" >
                     <div class='d-inline-flex justify-content-between align-items-center' >
                         {{ item.service_company }}
                         <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="service_company" data-deskbook-id="{{ item.service_company.id}}">
@@ -131,7 +70,7 @@
                         </a>
                     </div>
                 </td>
-                <td class="p-1">
+                <td class="p-1 t-width">
                     <div class="d-inline-flex justify-content-between">
                         {% if perms.maintenance.delete_maintenance %}
                             <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
@@ -169,7 +108,7 @@
         
         {% endfor %}
     </tbody>
-    
+    </div>
     </table>
     {% if not maintenances %} <div class="d-flex justify-content-center"><h3>Нет данных о техническом обслуживании</h3></div> {% endif %}
 

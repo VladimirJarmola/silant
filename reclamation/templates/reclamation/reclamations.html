@@ -7,6 +7,10 @@
 {% block content %}
     {% include "includes/user_info.html" %}
 
+    <div class="d-flex justify-content-center p-4">
+        <h4 class="text-center">Информацию о заявленных клиентами рекламациях, и сроках их устранения </h4>
+    </div>
+    
     <div class="d-flex justify-content-around p-2">
         <h4 class="name_car">Модель техники: {{car.vehicle_model}}</h4>
         <h4 class="serial_number_vehicle">Заводской номер: {{car.serial_number_vehicle}} </h4>
@@ -14,187 +18,117 @@
 
     {% include "includes/radiobuttons_item.html" %}
     
-    <div class="d-flex pt-5">
-
-        <!-- Форма сортировки -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Сортировка таблицы
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=date_of_refusal">По возрастанию даты отказа</a></li>
-                <li><a class="dropdown-item fontSizeBtn" href="?order_by=-date_of_refusal">По убыванию даты отказа</a></li>    
-            </ul>
-        </div>
-
-        <!-- Фильтрация по узел отказа -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Узел отказа
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_failure_node as failure_node %}
-                {% for node in failure_node %}
-                {% if node.id in fn_for_watch %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" 
-                        href="{% url "reclamation:car_reclamations_failure_node" car.id node.id %}">
-                            {{ node.name }}
-                        </a>
-                    </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-
-        <!-- Фильтрация по способ восстановления -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Cпособ восстановления
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_recovery_method as recovery_method %}
-                {% for method in recovery_method %}
-                {% if method.id in rm_for_watch %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" 
-                        href="{% url "reclamation:car_reclamations_recovery_method" car.id method.id %}">
-                            {{ method.name }}
-                        </a>
-                    </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-
-        <!-- Фильтрация по сервисная компания -->
-        <div class="dropdown mb-2 me-1">
-            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Cервисная компания
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% tag_service_company as service_company %}
-                {% for company in service_company %}
-                {% if company.id in sc_for_watch %}
-                    <li>
-                        <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations_service_company" car.id company.id %}">
-                            {{ company.name }}
-                        </a>
-                    </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-        {% if perms.reclamation.add_reclamation %}
-            <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "reclamation:add_reclamation_car" car.id %}'; return false">
-                <img class="mx-1" src="{% static "source/icons/clipboard-x-fill.svg" %}" alt="add" width="16" height="16">
-                Добавить рекламацию
-            </button>
-        {% endif %}
+    <div class="filtrationButtons">
+        {% include "includes/reclamationFiltrations_item.html" %}
     </div>
 
-    <table class="table table-striped">
-        <thead class='myTHead'>
-        <tr>
-            <th scope="col">Дата отказа</th>
-            <th scope="col">Наработка, м/час</th>
-            <th scope="col" {% if 'failure_node' in request.path %} class="colorRed"{% endif %}>Узел отказа</th>
-            <th scope="col">Описание отказа</th>
-            <th scope="col" {% if 'recovery_method' in request.path %}class="colorRed"{% endif %}>Способ восстановления</th>
-            <th scope="col">Используемые запасные части</th>
-            <th scope="col">Дата восстановления</th>
-            <th scope="col">Время простоя техники</th>
-            <th scope="col" {% if 'service_company' in request.path %}class="colorRed"{% endif %}>Сервисная компания</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
+    <button class="btn btn-primary filtrationButtonsCollaps ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+        <img class="mx-1" src="{% static "source/icons/list.svg" %}" alt="Burger" width="24" height="24">
+    </button>
 
-        <tbody>
-        {% for item in reclamations %}
-        
-            <tr 
-                {% comment %} onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false" {% endcomment %}
-            >
-                
-                <td class="align-middle" >{{ item.date_of_refusal }}</td>
-                <td class="align-middle" >{{ item.operating_hours }}</td>
-                <td class="align-middle" >
-                    <div class='d-inline-flex justify-content-between align-items-center' >
-                        {{ item.failure_node }}
-                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="failure_node" data-deskbook-id="{{ item.failure_node.id}}">
-                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
-                        </a>
-                    </div>
-                </td>
-                <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
-                <td class="align-middle" >
-                    <div class='d-inline-flex justify-content-between align-items-center' >
-                        {{ item.recovery_method }}
-                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="recovery_method" data-deskbook-id="{{ item.recovery_method.id}}">
-                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
-                        </a>
-                    </div>
-                </td>
-                <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
-                <td class="align-middle" >{{ item.restore_date }}</td>
-                <td class="align-middle" >{{ item.equipment_downtime }}</td>
-                <td class="align-middle" >
-                    <div class='d-inline-flex justify-content-between align-items-center' >
-                        {{ item.service_company }}
-                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="service_company" data-deskbook-id="{{ item.service_company.id}}">
-                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
-                        </a>
-                    </div>
-                </td>
-                <td class="p-1">
-                    <div class="d-inline-flex justify-content-between">
-                        {% if perms.reclamation.delete_reclamation %}
-                            <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
-                                <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
-                            </a>
-                        {% endif %}
-                        {% if perms.reclamation.change_reclamation %}
-                            <a href="{% url "reclamation:edit_reclamation" item.id %}" class="remove-from-cart m-2">
-                                <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
-                            </a>
-                        {% endif %}
-                    </div>
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="filtrationButtonsCollaps">
+            {% include "includes/reclamationFiltrations_item.html" %}
+        </div>
+    </div>
+
+    <div class='table-responsive-xxl'>
+        <table class="table table-striped">
+            <thead class='myTHead'>
+            <tr>
+                <th scope="col">Дата отказа</th>
+                <th scope="col">Наработка, м/час</th>
+                <th scope="col" {% if 'failure_node' in request.path %} class="colorRed"{% endif %}>Узел отказа</th>
+                <th scope="col">Описание отказа</th>
+                <th scope="col" {% if 'recovery_method' in request.path %}class="colorRed"{% endif %}>Способ восстановления</th>
+                <th scope="col">Используемые запасные части</th>
+                <th scope="col">Дата восстановления</th>
+                <th scope="col">Время простоя техники</th>
+                <th scope="col" {% if 'service_company' in request.path %}class="colorRed"{% endif %}>Сервисная компания</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for item in reclamations %}
+            
+                <tr 
+                    {% comment %} onclick="window.location.href='{% url "reclamation:this_reclamation" item.id %}'; return false" {% endcomment %}
+                >
                     
-                      <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body fs-5">
-                                    Вы действительно хотите удалить рекламацию {{item}}?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                                    <button type="button" class="btn btn-primary" 
-                                        onclick="window.location.href='{% url "reclamation:remove_reclamation" item.id %}'; return false">Удалить</button>
+                    <td class="align-middle" >{{ item.date_of_refusal }}</td>
+                    <td class="align-middle" >{{ item.operating_hours }}</td>
+                    <td class="align-middle" >
+                        <div class='d-inline-flex justify-content-between align-items-center' >
+                            {{ item.failure_node }}
+                            <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="failure_node" data-deskbook-id="{{ item.failure_node.id}}">
+                                <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                        </div>
+                    </td>
+                    <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
+                    <td class="align-middle" >
+                        <div class='d-inline-flex justify-content-between align-items-center' >
+                            {{ item.recovery_method }}
+                            <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="recovery_method" data-deskbook-id="{{ item.recovery_method.id}}">
+                                <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                        </div>
+                    </td>
+                    <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
+                    <td class="align-middle" >{{ item.restore_date }}</td>
+                    <td class="align-middle" >{{ item.equipment_downtime }}</td>
+                    <td class="align-middle" >
+                        <div class='d-inline-flex justify-content-between align-items-center' >
+                            {{ item.service_company }}
+                            <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="service_company" data-deskbook-id="{{ item.service_company.id}}">
+                                <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                        </div>
+                    </td>
+                    <td class="p-1">
+                        <div class="d-inline-flex justify-content-between">
+                            {% if perms.reclamation.delete_reclamation %}
+                                <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
+                                    <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
+                                </a>
+                            {% endif %}
+                            {% if perms.reclamation.change_reclamation %}
+                                <a href="{% url "reclamation:edit_reclamation" item.id %}" class="remove-from-cart m-2">
+                                    <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
+                                </a>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body fs-5">
+                                        Вы действительно хотите удалить рекламацию {{item}}?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                        <button type="button" class="btn btn-primary" 
+                                            onclick="window.location.href='{% url "reclamation:remove_reclamation" item.id %}'; return false">Удалить</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </td>
-            </tr>
-        
-        {% endfor %}
+                    </td>
+                </tr>
+            
+            {% endfor %}
 
-        </tbody>
-    </table>
-    {% if not reclamation %} <div class="d-flex justify-content-center"><h3>Нет данных о рекламациях</h3></div> {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if not reclamations %} <div class="d-flex justify-content-center"><h3>Нет данных о рекламациях</h3></div> {% endif %}
 
     <!-- Пагинация -->
 {% if reclamations %}

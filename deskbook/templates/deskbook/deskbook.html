@@ -4,59 +4,31 @@
 {% load deskbook_tags %}
 
 {% block content %}
-    <div class="d-flex justify-content-end p-1">
-        <h5>Ваша учетная запись - <strong>{{request.user.username}}</strong></h5>
-    </div>
+    {% include "includes/user_info.html" %}
 
     <div class="d-flex justify-content-center p-4">
         <h4>Справочники </h4>
     </div>
-    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" {% if 'vehicle_model' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio1" 
-            onclick="window.location.href='{% url "deskbook:vehicle_model" %}'; return false"
-        >Модель техники</label>
-      
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" {% if 'engine_model' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio2"
-            onclick="window.location.href='{% url "deskbook:engine_model" %}'; return false"
-        >Модель двигателя</label>
-      
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" {% if 'transmission_model' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio3"
-            onclick="window.location.href='{% url "deskbook:transmission_model" %}'; return false"
-        >Модель трансмиссии</label>
-        
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" {% if 'drive_axle_model' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio4"
-            onclick="window.location.href='{% url "deskbook:drive_axle_model" %}'; return false"
-        >Модель ведущего моста</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" {% if 'steering_axle_model' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio5"
-            onclick="window.location.href='{% url "deskbook:steering_axle_model" %}'; return false"
-        >Модель управляемого моста</label>
+    <div class="btn-group btnGroupDeskbook" role="group" aria-label="Basic radio toggle button group">
+        {% include "includes/filtrationsDeskbook.html" %}
+    </div>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off" {% if 'failure_node' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio6"
-            onclick="window.location.href='{% url "deskbook:failure_node" %}'; return false"
-        >Узел отказа</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off" {% if 'recovery_method' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio7"
-            onclick="window.location.href='{% url "deskbook:recovery_method" %}'; return false"
-        >Способ востановления</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off" {% if 'view_maintenance' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio8"
-            onclick="window.location.href='{% url "deskbook:view_maintenance" %}'; return false"
-        >Вид ТО</label>
-        
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off" {% if 'service_company' in request.path %}checked{% endif %}>
-        <label class="btn btn-outline-primary" for="btnradio8"
-            onclick="window.location.href='{% url "deskbook:service_company" %}'; return false"
-        >Сервисная компания</label>
-
+    <div class="dropdown dropdownDeskbook">
+        <button class="btn btn-primary dropdown-toggle ms-auto" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Выберите справочник
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url "deskbook:vehicle_model" %}">Модель техники</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:engine_model" %}">Модель двигателя</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:transmission_model" %}">Модель трансмиссии</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:drive_axle_model" %}">Модель ведущего моста</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:steering_axle_model" %}">Модель управляемого моста</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:failure_node" %}">Узел отказа</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:recovery_method" %}">Способ востановления</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:view_maintenance" %}">Вид ТО</a></li>
+          <li><a class="dropdown-item" href="{% url "deskbook:service_company" %}">Сервисная компания</a></li>
+        </ul>
       </div>
 
       <div class="accordion pt-2" id="accordionPanelsStayOpenExample">

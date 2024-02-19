@@ -1,0 +1,87 @@
+{% load static %}
+{% load reclamation_tags %}
+
+<!-- Форма сортировки -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Сортировка таблицы
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=date_of_refusal">По возрастанию даты отказа</a></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=-date_of_refusal">По убыванию даты отказа</a></li>    
+    </ul>
+</div>
+
+<!-- Фильтрация по узел отказа -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Узел отказа
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_failure_node as failure_node %}
+        {% for node in failure_node %}
+        {% if node.id in fn_for_watch %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" 
+                href="{% url "reclamation:car_reclamations_failure_node" car.id node.id %}">
+                    {{ node.name }}
+                </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по способ восстановления -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Cпособ восстановления
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_recovery_method as recovery_method %}
+        {% for method in recovery_method %}
+        {% if method.id in rm_for_watch %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" 
+                href="{% url "reclamation:car_reclamations_recovery_method" car.id method.id %}">
+                    {{ method.name }}
+                </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по сервисная компания -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Cервисная компания
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations" car.id %}">Все узлы</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_service_company as service_company %}
+        {% for company in service_company %}
+        {% if company.id in sc_for_watch %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:car_reclamations_service_company" car.id company.id %}">
+                    {{ company.name }}
+                </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+{% if perms.reclamation.add_reclamation %}
+    <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "reclamation:add_reclamation_car" car.id %}'; return false">
+        <img class="mx-1" src="{% static "source/icons/clipboard-x-fill.svg" %}" alt="add" width="16" height="16">
+        Добавить рекламацию
+    </button>
+{% endif %}

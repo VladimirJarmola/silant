@@ -19,6 +19,14 @@ body {
     height: 100%;
 }
 
+header {
+    /* d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 h1, h2, h3, h4, h5 {
     font-family: 'Astra-Sans_Bold', Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -93,12 +101,6 @@ i {
     padding-bottom: 1%;
 }
 
-.btn-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .myTHead {
     font-size: 10px;
 }
@@ -111,4 +113,105 @@ td {
     font-size: 12px;
 }
 
+.t-width {
+    min-width: 5rem;
+}
 
+.radiobuttonsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.radiobuttonsItem {
+    margin-left: 7rem;
+}
+
+.filtrationButtons {
+    display: flex;
+    padding-top: 2rem;
+}
+
+.filtrationButtonsCollaps {
+    display: none;
+}
+
+.btnGroupDeskbook {
+    display: flex;
+}
+
+.dropdownDeskbook {
+    display: none;
+}
+
+@media screen and (max-width: 1920px) {
+    .radiobuttonsItem {
+        margin-left: 6rem;
+    }
+}
+@media screen and (max-width: 1536px) {
+    .radiobuttonsItem {
+        margin-left: 5rem;
+    }
+    
+}
+@media screen and (max-width: 1440px) {
+    .radiobuttonsItem {
+        margin-left: 4rem;
+    }
+
+}
+@media screen and (max-width: 1366px) {
+    .radiobuttonsItem {
+        margin-left: 3rem;
+    }
+
+    .filtrationButtons {
+        display: none;
+    }
+    .filtrationButtonsCollaps {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .btnGroupDeskbook {
+        display: none;
+    }
+    .dropdownDeskbook {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    
+    .radiobuttonsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+    .radiobuttonsItem {
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+    header div:nth-child(2){
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 450px) {
+    header {
+        flex-direction: column;
+    }
+    header div {
+        margin-top: 1rem;
+    }
+    header img {
+        height: 150px;
+        width: 360px;
+    }
+
+}

@@ -1,0 +1,102 @@
+{% load static %}
+{% load cars_tags %}
+
+
+<!-- Форма сортировки -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Сортировка таблицы
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=date_shipped_from_factory">По возрастанию даты отгрузки с завода</a></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=-date_shipped_from_factory">По убыванию даты отгрузки с завода</a></li>    
+    </ul>
+</div>
+
+<!-- Фильтрация по модели техники -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Модель техники
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_vehicle_models as vehicle_models %}
+        {% for model in vehicle_models %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" href="{% url "cars:vehicle" model.id %}">
+                    {{ model.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по модели двигателя -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Модель двигателя
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_engine_models as engine_models %}
+        {% for model in engine_models %}
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:engine" model.id %}">{{ model.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по модели трансмиссии -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Модель трансмиссии
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_transmission_models as transmission_models %}
+        {% for model in transmission_models %}
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:transmission" model.id %}">{{ model.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по модели ведущего моста -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Модель ведущего моста
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_drive_axle_models as drive_axle_models %}
+        {% for model in drive_axle_models %}
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:drive_axle" model.id %}">{{ model.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по модели управляемого моста -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Модель управляемого моста
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:cars" %}">Все модели</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_steering_axle_models as steering_axle_models %}
+        {% for model in steering_axle_models %}
+            <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:steering_axle" model.id %}">{{ model.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if perms.cars.add_cars %}
+    <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "cars:add_car" %}'; return false">
+        <img class="mx-1" src="{% static "source/icons/bus-front-fill.svg" %}" alt="add" width="16" height="16">
+        Добавить машину
+    </button>
+{% endif %}

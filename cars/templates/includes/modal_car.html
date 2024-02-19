@@ -70,76 +70,79 @@
                 <div>
                     <h2 class="modal-title fs-5 text-center pb-4">Техническое обслуживание</h2>
 
-                    <table class="table table-striped">
-                        <thead class='myTHead'>
-                            <tr>
-                                <th scope="col">Вид ТО</th>
-                                <th scope="col">Дата проведения ТО</th>
-                                <th scope="col">Наработка, м/час</th>
-                                <th scope="col">№ заказ-наряда</th>
-                                <th scope="col">Дата заказ-наряда</th>
-                                <th scope="col">Сервисная компания</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                
-                        <tbody>
-                            {% for item in maintenances %}
-                            
+                    <div class='table-responsive-xxl'>
+                        <table class="table table-striped">
+                            <thead class='myTHead'>
                                 <tr>
-                                    <td class="align-middle">{{ item.view_maintenance }}</td>
-                                    <td class="align-middle">{{ item.Date_maintenance }}</td>
-                                    <td class="align-middle">{{ item.operating_hours }}</td>
-                                    <td class="align-middle">{{ item.work_order_number }}</td>
-                                    <td class="align-middle">{{ item.work_order_date }}</td>
-                                    <td class="align-middle">{{ item.service_company }}</td>
+                                    <th scope="col">Вид ТО</th>
+                                    <th scope="col">Дата проведения ТО</th>
+                                    <th scope="col">Наработка, м/час</th>
+                                    <th scope="col">№ заказ-наряда</th>
+                                    <th scope="col">Дата заказ-наряда</th>
+                                    <th scope="col">Сервисная компания</th>
+                                    <th scope="col"></th>
                                 </tr>
-                            
-                            {% endfor %}
-                        </tbody>
+                            </thead>
                     
-                    </table>
-
+                            <tbody>
+                                {% for item in maintenances %}
+                                
+                                    <tr>
+                                        <td class="align-middle">{{ item.view_maintenance }}</td>
+                                        <td class="align-middle">{{ item.Date_maintenance }}</td>
+                                        <td class="align-middle">{{ item.operating_hours }}</td>
+                                        <td class="align-middle">{{ item.work_order_number }}</td>
+                                        <td class="align-middle">{{ item.work_order_date }}</td>
+                                        <td class="align-middle">{{ item.service_company }}</td>
+                                    </tr>
+                                
+                                {% endfor %}
+                            </tbody>
+                        
+                        </table>
+                    </div>
 
                 </div>
 
                 <div>
                     <h2 class="modal-title fs-5 text-center pb-4">Рекламации</h2>
 
-                    <table class="table table-striped">
-                        <thead class='myTHead'>
-                        <tr>
-                            <th scope="col">Дата отказа</th>
-                            <th scope="col">Наработка, м/час</th>
-                            <th scope="col">Узел отказа</th>
-                            <th scope="col">Описание отказа</th>
-                            <th scope="col">Способ восстановления</th>
-                            <th scope="col">Используемые запасные части</th>
-                            <th scope="col">Дата восстановления</th>
-                            <th scope="col">Время простоя техники</th>
-                            <th scope="col">Сервисная компания</th>
-                            <th scope="col">Машина</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        {% for item in reclamations %}
+                    <div class='table-responsive-xxl'>
+                        <table class="table table-striped">
+                            <thead class='myTHead'>
                             <tr>
-                                <td class="align-middle" >{{ item.date_of_refusal }}</td>
-                                <td class="align-middle" >{{ item.operating_hours }}</td>
-                                <td class="align-middle" >{{ item.failure_node }}</td>
-                                <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
-                                <td class="align-middle" >{{ item.recovery_method }}</td>
-                                <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
-                                <td class="align-middle" >{{ item.restore_date }}</td>
-                                <td class="align-middle" >{{ item.equipment_downtime }}</td>
-                                <td class="align-middle" >{{ item.service_company }}</td>
-                                <td class="align-middle" >{{ item.car }}</td>
+                                <th scope="col">Дата отказа</th>
+                                <th scope="col">Наработка, м/час</th>
+                                <th scope="col">Узел отказа</th>
+                                <th scope="col">Описание отказа</th>
+                                <th scope="col">Способ восстановления</th>
+                                <th scope="col">Используемые запасные части</th>
+                                <th scope="col">Дата восстановления</th>
+                                <th scope="col">Время простоя техники</th>
+                                <th scope="col">Сервисная компания</th>
+                                <th scope="col">Машина</th>
+                                <th scope="col"></th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+
+                            <tbody>
+                            {% for item in reclamations %}
+                                <tr>
+                                    <td class="align-middle" >{{ item.date_of_refusal }}</td>
+                                    <td class="align-middle" >{{ item.operating_hours }}</td>
+                                    <td class="align-middle" >{{ item.failure_node }}</td>
+                                    <td class="align-middle" >{{ item.description_of_failure|truncatechars:25 }}</td>
+                                    <td class="align-middle" >{{ item.recovery_method }}</td>
+                                    <td class="align-middle" >{{ item.parts_used|truncatechars:25 }}</td>
+                                    <td class="align-middle" >{{ item.restore_date }}</td>
+                                    <td class="align-middle" >{{ item.equipment_downtime }}</td>
+                                    <td class="align-middle" >{{ item.service_company }}</td>
+                                    <td class="align-middle" >{{ item.car }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

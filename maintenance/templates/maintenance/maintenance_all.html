@@ -9,96 +9,110 @@
     {% include "includes/user_info.html" %}
 
     <div class="d-flex justify-content-center p-4">
-        <h4>Информация о проведенных ТО Вашей техники </h4>
+        <h4 class="text-center">Информация о проведенных ТО Вашей техники </h4>
     </div>
 
     {% include "includes/radiobuttons.html" %}
+
+    <div class="filtrationButtons">
+        {% include "includes/maintenanceFiltrations.html" %}
+    </div>
+
+    <button class="btn btn-primary filtrationButtonsCollaps ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+        <img class="mx-1" src="{% static "source/icons/list.svg" %}" alt="Burger" width="24" height="24">
+    </button>
+
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="filtrationButtonsCollaps">
+            {% include "includes/maintenanceFiltrations.html" %}
+        </div>
+    </div>
     
-    {% include "includes/maintenancefilter.html" %}
-
-    <table class="table table-striped">
-        <thead class='myTHead'>
-        <tr>
-            <th scope="col" {% if 'car' in request.path %} class="colorRed" {% endif %}>Машина</th>
-            <th scope="col" {% if 'view_maintenance' in request.path %} class="colorRed" {% endif %}>Вид ТО</th>
-            <th scope="col">Дата проведения ТО</th>
-            <th scope="col">Наработка, м/час</th>
-            <th scope="col">№ заказ-наряда</th>
-            <th scope="col">Дата заказ-наряда</th>
-            <th scope="col" {% if 'service_company' in request.path %} class="colorRed" {% endif %}>Сервисная компания</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-
-        <tbody>
-        {% for item in maintenance %}
-        
-            <tr 
-                {% comment %} onclick="window.location.href='{% url "maintenance:car_maintenances" item.id %}'; return false" {% endcomment %}
-            >
-                
-                <td class="align-middle" >{{ item.car }}</td>
-                <td class="align-middle" >
-                    <div class='d-inline-flex justify-content-between align-items-center' >
-                        {{ item.view_maintenance }}
-                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="view_maintenance" data-deskbook-id="{{ item.view_maintenance.id}}">
-                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
-                        </a>
-                    </div>
-                </td>
-                <td class="align-middle" >{{ item.Date_maintenance }}</td>
-                <td class="align-middle" >{{ item.operating_hours }}</td>
-                <td class="align-middle" >{{ item.work_order_number }}</td>
-                <td class="align-middle" >{{ item.work_order_date }}</td>
-                <td class="align-middle" >
-                    <div class='d-inline-flex justify-content-between align-items-center' >
-                        {{ item.service_company }}
-                        <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="service_company" data-deskbook-id="{{ item.service_company.id}}">
-                            <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
-                        </a>
-                    </div>
-                </td>
-                <td class="p-1">
-                    <div class="d-inline-flex justify-content-between">
-                        {% if perms.maintenance.delete_maintenance %}
-                            <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
-                                <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
-                            </a>
-                        {% endif %}
-                        {% if perms.maintenance.change_maintenance %}
-                            <a href="{% url "maintenance:edit_maintenance" item.id %}" class="remove-from-cart m-2">
-                                <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
-                            </a>
-                        {% endif %}
-                    </div>
-                    
-                      <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body fs-5">
-                                Вы действительно хотите удалить ТО {{item}}?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                                <button type="button" class="btn btn-primary" 
-                                    onclick="window.location.href='{% url "maintenance:remove_maintenance" item.id %}'; return false">Удалить</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                </td>
-                
+    <div class='table-responsive-lg'>
+        <table class="table table-striped">
+            <thead class='myTHead'>
+            <tr>
+                <th scope="col" class="p-2 t-width" {% if 'car' in request.path %} class="colorRed" {% endif %}>Машина</th>
+                <th scope="col" class="p-2 t-width" {% if 'view_maintenance' in request.path %} class="colorRed" {% endif %}>Вид ТО</th>
+                <th scope="col" class="p-2 t-width" >Дата проведения ТО</th>
+                <th scope="col" class="p-2 t-width" >Наработка, м/час</th>
+                <th scope="col" class="p-2 t-width" >№ заказ-наряда</th>
+                <th scope="col" class="p-2 t-width" >Дата заказ-наряда</th>
+                <th scope="col" class="p-2 t-width" {% if 'service_company' in request.path %} class="colorRed" {% endif %}>Сервисная компания</th>
+                <th scope="col" class="p-2 t-width" ></th>
             </tr>
-        
-        {% endfor %}
+            </thead>
 
-        </tbody>
-    </table>
+            <tbody>
+            {% for item in maintenance %}
+            
+                <tr 
+                    {% comment %} onclick="window.location.href='{% url "maintenance:car_maintenances" item.id %}'; return false" {% endcomment %}
+                >
+                    
+                    <td class="align-middle p-2 t-width" >{{ item.car }}</td>
+                    <td class="align-middle p-2 t-width " >
+                        <div class='d-inline-flex justify-content-between align-items-center' >
+                            {{ item.view_maintenance }}
+                            <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="view_maintenance" data-deskbook-id="{{ item.view_maintenance.id}}">
+                                <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                        </div>
+                    </td>
+                    <td class="align-middle p-2 t-width" >{{ item.Date_maintenance }}</td>
+                    <td class="align-middle p-2 t-width" >{{ item.operating_hours }}</td>
+                    <td class="align-middle p-2 t-width" >{{ item.work_order_number }}</td>
+                    <td class="align-middle p-2 t-width" >{{ item.work_order_date }}</td>
+                    <td class="align-middle p-2 t-width" >
+                        <div class='d-inline-flex justify-content-between align-items-center' >
+                            {{ item.service_company }}
+                            <a href="{% url "deskbook:deskbook_ajax" %}" class="modalLink" aria-expanded="false" data-deskbook-name="service_company" data-deskbook-id="{{ item.service_company.id}}">
+                                <img class="mx-1" src="{% static "source/icons/question.svg" %}" alt="Trash" width="16" height="16">
+                            </a>
+                        </div>
+                    </td>
+                    <td class="p-1 t-width">
+                        <div class="d-inline-flex justify-content-between">
+                            {% if perms.maintenance.delete_maintenance %}
+                                <a href="#" class="remove-from-cart m-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{item.id}}">
+                                    <img class="mx-1" src="{% static "source/icons/trash3-fill.svg" %}" alt="Trash" width="16" height="16">
+                                </a>
+                            {% endif %}
+                            {% if perms.maintenance.change_maintenance %}
+                                <a href="{% url "maintenance:edit_maintenance" item.id %}" class="remove-from-cart m-2">
+                                    <img class="mx-1" src="{% static "source/icons/tools.svg" %}" alt="Tools" width="16" height="16">
+                                </a>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal_{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{item.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body fs-5">
+                                    Вы действительно хотите удалить ТО {{item}}?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                    <button type="button" class="btn btn-primary" 
+                                        onclick="window.location.href='{% url "maintenance:remove_maintenance" item.id %}'; return false">Удалить</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                    </td>
+                    
+                </tr>
+            
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
     {% if not maintenance %} <div class="d-flex justify-content-center"><h3>Нет данных о техническом обслуживании</h3></div> {% endif %}
     <!-- Пагинация -->
 {% if maintenance %}

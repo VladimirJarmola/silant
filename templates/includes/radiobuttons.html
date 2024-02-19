@@ -1,17 +1,17 @@
-<div class="d-flex btn-toolbar mb-2 p-2" role="toolbar" aria-label="Toolbar with button groups">
+<div class="radiobuttonsWrapper" role="toolbar" aria-label="Toolbar with button groups">
     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" {% if "cars" in request.path %}checked{% endif %}>
-    <label class="btn btn-outline-primary me-2 mb-2" for="btnradio1" onclick="window.location.href='{% url "cars:cars" %}'; return false">Общая информация</label>
+    <label class="btn btn-outline-primary radiobuttonsItem" for="btnradio1" onclick="window.location.href='{% url "cars:cars" %}'; return false">Общая информация</label>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" 
     {% if "maintenance" in request.path %}checked{% endif %}>
-    <label class="btn btn-outline-primary me-2 mb-2" for="btnradio2" 
+    <label class="btn btn-outline-primary radiobuttonsItem" for="btnradio2" 
         onclick="window.location.href='{% url "maintenance:maintenance_all" %}'; return false">
             Техническое обслуживание
     </label>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" 
     {% if "reclamation" in request.path %}checked{% endif %}>
-    <label class="btn btn-outline-primary me-2 mb-2" for="btnradio3" 
+    <label class="btn btn-outline-primary radiobuttonsItem" for="btnradio3" 
         onclick="window.location.href='{% url "reclamation:reclamation_all" %}'; return false">
             Рекламации 
     </label>

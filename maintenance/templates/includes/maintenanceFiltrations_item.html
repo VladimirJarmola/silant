@@ -1,0 +1,82 @@
+{% load static %}
+
+{% load maintenance_tags %}
+
+
+   <!-- Форма сортировки -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Сортировка таблицы
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=default">По умолчанию</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=Date_maintenance">По возрастанию даты проведения ТО</a></li>
+        <li><a class="dropdown-item fontSizeBtn" href="?order_by=-Date_maintenance">По убыванию даты проведения ТО</a></li>    
+    </ul>
+</div>
+<!-- Фильтрация по виду ТО -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Вид ТО
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все виды</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_view_maintenance as view_maintenance %}
+        {% for view in view_maintenance %}
+        {% if view.id in wm_for_watch %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_view" car.id view.id %}">
+                    {{ view.name }}
+                </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<!-- Фильтрация по машине -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+        Зав. номер машины
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:maintenance_all" %}">Все машины</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_serial_number_vehicle as serial_number %}
+        {% for number in serial_number %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car" number.id %}">
+                    {{ number.serial_number_vehicle }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Фильтрация по сервисная компания -->
+<div class="dropdown mb-2 me-1">
+    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Сервисная компания
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances" car.id %}">Все компании</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% tag_service_company as service_company %}
+        {% for company in service_company %}
+            {% if company.id in sc_for_watch %}
+            <li>
+                <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:car_maintenances_service" car.id company.id %}">
+                    {{ company.name }}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% if perms.maintenance.add_maintenance %}
+    <button class="btn btn-primary btn-sm mb-2 ms-auto" type="button" onclick="window.location.href='{% url "maintenance:add_maintenance_car" car.id %}'; return false">
+        <img class="mx-1" src="{% static "source/icons/wrench-adjustable.svg" %}" alt="add" width="16" height="16">
+        Добавить ТО
+    </button>
+{% endif %}    

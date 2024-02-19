@@ -13,9 +13,9 @@
   <body>
     <div class='page'>
     <header>
-      <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <div class="col-md-3 mb-2 mb-md-0">
+      <div class="container-fluid">
+        <header class="border-bottom">
+          <div>
             <a href="{% url "main:index" %}"><img  src="{% static "source/icons/logo.svg" %}" alt="logo" width="240" height="100"></a>
           </div>
     
@@ -45,14 +45,14 @@
       </div>
     </header>
     {% include "includes/notifications.html" %}
-    <section class='container' style='flex: 1 1 auto;'>    
+    <section class='container-fluid' style='flex: 1 1 auto;'>    
       
       {% block content %}{% endblock %}
       
     </section>
 
     <footer class="myFooter">
-      <div class="container">
+      <div class="container-fluid">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
         <div class='footerText'>
             <p class="text-center text-body-secondary">+7-8352-20-12-09, telegram</p>
