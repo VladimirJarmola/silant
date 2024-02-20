@@ -7,10 +7,10 @@
         {% include "includes/search.html" %}
 
         {% if request.GET.q %}
-            <div class='mySearch'>
+            <div class='mySearch d-flex justify-content-center'>
                 <h3>Результат поиска по запросу заводского номера: {{request.GET.q}} </h3>
             </div>
-            {% if not car_search %}<h4>{{ content }}</h4>{% endif %}
+            {% if not car_search %}<h4 class="d-flex justify-content-center">{{ content }}</h4>{% endif %}
         {% endif %}
 
         {% if car_search %}
