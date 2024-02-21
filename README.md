@@ -14,14 +14,33 @@
 
 <pre><blockquote>cd silant</blockquote><blockquote>pip install -r requirements.txt</blockquote></pre>
 
-<p>Apply the migrations:</p>
+<h3>База данных</h3>
+<p>По умолчанию проект работает с базой данных PostgreSQl. Для создания базы данных воспользуйтесь программой pgAdmin4, SQL Shell или введите в консоль следующие команды: </p>
+ 
+<pre><blockquote>psql -U postgres
+
+"C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres (для Windows, если psql не добавлена в переменную PATH)</blockquote></pre>
+
+<p>И введите пароль для входа в бд</p>
+<p>Далее необходимо создать юзера silant:</p>
+ 
+<pre><blockquote>CREATE ROLE silant WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT NOREPLICATION CONNECTION LIMIT -1 PASSWORD 'silant';</blockquote></pre>
+
+<p>И базу данных silant:</p>
+ 
+<pre><blockquote>CREATE DATABASE silant WITH OWNER = silant ENCODING = 'UTF8' LOCALE_PROVIDER = 'libc' CONNECTION LIMIT = -1 IS_TEMPLATE = False;</blockquote></pre>
+
+<p>Создадим миграции:</p>
+ 
+<pre><blockquote>python manage.py makemigrations</blockquote></pre>
+
+<p>И применим их:</p>
  
 <pre><blockquote>python manage.py migrate</blockquote></pre>
 
-<p>Finally, run the development server:</p>
+<p>Подгружаем фикстуры:</p>
  
-<pre><blockquote>python manage.py runserver</blockquote></pre>
+<pre><blockquote>python manage.py loaddata fixtures/db.json</blockquote></pre>
 
-<p>The site will be available at</p>
- 
-<pre><blockquote>127.0.0.1:8000</blockquote></pre>
+<h3>Запускаем сервер:</h3>
+<pre><blockquote>python manage.py runserver</blockquote></pre>
