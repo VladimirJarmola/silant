@@ -4,11 +4,6 @@ from cars.models import Cars
 
 def q_search(query):
 
-    # if query.isdigit() and len(query) <= 4:
-    #     str_query = str(query).zfill(4)
-    #     return Cars.objects.all().filter(serial_number_vehicle=str_query)
-    
-    # number_list = [number for number in query.split()]
     number_list = []
     for number in query.split():
         if number.isdigit():

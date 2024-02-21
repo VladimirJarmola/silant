@@ -17,8 +17,9 @@
 <h3>База данных</h3>
 <p>По умолчанию проект работает с базой данных PostgreSQl. Для создания базы данных воспользуйтесь программой pgAdmin4, SQL Shell или введите в cmd следующие команды: </p>
  
-<pre><blockquote>
-"C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres (если psql не добавлена в переменную PATH)</blockquote></pre>
+<pre><blockquote>psql.exe -U postgres</blockquote></pre>
+<p>либо</p>
+<pre><blockquote>"C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres (если psql не добавлена в переменную PATH)</blockquote></pre>
 
 <p>И введите пароль для входа в бд</p>
 <p>Далее необходимо создать юзера silant:</p>
@@ -29,8 +30,9 @@
  
 <pre><blockquote>CREATE DATABASE silant WITH OWNER = silant ENCODING = 'UTF8' LOCALE_PROVIDER = 'libc' CONNECTION LIMIT = -1 IS_TEMPLATE = False;</blockquote></pre>
 
-<p>Создадим миграции:</p>
+<p>выходим из psql и создаём миграции:</p>
  
+<pre><blockquote>exit</blockquote></pre>
 <pre><blockquote>python manage.py makemigrations</blockquote></pre>
 
 <p>И применим их:</p>
