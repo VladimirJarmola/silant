@@ -1,10 +1,10 @@
 <h1>Дипломный проект: реальный кейс от компании «Силант»</h1>
 
-<h2>Запуск проекта локально</h2>
+<h2>Запуск проекта локально (в среде под управлением Windows)</h2>
 
 <p>Создайте виртуальное окружение для проекта:</p>
 <pre>
-<blockquote>mkdir [folder_name]</blockquote><blockquote>cd [folder_name]</blockquote><blockquote>python -m venv venv</blockquote><blockquote>venv/scripts/activate</blockquote></pre>
+<blockquote>mkdir [folder_name]</blockquote><blockquote>cd [folder_name]</blockquote><blockquote>python -m venv venv</blockquote><blockquote>venv\scripts\activate</blockquote></pre>
 
 <p>Склонируйте репозиторий на локальную машину:</p>
 
@@ -17,9 +17,8 @@
 <h3>База данных</h3>
 <p>По умолчанию проект работает с базой данных PostgreSQl. Для создания базы данных воспользуйтесь программой pgAdmin4, SQL Shell или введите в cmd следующие команды: </p>
  
-<pre><blockquote>psql -U postgres
-
-"C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres (для Windows, если psql не добавлена в переменную PATH)</blockquote></pre>
+<pre><blockquote>
+"C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres (если psql не добавлена в переменную PATH)</blockquote></pre>
 
 <p>И введите пароль для входа в бд</p>
 <p>Далее необходимо создать юзера silant:</p>
