@@ -43,5 +43,27 @@
  
 <pre><blockquote>python manage.py loaddata fixtures/db.json</blockquote></pre>
 
+<p>Создаем суперюзера (необязательно):</p>
+<pre><blockquote>python manage.py createsuperuser</blockquote></pre>
+
+<p>или для входа в систему и тестирования можно воспользоваться юзерами, предустановленными в db.json:</p>
+
+| username          	| user_role       	| company                  	| password  	|
+|-------------------	|-----------------	|--------------------------	|-----------	|
+| admin             	| admin           	| superuser                	| admin     	|
+| Trudnikov         	| client          	| ИП Трудников С.В.        	| zasxcd123 	|
+| MNS77             	| client          	| ООО МНС77                	| zasxcd123 	|
+| RLPH              	| client          	| ООО "Ранский ЛПХ"        	| zasxcd123 	|
+| RMK               	| client          	| ООО "РМК"                	| zasxcd123 	|
+| Zander            	| client          	| АО Зандер                	| zasxcd123 	|
+| FPK21             	| client          	| ООО "ФПК21"              	| zasxcd123 	|
+| Komplekt-Postavka 	| client          	| ООО "Комплект-Поставка"  	| zasxcd123 	|
+| PromTech          	| service company 	| ООО Промышленная техника 	| zasxcd123 	|
+| Silant            	| service company 	| ООО Силант               	| zasxcd123 	|
+| FNS               	| service company 	| ООО ФНС                  	| zasxcd123 	|
+| Manager1          	| manager         	| ООО Силант               	| zasxcd123 	|
+| Admin1            	| admin           	| ООО Силант               	| zasxcd123 	|
+
+
 <h3>Запускаем сервер:</h3>
 <pre><blockquote>python manage.py runserver</blockquote></pre>

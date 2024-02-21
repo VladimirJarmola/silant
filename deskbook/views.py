@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
+from django.core.exceptions import PermissionDenied
 from django.core.paginator import EmptyPage, Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -41,25 +42,16 @@ from deskbook.models import (
     ViewMaintenance,
 )
 
-deskbook_view_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
-    content_type__app_label="deskbook", codename__startswith="view"
-).values_list("codename", flat=True)]
 
-deskbook_add_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
-    content_type__app_label="deskbook", codename__startswith="add"
-).values_list("codename", flat=True)]
-
-deskbook_delete_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
-    content_type__app_label="deskbook", codename__startswith="delete"
-).values_list("codename", flat=True)]
-
-deskbook_change_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
-    content_type__app_label="deskbook", codename__startswith="change"
-).values_list("codename", flat=True)]
-
-
-@permission_required(deskbook_add_permission, raise_exception=True)
+@login_required
 def add_deskbook(request, slug):
+    deskbook_add_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+        content_type__app_label="deskbook", codename__startswith="add"
+    ).values_list("codename", flat=True)]
+    
+    if not request.user.has_perms(deskbook_add_permission):
+        raise PermissionDenied
+    
     if request.method == "GET":
         path = request.META["HTTP_REFERER"]
         if slug == "service_company":
@@ -127,8 +119,15 @@ def add_deskbook(request, slug):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
-@permission_required(deskbook_view_permission, raise_exception=True)
+@login_required
 def get_deskbook(request):
+    deskbook_view_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+        content_type__app_label="deskbook", codename__startswith="view"
+    ).values_list("codename", flat=True)]
+    
+    if not request.user.has_perms(deskbook_view_permission) or not request.user.user_role in ['MG', 'AD']:
+        raise PermissionDenied
+    
     page = request.GET.get("page", 1)
 
     if "service_company" in request.path:
@@ -165,8 +164,15 @@ def get_deskbook(request):
     return render(request, "deskbook/deskbook.html", context=context)
 
 
-@permission_required(deskbook_delete_permission, raise_exception=True)
+@login_required
 def remove_deskbook(request, slug, item_id):
+    deskbook_delete_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+        content_type__app_label="deskbook", codename__startswith="delete"
+    ).values_list("codename", flat=True)]
+
+    if not request.user.has_perms(deskbook_delete_permission):
+        raise PermissionDenied
+    
     if slug == "service_company":
         removable = get_object_or_404(ServiceCompany, id=item_id)
     elif slug == "vehicle_model":
@@ -194,8 +200,15 @@ def remove_deskbook(request, slug, item_id):
         return HttpResponseRedirect(reverse(f"deskbook:{slug}"))
 
 
-@permission_required(deskbook_change_permission, raise_exception=True)
+@login_required
 def edit_deskbook(request, slug, item_id):
+    deskbook_change_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+        content_type__app_label="deskbook", codename__startswith="change"
+     ).values_list("codename", flat=True)]
+    
+    if not request.user.has_perms(deskbook_change_permission):
+        raise PermissionDenied
+    
     if slug == "service_company":
         item = get_object_or_404(ServiceCompany, id=item_id)
     elif slug == "vehicle_model":
@@ -276,8 +289,15 @@ def edit_deskbook(request, slug, item_id):
     return render(request, "deskbook/add_deskbook.html", context=context)
 
 
-@permission_required(deskbook_view_permission, raise_exception=True)
+@login_required
 def deskbook_ajax(request):
+    deskbook_view_permission = [f'deskbook.{el}' for el in Permission.objects.filter(
+        content_type__app_label="deskbook", codename__startswith="view"
+    ).values_list("codename", flat=True)]
+    
+    if not request.user.has_perms(deskbook_view_permission):
+        raise PermissionDenied
+
     item_id = request.GET.get("deskbook_id")
     slug = request.GET.get("deskbook_name")
 
