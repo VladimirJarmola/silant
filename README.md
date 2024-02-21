@@ -15,7 +15,7 @@
 <pre><blockquote>cd silant</blockquote><blockquote>pip install -r requirements.txt</blockquote></pre>
 
 <h3>База данных</h3>
-<p>По умолчанию проект работает с базой данных PostgreSQl. Для создания базы данных воспользуйтесь программой pgAdmin4, SQL Shell или введите в консоль следующие команды: </p>
+<p>По умолчанию проект работает с базой данных PostgreSQl. Для создания базы данных воспользуйтесь программой pgAdmin4, SQL Shell или введите в cmd следующие команды: </p>
  
 <pre><blockquote>psql -U postgres
 
