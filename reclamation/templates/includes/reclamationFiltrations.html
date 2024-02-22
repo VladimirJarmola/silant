@@ -24,11 +24,13 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_failure_node as failure_node %}
         {% for node in failure_node %}
+        {% if node.id in fn_filter %}
             <li>
                 <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:failure_node" node.id %}">
                     {{ node.name }}
                 </a>
             </li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -43,11 +45,13 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_recovery_method as recovery_method %}
         {% for method in recovery_method %}
+        {% if method.id in rm_filter %}
             <li>
                 <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:recovery_method" method.id %}">
                     {{ method.name }}
                 </a>
             </li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -62,11 +66,13 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_service_company as service_company %}
         {% for company in service_company %}
+        {% if company.id in sc_filter %}
             <li>
                 <a class="dropdown-item fontSizeBtn" href="{% url "reclamation:service_company" company.id %}">
                     {{ company.name }}
                 </a>
             </li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>

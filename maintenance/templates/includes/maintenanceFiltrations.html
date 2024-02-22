@@ -45,11 +45,13 @@
             <li><hr class="dropdown-divider"></li>
             {% tag_view_maintenance as view_maintenance %}
             {% for view in view_maintenance %}
+            {% if view.id in vm_for_filter %}
                 <li>
                     <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:view_maintenance" view.id %}">
                         {{ view.name }}
                     </a>
                 </li>
+            {% endif %} 
             {% endfor %}
         </ul>
     </div>
@@ -64,11 +66,13 @@
             <li><hr class="dropdown-divider"></li>
             {% tag_service_company as service_company %}
             {% for company in service_company %}
+            {% if company.id in sc_for_filter %}
                 <li>
                     <a class="dropdown-item fontSizeBtn" href="{% url "maintenance:service_company" company.id %}">
                         {{ company.name }}
                     </a>
                 </li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>

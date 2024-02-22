@@ -30,14 +30,14 @@
         <thead class='myTHead'>
         <tr>
             <th scope="col" class="p-1">Зав. № машины</th>
-            <th scope="col" class="p-1" {% if 'vehicle_model' in request.path %} class="colorRed" {% endif %}>Модель техники</th>
-            <th scope="col" class="p-1" {% if 'engine_model' in request.path %} class="colorRed" {% endif %}>Модель двигателя</th>
+            <th scope="col" class="p-1 {% if 'vehicle_model' in request.path %} colorRed {% endif %}">Модель техники</th>
+            <th scope="col" class="p-1 {% if 'engine_model' in request.path %} colorRed {% endif %}">Модель двигателя</th>
             <th scope="col" class="p-1">Зав. № двигателя</th>
-            <th scope="col" class="p-1" {% if 'transmission_model' in request.path %} class="colorRed" {% endif %}>Модель трансмиссии</th>
+            <th scope="col" class="p-1 {% if 'transmission_model' in request.path %} colorRed {% endif %}">Модель трансмиссии</th>
             <th scope="col" class="p-1">Зав. № трансмиссии</th>
-            <th scope="col" class="p-1" {% if 'drive_axle_model' in request.path %} class="colorRed" {% endif %}>Модель ведущего моста</th>
+            <th scope="col" class="p-1 {% if 'drive_axle_model' in request.path %} colorRed {% endif %}">Модель ведущего моста</th>
             <th scope="col" class="p-1">Зав. № ведущего моста</th>
-            <th scope="col" class="p-1" {% if 'steering_axle_model' in request.path %} class="colorRed" {% endif %}>Модель управляемого моста</th>
+            <th scope="col" class="p-1 {% if 'steering_axle_model' in request.path %} colorRed {% endif %}">Модель управляемого моста</th>
             <th scope="col" class="p-1">Зав. № управляемого моста</th>
             <th scope="col" class="p-1">Договор поставки №, дата</th>
             <th scope="col" class="p-1">Дата отгрузки с завода</th>

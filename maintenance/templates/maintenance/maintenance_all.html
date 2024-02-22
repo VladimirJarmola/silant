@@ -32,13 +32,13 @@
         <table class="table table-striped">
             <thead class='myTHead'>
             <tr>
-                <th scope="col" class="p-2 t-width" {% if 'car' in request.path %} class="colorRed" {% endif %}>Машина</th>
-                <th scope="col" class="p-2 t-width" {% if 'view_maintenance' in request.path %} class="colorRed" {% endif %}>Вид ТО</th>
+                <th scope="col" class="p-2 t-width {% if 'car' in request.path %} colorRed {% endif %}">Машина</th>
+                <th scope="col" class="p-2 t-width {% if 'view_maintenance' in request.path %} colorRed {% endif %}">Вид ТО</th>
                 <th scope="col" class="p-2 t-width" >Дата проведения ТО</th>
                 <th scope="col" class="p-2 t-width" >Наработка, м/час</th>
                 <th scope="col" class="p-2 t-width" >№ заказ-наряда</th>
                 <th scope="col" class="p-2 t-width" >Дата заказ-наряда</th>
-                <th scope="col" class="p-2 t-width" {% if 'service_company' in request.path %} class="colorRed" {% endif %}>Сервисная компания</th>
+                <th scope="col" class="p-2 t-width {% if 'service_company' in request.path %} colorRed {% endif %}">Сервисная компания</th>
                 <th scope="col" class="p-2 t-width" ></th>
             </tr>
             </thead>

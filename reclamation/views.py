@@ -26,6 +26,10 @@ def reclamation(request, failure_node_id=False, recovery_method_id=False, servic
     elif user_role == 'MG' or user_role == 'AD':
         reclamation_limited = Reclamation.objects.all()
 
+    failure_node_for_filtration = reclamation_limited.values_list('failure_node', flat=True)
+    recovery_method_for_filtration = reclamation_limited.values_list('recovery_method', flat=True)
+    service_company_for_filtration = reclamation_limited.values_list('service_company', flat=True)
+
     if failure_node_id:
         user_reclamation = reclamation_limited.filter(failure_node=failure_node_id)
     elif recovery_method_id:
@@ -43,7 +47,10 @@ def reclamation(request, failure_node_id=False, recovery_method_id=False, servic
 
     context = {
         'title': 'Рекламации',
-        'reclamation': current_page
+        'reclamation': current_page,
+        'fn_filter': failure_node_for_filtration,
+        'rm_filter': recovery_method_for_filtration,
+        'sc_filter': service_company_for_filtration,
     }
     return render(request, 'reclamation/reclamation_all.html', context)
 

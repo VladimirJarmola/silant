@@ -25,11 +25,13 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_vehicle_models as vehicle_models %}
         {% for model in vehicle_models %}
+        {% if model.id in vm_for_filter %}
             <li>
                 <a class="dropdown-item fontSizeBtn" href="{% url "cars:vehicle" model.id %}">
                     {{ model.name }}
                 </a>
             </li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -44,7 +46,9 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_engine_models as engine_models %}
         {% for model in engine_models %}
+        {% if model.id in em_for_filter %}
             <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:engine" model.id %}">{{ model.name }}</a></li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -59,7 +63,9 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_transmission_models as transmission_models %}
         {% for model in transmission_models %}
+        {% if model.id in tm_for_filter %}
             <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:transmission" model.id %}">{{ model.name }}</a></li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -74,7 +80,9 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_drive_axle_models as drive_axle_models %}
         {% for model in drive_axle_models %}
+        {% if model.id in dam_for_filter %}
             <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:drive_axle" model.id %}">{{ model.name }}</a></li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -89,7 +97,9 @@
         <li><hr class="dropdown-divider"></li>
         {% tag_steering_axle_models as steering_axle_models %}
         {% for model in steering_axle_models %}
+        {% if model.id in sam_for_filter %}
             <li><a class="dropdown-item fontSizeBtn" href="{% url "cars:steering_axle" model.id %}">{{ model.name }}</a></li>
+        {% endif %}
         {% endfor %}
     </ul>
 </div>

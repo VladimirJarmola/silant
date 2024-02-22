@@ -17,15 +17,20 @@ def maintenance(
     page = request.GET.get("page", 1)
     ordering = request.GET.get("order_by", None)
     user_role = request.user.user_role
-    user_cars = Cars.objects.filter(client=request.user.id)
 
     if user_role == 'CL':
+        user_cars = Cars.objects.filter(client=request.user.id)
         user_cars_list_id = user_cars.values_list('id', flat=True)
         maintenance_limited = Maintenance.objects.filter(car__in=user_cars_list_id)
     elif user_role == 'SE':
+        user_cars = Cars.objects.filter(service_company=request.user.service_company_id)
         maintenance_limited = Maintenance.objects.filter(service_company=request.user.service_company_id)
     elif user_role == 'MG' or user_role == 'AD':
+        user_cars = Cars.objects.all()
         maintenance_limited = Maintenance.objects.all()
+
+    view_maintenance_for_filtration = maintenance_limited.values_list('view_maintenance', flat=True)
+    service_company_for_filtration = maintenance_limited.values_list('car', flat=True)
 
     if view_maintenance_id:
         user_maintenance = maintenance_limited.filter(
@@ -51,7 +56,9 @@ def maintenance(
     context = {
         "title": "ТО", 
         "maintenance": current_page,
-        "serial_number": user_cars,
+        'vm_for_filter': view_maintenance_for_filtration,
+        'serial_number': user_cars,
+        'sc_for_filter': service_company_for_filtration,
     }
     
     return render(request, "maintenance/maintenance_all.html", context)

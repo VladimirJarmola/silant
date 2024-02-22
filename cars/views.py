@@ -53,6 +53,13 @@ def cars(
         cars_limited = Cars.objects.filter(service_company=request.user.service_company_id)
     elif user_role == 'MG' or user_role == 'AD':
         cars_limited = Cars.objects.all()
+
+    vehicle_model_for_filtration = cars_limited.values_list('vehicle_model', flat=True)
+    engine_model_for_filtration = cars_limited.values_list('engine_model', flat=True)
+    transmission_model_for_filtration = cars_limited.values_list('transmission_model', flat=True)
+    drive_axle_model_for_filtration = cars_limited.values_list('drive_axle_model', flat=True)
+    steering_axle_model_for_filtration = cars_limited.values_list('steering_axle_model', flat=True)
+
     
     if vehicle_model_id:
         user_cars = cars_limited.filter(vehicle_model=vehicle_model_id)
@@ -78,6 +85,11 @@ def cars(
 
     context = {
         "cars": current_page,
+        'vm_for_filter': vehicle_model_for_filtration,
+        'em_for_filter': engine_model_for_filtration,
+        'tm_for_filter': transmission_model_for_filtration,
+        'dam_for_filter': drive_axle_model_for_filtration,
+        'sam_for_filter': steering_axle_model_for_filtration,
     }
 
     return render(request, "cars/cars.html", context)
