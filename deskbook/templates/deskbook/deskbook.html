@@ -78,6 +78,7 @@
                 </div>
                 </div>
             </div>
+            {% if not item %} <div class="d-flex justify-content-center"><h3>Справочник пуст</h3></div> {% endif %}
         {% endfor %}
       </div>
 

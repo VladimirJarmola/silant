@@ -39,10 +39,7 @@
  
 <pre><blockquote>python manage.py migrate</blockquote></pre>
 
-<p>Создаем суперюзера (необязательно):</p>
-<pre><blockquote>python manage.py createsuperuser</blockquote></pre>
-
-<p>или для входа в систему и тестирования можно воспользоваться юзерами, предустановленными в db.json</p>
+<p>Для входа в систему и тестирования можно воспользоваться юзерами, предустановленными в db.json</p>
 
 <p>Подгружаем фикстуры:</p>
  
@@ -65,6 +62,8 @@
 | Manager1          	| manager         	| ООО Силант               	| zasxcd123 	|
 | Admin1            	| admin           	| ООО Силант               	| zasxcd123 	|
 
+<p>Или создайте своего суперюзера и самостоятельно наполните базу данных:</p>
+<pre><blockquote>python manage.py createsuperuser</blockquote></pre>
 
 <h3>Запускаем сервер:</h3>
 <pre><blockquote>python manage.py runserver</blockquote></pre>
