@@ -39,14 +39,15 @@
  
 <pre><blockquote>python manage.py migrate</blockquote></pre>
 
+<p>Создаем суперюзера (необязательно):</p>
+<pre><blockquote>python manage.py createsuperuser</blockquote></pre>
+
+<p>или для входа в систему и тестирования можно воспользоваться юзерами, предустановленными в db.json</p>
+
 <p>Подгружаем фикстуры:</p>
  
 <pre><blockquote>python manage.py loaddata fixtures/db.json</blockquote></pre>
 
-<p>Создаем суперюзера (необязательно):</p>
-<pre><blockquote>python manage.py createsuperuser</blockquote></pre>
-
-<p>или для входа в систему и тестирования можно воспользоваться юзерами, предустановленными в db.json:</p>
 
 | username          	| user_role       	| company                  	| password  	|
 |-------------------	|-----------------	|--------------------------	|-----------	|
