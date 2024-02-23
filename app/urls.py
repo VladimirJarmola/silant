@@ -32,6 +32,7 @@ urlpatterns = [
     path('reclamation/', include('reclamation.urls', namespace='reclamation')),
     path('deskbook/', include('deskbook.urls', namespace='deskbook')),
     path('user/', include('users.urls', namespace='user')),
+    path('api/', include('api.urls', namespace='api')),
 ]
 
 if DEBUG:

@@ -67,3 +67,9 @@
 
 <h3>Запускаем сервер:</h3>
 <pre><blockquote>python manage.py runserver</blockquote></pre>
+<p>И переходим на <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
+
+<h3>Публичный API</h3>
+<p>Описание публичного API:</p>
+
+<a href='http://127.0.0.1:8000/api/swagger/'>http://127.0.0.1:8000/api/swagger/</a>
