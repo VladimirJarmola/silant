@@ -18,7 +18,7 @@ GROUPS = {
 }
 
 @receiver(post_save, sender=User)
-def adding_to_group(sender: User, instance: User, **kwargs):
+def adding_to_group(sender: User, instance: User, created, **kwargs):
     '''
     При получении сигнал о сохранении юзера, добавляем его в группу.
     Если группы нет, то создаем ее.
@@ -26,9 +26,13 @@ def adding_to_group(sender: User, instance: User, **kwargs):
     if instance.user_role == 'AD' and not instance.is_staff:
         instance.is_staff = True
         instance.save()
-    if not instance.is_superuser:
-        group, created = Group.objects.get_or_create(name=GROUPS[instance.user_role])
-        transaction.on_commit(lambda: instance.groups.set([group], clear=True))
+
+    if created and instance.is_superuser:
+        instance.user_role = 'AD'
+        instance.save()
+
+    group, created = Group.objects.get_or_create(name=GROUPS[instance.user_role])
+    transaction.on_commit(lambda: instance.groups.set([group], clear=True))
 
 
 @receiver(post_save, sender=Group)
