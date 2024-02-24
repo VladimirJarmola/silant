@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}Silant{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Администрирование проекта СИЛАНТ</a></h1>
+{% if user.is_anonymous %}
+  {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'source/styles/admin.css' %}">
+{% endblock %}

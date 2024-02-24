@@ -97,6 +97,7 @@ def get_maintenances(request, car_id, view_maintenance_id=False, service_company
         current_page = paginator.page(int(page) - 1)
     
     context = {
+        "title": "ТО", 
         "maintenances": current_page, 
         'car': car_item,
         'sc_for_watch': service_company_for_watch,

@@ -1,0 +1,16 @@
+#header {
+    background: #D20A11;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #D20A11;
+}
+
+div.breadcrumbs {
+    background: #163E6C;
+}
+
+body {
+    font-family: 'Astra-Sans_Regular', Arial, Helvetica, sans-serif;
+    background: #EBE6D6;
+}

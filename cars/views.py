@@ -27,6 +27,7 @@ def car_search(request):
 
     # print(car_search_list)
     context = {
+        "title": "Поиск",
         "car_search": car_search_list,
         "content": "По вашему запросу ничего не найдено, данных о машине с таким заводским номером нет в системе",
     }
@@ -84,6 +85,7 @@ def cars(
         current_page = paginator.page(int(page) - 1)
 
     context = {
+        "title": "Машины",
         "cars": current_page,
         'vm_for_filter': vehicle_model_for_filtration,
         'em_for_filter': engine_model_for_filtration,
@@ -253,6 +255,7 @@ def car_ajax(request):
     car_html = render_to_string("includes/modal_car.html", context, request=request)
 
     response_data = {
+        "title": "Машины",
         "car_html": car_html,
     }
     

@@ -86,6 +86,7 @@ def get_reclamation(request, car_id, failure_node_id=False, recovery_method_id=F
         current_page = paginator.page(int(page) - 1)
 
     context = {
+        'title': 'Рекламации',
         "car": car_item, 
         'reclamations': current_page,
         'fn_for_watch': failure_node_for_watch,
