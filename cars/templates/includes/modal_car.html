@@ -67,6 +67,8 @@
                         <p>Комплектация (дополнительные опции): {{car.equipment}} </p>
                     </div>
                 </div> 
+
+                {% if maintenances %}
                 <div>
                     <h2 class="modal-title fs-5 text-center pb-4">Техническое обслуживание</h2>
 
@@ -103,7 +105,8 @@
                     </div>
 
                 </div>
-
+                {% endif %}
+                {% if reclamations %}
                 <div>
                     <h2 class="modal-title fs-5 text-center pb-4">Рекламации</h2>
 
@@ -144,6 +147,7 @@
                         </table>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
